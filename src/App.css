@@ -1,42 +1,74 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+html, body{
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  font-family: merryweather;
+}
+
+body{
+  display: flexbox;
+  flex-direction: column;
+  background: rgb(190, 174, 219);
+}
+
+#Logo{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgb( 0, 0, 0.1);
+}
+
+
+h1{
+  color: black;
   text-align: center;
+  font-size: 50px;  
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.formContainer{
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(255,255,255, 0.4);
+  border-radius: 12px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label{
+  font-size: 20px;
+  color: rgb(58, 45, 52);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
 }
 
-.card {
-  padding: 2em;
+button{
+  background-color: rgb(117,97,157);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
-.read-the-docs {
-  color: #888;
+#editPassword{
+  display: block;
+  color: rgb(58, 45, 52);
+
 }
