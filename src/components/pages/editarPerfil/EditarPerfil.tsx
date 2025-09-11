@@ -1,4 +1,4 @@
-
+import "./EditarPerfil.css";
 import { useState } from "react";
 
 const EditarPerfil = () => {
