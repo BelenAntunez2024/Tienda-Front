@@ -1,5 +1,9 @@
-import './App.css'
+import Registro from './components/pages/registro/Registro';
 
-function App() {}
+function App() {
+    return(<>
+    <Registro></Registro>
+    </>)
+}
 
-export default App
+export default App;
