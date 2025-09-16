@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Amuleto de Protección",
+    "price": 19.99,
+    "description": "Pequeño amuleto tallado a mano que aleja las malas energías.",
+    "image": "https://i.pinimg.com/736x/70/98/bc/7098bc6d188b388946352b9649032def.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Libro de Hechizos Antiguos",
+    "price": 49.99,
+    "description": "Manuscrito en pergamino con conjuros olvidados del siglo XV.",
+    "image": "https://i.pinimg.com/1200x/3d/d2/e4/3dd2e4cb3cc42f7f12c607cd70ab7e75.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Vela Encantada",
+    "price": 12.50,
+    "description": "Al encenderse, expulsa vibraciones negativas y purifica el ambiente.",
+    "image": "https://i.pinimg.com/736x/7b/e0/ce/7be0ce7904577f64656fa5b0dabb8c98.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Espejo Embrujado",
+    "price": 129.90,
+    "description": "Se dice que muestra reflejos de espíritus en noches de luna llena.",
+    "image": "https://i.pinimg.com/1200x/c1/b7/d9/c1b7d944940c450cd3ebbd1318f4b3f4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Poción del Amor Eterno",
+    "price": 34.99,
+    "description": "Extraña mezcla de hierbas y esencias para atraer el amor verdadero.",
+    "image": "https://i.pinimg.com/1200x/0f/1d/95/0f1d95797d115cfe97f021311e690d23.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Cristal Energético",
+    "price": 15.00,
+    "description": "Cristal de cuarzo que amplifica la energía positiva del portador.",
+    "image": "https://i.pinimg.com/736x/c5/24/63/c524639823e885f0caba20b98236fc74.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Reliquia Poseída",
+    "price": 199.99,
+    "description": "Objeto antiguo cargado con un espíritu errante. Manejar con cuidado.",
+    "image": "https://i.pinimg.com/736x/af/8f/2c/af8f2c1214516849f3262390dbf38c6d.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Tabla Ouija",
+    "price": 39.95,
+    "description": "Herramienta clásica para comunicarse con el más allá.",
+    "image": "https://i.pinimg.com/736x/cc/e6/29/cce62971eb168a2f22e9f1cff0d2a90b.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Caja Misteriosa",
+    "price": 25.00,
+    "description": "Nadie sabe qué contiene. Cada caja es única y sorprendente.",
+    "image": "https://i.pinimg.com/1200x/55/00/58/55005804d938fcdbd19b819c1a91eb9f.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Varita de Mago",
+    "price": 59.99,
+    "description": "Varita hecha de madera ancestral, lista para canalizar hechizos.",
+    "image": "https://i.pinimg.com/736x/fb/14/46/fb14464ce9281b54e6b02b7bab9c2d7b.jpg"
+  }
+]
