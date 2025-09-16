@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./StylesRegistro.css";
+import {  GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import type { CredentialResponse } from "@react-oauth/google"; 
 
 
 const Registro = () => {
@@ -56,8 +58,29 @@ const Registro = () => {
         alert("Registro Exitoso");
         window.location.href = "/login";
     };
+     // Manejar login con Google
+  
+   const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    console.log("Google login exitoso:", credentialResponse);
+
+    // Ejemplo: guardar info del usuario en LocalStorage
+    const usuarioGoogle = {
+      nombre: credentialResponse?.credential ? "Usuario Google" : "",
+      email: "", // normalmente aquí se obtiene del token decode
+      fecha: "",
+      password: ""
+    };
+
+    const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
+    usuarios.push(usuarioGoogle);
+    localStorage.setItem("Usuarios", JSON.stringify(usuarios));
+
+    alert("Registro con Google exitoso");
+    window.location.href = "/login";
+  };
 
     return (
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
   <section className="registro-page">
     <div className="registro-box">
       <div className="registro-header">
@@ -113,10 +136,18 @@ const Registro = () => {
 
           <button type="submit" className="btn">Registrarse</button>
         </form>
+        {error && <p className="error">{error}</p>}
 
-      {error && <p className="error">{error}</p>}
-    </div>
-  </section>
+         {/* BOTÓN DE GOOGLE */}
+          <div className="google-login">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => console.log("Login con Google falló")}
+            />
+          </div>
+        </div>
+      </section>
+    </GoogleOAuthProvider>
 );
 };
 
