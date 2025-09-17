@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import "./StyleCarrito.css";
 interface Producto{
     id: number;
     NombreProducto: string;
