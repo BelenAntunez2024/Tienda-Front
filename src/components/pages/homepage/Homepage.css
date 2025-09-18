@@ -1,0 +1,85 @@
+.hero {
+  position: relative;
+  width: 1250px;
+  height: 50vh; /* ocupa la mitad de la pantalla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__img {
+  position: absolute;
+  width: 1250px;
+  height: 50vh;
+  object-fit: cover;       /* se adapta sin deformarse */
+  object-position: top;    /* podés probar: center, top, bottom */
+}
+.hero__content {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+.hero__content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  font-family: Papyrus, fantasy;
+}
+.hero__content p {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* FAVORITOS */
+.favoritos {
+  width: 1230px;
+  padding: 10px;
+  text-align: center;
+  background: linear-gradient(180deg, #3f2a52 0%, #5a3a70 100%);
+}
+
+.favoritos h2 {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+.favoritos-grid {
+  display: flex;
+  
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.favorito-card {
+  text-align: center;
+  color: white;
+}
+.favorito-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.favorito-img:hover {
+  transform: scale(1.08);
+}
+
+.favorito-card h3 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1rem;
+}
+
+.favorito-card p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+

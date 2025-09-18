@@ -1,14 +1,13 @@
 //import Registro from './components/pages/registro/Registro';
-
-import Carrito from "./components/pages/carritoModif/CarritoModif";
-
+//import Carrito from "./components/pages/carritoModif/CarritoModif";
+import HomePage from "./components/pages/homepage/Homepage";
 
 
 function App ()  {
 
   return (
     <>
-    <Carrito></Carrito>
+    <HomePage></HomePage>
     </>
   );
 };
