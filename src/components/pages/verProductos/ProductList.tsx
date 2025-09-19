@@ -1,4 +1,5 @@
 import React from "react";
+import './ProductList.css';
 import ProductCard from "./ProductCard";
 import type { Product } from "./interfaces/Product";
 //importacion del archivo JSON que contiene los productos
