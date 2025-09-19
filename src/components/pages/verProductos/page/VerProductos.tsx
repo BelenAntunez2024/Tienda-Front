@@ -1,4 +1,5 @@
 import React from "react";
+import './VerProductos.css';
 import ProductList from "../ProductList";
 
 const VerProductos: React.FC = () => {
