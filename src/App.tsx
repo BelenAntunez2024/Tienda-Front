@@ -1,13 +1,15 @@
-//import Registro from './components/pages/registro/Registro';
-//import Carrito from "./components/pages/carritoModif/CarritoModif";
+
 import HomePage from "./components/pages/homepage/Homepage";
+import Navbar from "./components/layaut/navbar";
 
 
 function App ()  {
 
   return (
     <>
+    <Navbar></Navbar>
     <HomePage></HomePage>
+    
     </>
   );
 };
