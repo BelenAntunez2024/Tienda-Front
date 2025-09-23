@@ -18,14 +18,17 @@ const HamburgerMenu: React.FC = () => {
         {isOpen ? (
         <GiStarsStack size={40} color="#FFD700" /> // ✨ Estrella cuando está abierto
          ) : (
-        <GiSpiralBottle size={40} color="#B19CD9" /> // 🧪 Botella cuando está cerrado
+        <GiSpiralBottle size={40} color="#5a3a70"  /> // 🧪 Botella cuando está cerrado
         )}
         </button>
 
       <ul className={`hamburger-menu ${isOpen ? "open" : ""}`}>
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#productos">Productos</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#quienesSomos">Quienes Somos</a></li>
+        <li><a href="#comoComprar">Como Comprar</a></li>
+        <li><a href="#pregFrecuentes">Preguntes Frecuentes</a></li>
       </ul>
     </nav>
   );
