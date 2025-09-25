@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./carrito.css"
-import IconCart from "./IconCart";
+import IconCart from "./icons/IconCart";
+import IconDelete from "./icons/IconDelete";
 
 const FuncionalidadCarrito = () => {
     /*      CRITERIOS DE APROBACIÓN
@@ -24,8 +25,8 @@ const FuncionalidadCarrito = () => {
 
     const productosMock: Producto[] = [
     { id: 1, nombre: "Jade", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 5000 },
-    { id: 2, nombre: "piedra", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 8500 },
-    { id: 3, nombre: "piedra", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 15000 },
+    { id: 2, nombre: "Ojo de gato", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 8500 },
+    { id: 3, nombre: "Rubi", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 15000 },
     ];
 
     
@@ -99,6 +100,10 @@ const FuncionalidadCarrito = () => {
         ));
     }
     
+    const calcularTotal = carrito.reduce((total, producto) => { 
+        return total + producto.precio * (producto.cantidad || 1);
+    }, 0);
+
     return (
         <main>
 
@@ -121,20 +126,31 @@ const FuncionalidadCarrito = () => {
             </div>
 
             <div className="carritoDisponible">
-                {carrito.length === 0 ? ( <p>El carrito está vacío</p> ) : mostrarCarrito() && ( 
+                {carrito.length === 0 ? ( <h4 className="carritoVacio">El carrito está vacío</h4> ) : mostrarCarrito() && ( 
                     carrito.map((producto) => (
                     <div key={producto.id} className="cardCarrito">
                     <img src={producto.imagen} alt={producto.nombre} />
+                    <div className="product-text-info"> 
                     <h3 className="nombreProducto">{producto.nombre}</h3>
-                    <p className="details">Precio unitario: ${producto.precio}</p> 
-                    <p className="details">Total: ${producto.precio * (producto.cantidad || 1)}</p>
-
+                    <div className="details-container">
+                        <p className="details">Precio: ${producto.precio}</p> 
+                        <p className="details">Total: ${producto.precio * (producto.cantidad || 1)}</p>
+                    </div>
+                    </div>
                    <div className="botonesCarrito">
-                        <button onClick={() => restarCantidad(producto.id)}>-</button>
+                        <button onClick={() => restarCantidad(producto.id)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="white" className="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                            </svg>
+                        </button>
                         <span>{producto.cantidad}</span>
-                        <button onClick={() => sumarCantidad(producto.id)}>+</button>
+                        <button onClick={() => sumarCantidad(producto.id)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="white" className="bi bi-plus"  viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
                         <div className="botonEliminar">
-                            <button onClick={() => eliminarDelCarrito(producto.id)}>Eliminar</button>
+                            <button onClick={() => eliminarDelCarrito(producto.id)}><IconDelete/></button>
                         </div>
                     </div>
                 </div>
@@ -142,6 +158,9 @@ const FuncionalidadCarrito = () => {
                 )}
             </div>
 
+            {carrito.length > 0 && (  //si el carrito no tiene nada no muestra total
+                <h3>Su total es: ${calcularTotal}</h3>
+            )}
         </main>
     )
 }
