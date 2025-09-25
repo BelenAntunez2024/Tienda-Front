@@ -1,15 +1,13 @@
-
-import HomePage from "./components/pages/homepage/Homepage";
-import Navbar from "./components/layaut/navbar";
-import Footer from "./components/layaut/footer";
+import Registro from "./components/pages/registro/Registro";
+//import HomePage from "./components/pages/homepage/Homepage";
+//import Navbar from "./components/layaut/navbar";
+//import Footer from "./components/layaut/footer";
 
 function App ()  {
 
   return (
     <>
-    <Navbar></Navbar>
-    <HomePage></HomePage>
-    <Footer></Footer>
+    <Registro></Registro>
     </>
   );
 };
