@@ -1,4 +1,5 @@
 import React from "react";
+import './ProductCard.css';
 import type { Product } from "./interfaces/Product.ts";
 
 interface ProductCardProps { //Props que recibe el componente

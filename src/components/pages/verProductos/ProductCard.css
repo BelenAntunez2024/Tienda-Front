@@ -1,0 +1,46 @@
+.div-product-card {
+  background: #e6eff7;
+  border: 1px solid #75619d;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(117, 97, 157, 0.25);
+  padding: 1rem;
+  text-align: center;
+  width: 250px;
+  font-family: "Cinzel", serif;
+  color: #3a2d34;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.div-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(190, 174, 219, 0.7);
+}
+
+.div-product-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #3a2d34;
+  text-shadow: 0 0 6px rgba(117, 97, 157, 0.2);
+}
+
+.div-product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
+}
+
+.p-description {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  color: #3a2d34;
+}
+
+.p-precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #75619d;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import './ProductList.css';
 import ProductCard from "./ProductCard";
 import type { Product } from "./interfaces/Product";
 //importacion del archivo JSON que contiene los productos
@@ -14,7 +15,6 @@ const ProductList: React.FC = () => {
   return (
     <>
       <div className="div-product-list">
-        <h2>Lista de Productos</h2>
         {/*mapeo de la array de productos y para cada producto se renderiza un ProductCard*/}
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
