@@ -57,12 +57,12 @@ const HistorialCompras: React.FC = () => {
           {/*recorre y muestra en la lisa las compras */}
           {compras.map((compra) => (
             <li key={compra.id}>
-              <strong>Compra #{compra.id}</strong> - {compra.date} - Total: ${compra.total}
-              <button 
-              className="btn-historial-detalles" 
-              onClick={() => setCompraSeleccionada(compra)}
+              <strong>Compra #{compra.id}</strong>  {compra.date} - Total: ${compra.total}
+              <button
+                className="btn-historial-detalles"
+                onClick={() => setCompraSeleccionada(compra)}
               >
-              Ver detalles
+                Ver detalles
               </button>
             </li>
           ))}
@@ -75,18 +75,20 @@ const HistorialCompras: React.FC = () => {
               {compraSeleccionada.items.map((item, index) => (
                 <li key={index} className="li-detalles">
                   {item.name} - {item.amount} por ${item.unitPrice} <br />
-                  {item.descripcion}
+                  {item.descripcion} <br />
+                  Subtotal: ${item.amount * item.unitPrice}
                 </li>
               ))}
             </ul>
             <p>
-              <strong>- Total:</strong> ${compraSeleccionada.total} 
-              <strong> - Metodo de pago:</strong> {compraSeleccionada.metodoPago}
+              <strong>Metodo de pago:</strong> {compraSeleccionada.metodoPago} <br />
+              <strong>Total:</strong> ${compraSeleccionada.total}
+
             </p>
-            <button 
-            className="btn-cerrar"
-            onClick={() => setCompraSeleccionada(null)}>
-            Cerrar
+            <button
+              className="btn-cerrar"
+              onClick={() => setCompraSeleccionada(null)}>
+              Cerrar
             </button>
           </div>
         )}
