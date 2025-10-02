@@ -1,5 +1,6 @@
 /* NAVBAR */
 .navbar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,7 +25,7 @@
   gap: 20px;
 }
 
-.logo {
+.titulo {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 4px;
@@ -84,6 +85,16 @@
 }
 
 /* Botón */
+.cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
 .hamburger-button {
   background: none;
   border: none;
@@ -101,14 +112,14 @@
 .hamburger-button.active {
   transform: rotate(360deg) scale(1.2);
   filter: drop-shadow(0 0 10px #FFD700);
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 /* Menú lateral */
 .hamburger-menu {
   list-style: none;
-  background-color: white;
-  padding: 85px 20px 20px 20px;
+  background-color: rgba(255, 255, 255, 0.886);
+  padding: 100px 10px 10px 15px;
   margin-top: 0px;
   position: fixed;
   top: 0;
@@ -128,7 +139,7 @@
 }
 
 .hamburger-menu li {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .hamburger-menu a {

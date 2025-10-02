@@ -1,36 +1,48 @@
-//import Registro from './components/pages/registro/Registro';
-//import Carrito from "./components/pages/carritoModif/CarritoModif";
+
 import './App.css'
-import './App.css'
-//import EditarPerfil from './components/pages/editarPerfil/EditarPerfil'
-import Registro from './components/pages/registro/Registro';
-//import Carrito from "./components/pages/carritoModif/CarritoModif";
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/MainLayout';
+
+//import Navbar from "./components/layaut/navbar";
 import HomePage from "./components/pages/homepage/Homepage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from './components/pages/login/Login'
+import Login from './components/pages/login/Login';
+import Registro from './components/pages/registro/Registro';
 import ProductList from "./components/pages/verProductos/ProductList";
-import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
-import Navbar from "./components/layaut/navbar";
-import Footer from "./components/layaut/footer";
+//import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+//import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
+//import Footer from "./components/layaut/footer";
 
 
 function App() {
 
   return (
     <>
-    <Navbar></Navbar>
-
-      <HomePage />
-      <ProductList />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />  {/* Página de inicio */}
-          <Route path="/registro" element={<Registro />} /> {/* Página del perfil */}
+
+          {/* ======================================= */}
+          {/* GRUPO 1: RUTAS QUE SÍ LLEVAN NAVBAR Y FOOTER */}
+          {/* ======================================= */}
+          <Route element={<MainLayout />}>
+            {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/verProductos" element={<ProductList />} />
+            {/*<Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />*/}
+          </Route>
+
+          {/* ======================================= */}
+          {/* GRUPO 2: RUTAS SIN NAVBAR NI FOOTER */}
+          {/* ======================================= */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+
+
+          {/* Puedes añadir una ruta de 404 aquí si quieres */}
+          {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
+
         </Routes>
       </BrowserRouter>
-      <HistorialCompras />
-      
-      <Footer></Footer>
     </>
   );
 };

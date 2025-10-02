@@ -2,6 +2,7 @@
 import { GiSpiralBottle, GiStarsStack } from "react-icons/gi"; 
 import React, { useState } from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 const HamburgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +24,14 @@ const HamburgerMenu: React.FC = () => {
         </button>
 
       <ul className={`hamburger-menu ${isOpen ? "open" : ""}`}>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#quienesSomos">Quienes Somos</a></li>
-        <li><a href="#comoComprar">Como Comprar</a></li>
-        <li><a href="#pregFrecuentes">Preguntes Frecuentes</a></li>
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/registro">Registro</Link></li>
+        <li><Link to="/verProductos">Productos</Link></li>
+        <li><Link to="/contacto">Contacto</Link></li>
+        <li><Link to="/quienesSomos">Quienes Somos</Link></li>
+        <li><Link to="/comoComprar">Como Comprar</Link></li>
+        <li><Link to="/pregFrecuentes">Preguntas Frecuentes</Link></li>
       </ul>
     </nav>
   );

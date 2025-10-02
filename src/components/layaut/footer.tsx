@@ -16,7 +16,7 @@ const Footer = () => {
       {/* Main secciones: Payment, Social, Contact */}
       <div className="footer-sections">
         <div className="footer-section">
-          <h4>Medios de pago</h4>
+          <h4 className="footer-title">Medios de pago</h4>
           <div className="pagos-icons">
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mercadopago.png" 
             className="footer__top__icon" alt="Medio Pago"></img>
@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
-          <h4>Medios de envío</h4>
+          <h4 className="footer-title">Medios de envío</h4>
           <div className="medios-icons">
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/oca.png" 
             className="footer__top__icon" alt="Medio Envio"></img>
@@ -50,7 +50,7 @@ const Footer = () => {
 
         {/* Social Media Section */}
         <div className="footer-section">
-          <h4>Nuestras redes sociales</h4>
+          <h4 className="footer-title">Nuestras redes sociales</h4>
           <div className="social-icons">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-f"></i>
@@ -69,10 +69,10 @@ const Footer = () => {
 
         {/* Contact Section */}
         <div className="contact-info">
-          <h4>Contacto</h4>
-          <p>tnmontegrande@ayurdevas.com</p>
-          <p>Rojas 86, Monte Grande</p>
-          <a href="#">Botón de arrepentimiento</a>
+          <h4 className="footer-title">Contacto</h4>
+          <p className="contact-p">tnmontegrande@ayurdevas.com</p>
+          <p className="contact-p">Rojas 86, Monte Grande</p>
+          <a className="contact-p" href="#">Botón de arrepentimiento</a>
         </div>
       </div>
     </footer>
