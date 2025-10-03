@@ -1,6 +1,7 @@
 import React from "react";
 import './ProductCard.css';
 import type { Product } from "./interfaces/Product.ts";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps { //Props que recibe el componente
   product: Product; //interfaz del producto
@@ -17,6 +18,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <img src={product.image} alt={product.name} width={200} />
         <p className="p-description">{product.description}</p>
         <p className="p-precio">Precio: ${product.price}</p>
+
+        <div className="rediProduct">
+          <Link to = {`/producto/${product.id}`}>
+          <button className="btn-vermas">Ver mas</button>
+          </Link>
+        </div>
+
       </div>
     </>
   );

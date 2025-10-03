@@ -1,0 +1,153 @@
+.product-detail {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.product-layout {
+  display: flex;
+  gap: 3rem;              /* separa más la imagen de la info */
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+.product-image img {
+  max-width: 400px;            /* limita tamaño */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* reparte espacio mejor */
+  height: 100%;                   /* que ocupe toda la altura de la columna */
+  padding-top: 2rem;              /* baja un poquito el bloque de texto */
+}
+
+.product-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.product-info p{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+
+}
+
+.precio {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6a1b9a;
+  margin: 3rem 0;
+}
+
+.btn-carrito {
+  align-self: flex-end;   /* 🔑 alinea a la derecha */
+  margin-top: 6rem;       /* lo empuja un poco hacia abajo */
+  background: linear-gradient(135deg, #8e24aa, #ab47bc);
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: 0.3s ease; 
+  margin-top: 1.5rem;
+}
+
+.btn-carrito:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+}
+
+/*COMENTARIO*/
+
+.comentarios {
+  background: #f3e5f5;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.comentarios h3 {
+  font-size: 1.3rem;
+  color: #4a148c;
+  margin-bottom: 1rem;
+}
+
+.comentarios textarea {
+  width: 96%;
+  min-height: 80px;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  resize: none;
+  transition: border 0.3s;
+}
+
+.comentarios textarea:focus {
+  outline: none;
+  border: 1px solid #9c27b0;
+  box-shadow: 0 0 6px rgba(156, 39, 176, 0.4);
+}
+
+.calificacion {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.calificacion span {
+  margin-right: 0.2rem;
+  transition: transform 0.2s;
+}
+
+.calificacion span:hover {
+  transform: scale(1.2);
+}
+
+.comentarios button {
+  background: linear-gradient(135deg, #8e24aa, #ab47bc);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.comentarios button:hover {
+  background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+  transform: scale(1.05);
+}
+
+/* Comentarios listados */
+.comentarios ul {
+  list-style: none;
+  margin-top: 2rem;
+  padding: 0;
+}
+
+.comentarios li {
+  background: white;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1.3rem;
+}
+
+.comentarios li strong {
+  color: #4a148c;
+  font-size: 1.3rem;
+}
+
+.reply {
+  margin-left: 5rem;
+  font-size: 1rem;
+  color: #555;
+}
