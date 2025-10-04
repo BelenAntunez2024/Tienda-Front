@@ -48,8 +48,8 @@ const ProductDetail: React.FC = () =>{
 return (
   <>
     <div className="product-detail">
-  <div className="product-layout">
-    {/* Columna izquierda */}
+  <div className="product-container">
+    {/* Columna izquierda-imagen */}
     <div className="product-image">
       <img src={product.image} alt={product.name} />
     </div>
@@ -57,12 +57,45 @@ return (
     {/* Columna derecha */}
     <div className="product-info">
       <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <p className="precio">Precio: ${product.price}</p>
-      <button className="btn-carrito">Agregar al carrito</button>
-    </div>
-  </div>
+      <h3 className="product-price">${product.price}</h3>
+      <p className="discount"> ${(product.price * 0.8).toFixed(2)} con 20% OFF transferencia</p>
+      
+       {/*Metodos de pago*/}
+      <div className="pagos">
+          <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"  
+          alt="Visa" />
+          <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png"  
+          alt="Mastercard" />
+          <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png" 
+          alt="transferencia" />
+      </div>
+        <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
 
+      {/*Cantidades*/}
+      <div className="cantidad-section">
+          <label>Cantidad:</label>
+          <input type="number" min="1" max="10" defaultValue="1" />
+        </div>
+
+        {/* Botones */}
+        <div className="buttons">
+          <button className="btn-add">Agregar al carrito</button>
+          <button className="btn-buy">Comprar ahora</button>
+        </div>
+
+         <div className="Metodopago">
+          <p>🚚 Entregas para el CP: <strong></strong></p>
+          <button className="btn-cp">Cambiar CP</button>
+        </div>
+      </div>
+    </div>
+
+        {/* Descripción */}
+    <div className="product-description">
+      <h3>Descripción del producto</h3>
+      <p>{product.description}</p>
+    </div>
+    
       {/* Opiniones */}
       <div className="comentarios">
         <h3>Dejanos tu opinión sobre el producto:</h3>
@@ -116,7 +149,21 @@ return (
           ))}
         </ul>
       </div>
+       {/* Productos sugeridos */}
+    <div className="related-products">
+      <h3>Podés comprar también:</h3>
+      <div className="related-grid">
+        {productsData.slice(0, 3).map((p) => (
+          <div key={p.id} className="related-item">
+            <img src={p.image} alt={p.name} />
+            <p>{p.name}</p>
+            <span>${p.price}</span>
+          </div>
+        ))}
+      </div>
     </div>
+  </div>
+    
   </>
 );
 };
