@@ -1,14 +1,12 @@
 import './App.css'
-//import EditarPerfil from './components/pages/editarPerfil/EditarPerfil'
-//import VerProductos from './components/pages/verProductos/page/VerProductos';
-import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
+import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito'
 
 function App() {
 
   return (
     <>
-      <HistorialCompras />
-    </>
+    <FuncionalidadCarrito />
+   </>
   )
 }
 
