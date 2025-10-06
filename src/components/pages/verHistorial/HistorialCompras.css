@@ -21,30 +21,32 @@
 
 .container-historial ul {
   list-style: none;
-  padding: 0;
+  padding: 0rem;
   width: 100%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.container-historial li {
+
+.li-compra {
   background: #e6eff7;
   color: #3a2d34;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(117, 97, 157, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
+  gap: 1rem;
 }
 
-.container-historial li:hover {
+
+.li-compra:hover {
   box-shadow: 0 0 25px rgba(117, 97, 157, 0.5);
   transform: translateY(-2px);
 }
-
 
 
 .btn-historial-detalles {
@@ -66,6 +68,7 @@
   box-shadow: 0 0 15px rgba(190, 174, 219, 0.9);
   transform: scale(1.05);
 }
+
 
 
 .detalles-compra {
@@ -96,29 +99,71 @@
 }
 
 .li-detalles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0;
   border-bottom: 1px solid #75619d33;
   color: #3a2d34;
+  gap: 1rem;
 }
 
-/*TOTAL*/
-.detalles-compra p {
-  font-weight: bold;
+.li-detalles .info-texto {
+  flex: 1;
+}
+
+.li-detalles .info-imaen{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.info-imagen img{
+  width: 80px;
+  height: 80px;
+  border-radius: 0.8rem;
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
+}
+
+.info-texto .item-info{
+  margin: 0.5rem 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  background: #f5f8fc40;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.6rem;
+}
+
+.detalles-compra .total-compra {
   text-align: right;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  padding-top: 0.8rem;
 }
 
+.detalles-compra img {
+  border-radius: 0.8rem;
+  box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* esto lo recorta para que no se deforme */
+}
 
 .btn-cerrar {
   display: block;
   margin: 1rem auto 0 auto;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #75619d, #9b7fd8);
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
   transition: all 0.3s ease;
 }
 
