@@ -1,0 +1,89 @@
+import React from "react";
+import "./ComoComprar.css";
+
+const pasos = [
+    {
+        icon: "🛍️",
+        titulo: "Explora y Añade al Carrito",
+        texto: "navega por nuestro catalogo o busca lo que mas te guste. Agrega tus productos favoritos al carrito."
+    },{
+        icon: "🧾",
+        titulo: "Revisa tu Pedido",
+        texto: "Verifica los productos, cantitades y modelos antes de continuar con tu compra."
+    },{
+        icon: "✍️",
+        titulo: "Datos del Contacto",
+        texto: "Inicia sesion o registrate para confirmar tu compra."
+    },{
+        icon: "📦",
+        titulo: "Direccion y Envio",
+        texto: "Completa tu direccion y elegi el metodo de envio que prefieres."
+    },{
+        icon: "💳",
+        titulo: "Selecciona el Pago",
+        texto: "Elegi tu medio de pago favorito y aplica tus descuentos si tenes uno."
+    },{
+        icon: "✅",
+        titulo: "Confirma tu Compra",
+        texto: "Revisa todos los datos y luego, confirma tu compra."
+    },{
+        icon: "📩",
+        titulo: "Recibi la Confirmacion",
+        texto: "Te enviaremos un correo con los detalles y el seguimiento de tu pedido." 
+    }
+];
+
+const ComoComprar: React.FC = () =>{
+    return (
+        <section className="como-Comprar">
+            <div className="container">
+                <h2 className="titulo-principal"> Como Comprar en Wisteria</h2>
+                <p className="intro">
+                    Queremos que tu experiencia de comprar sea magica, con confianza y sencilla. 
+                    Segui estos pasos y recibi tus productos. 
+                </p>
+                <div className="grid-pasos">
+                    {pasos.map((p, index) =>(
+                        <div className="card-paso" key={index}>
+                            <span className="icono">{p.icon}</span>
+                            <h3>{p.titulo}</h3>
+                            <p>{p.texto}</p>
+                        </div>
+                    ))}
+                </div>
+                <section className="pagos">
+                    <h2>Metodos de pago y seguridad</h2>
+                    <p>Aceptamos los principales medios de pago con total seguridad:</p>
+                    <div className="logos-pago">
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mercadopago.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>            
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/pagofacil.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/rapipago.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                        <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/efectivo.png" 
+                        className="footer__top__icon" alt="Medio Pago"></img>
+                    </div>
+                     <p className="detalle-pago">
+                        Tambien podes pagar con transferencia bancaria. Nuestra plataforma esta protegida con cifrado seguro 🔒.
+                     </p>
+                </section>
+                <section className="devoluciones">
+                    <h2> Cambios y Devoluciones </h2>
+                    <p> Tenes hasta 20 dias desde que recibis el producto para solicitar un cambio o devolucion.
+                        El producto debe estar sin uso, con sus respectivas etiquetas y en su embalaje original.
+                    </p>
+                    <button className="btn-politica">Ver Politica Completa</button>
+                </section>
+            </div>
+        </section>
+    );
+};
+
+export default ComoComprar;
