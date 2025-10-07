@@ -1,0 +1,124 @@
+body{
+    color: #3a2d34;
+    font-family: poppins;
+    display: flex;
+    background: linear-gradient(145deg, #75619d,  #beaedb);
+  background-size: 400% 400%; /* hace que el gradiente sea más grande para animarlo */
+
+  animation: gradientAnimation 10s ease infinite; /* nombre, duración, easing, repetición */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+h1{
+    margin-left: 60px;
+    padding: 8px;
+}
+
+.contactContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 10%;
+  text-align: justify;
+  padding: 5px;
+}
+
+.seccion1 {
+  flex: 1;
+  width: 400px;
+}
+
+.mapContainer{
+    margin-bottom: 40px;
+    width: 250px;
+    height: 200px;
+}
+
+
+.icons{
+    padding: 5px;
+    text-decoration: none;
+    color: #3a2d34;
+}
+
+.seccion2 {
+  flex: 2;
+  align-items: right;
+  justify-content: right;
+  margin-left: 350px;
+}
+
+.formContainer{
+    width: 420px;
+    height: 300px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgb( 0, 0, 0.1);
+}
+.form-group{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.form-group input {
+    padding-right: 40px; /* espacio para el icono a la derecha */
+    width: 350px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.form-group input::placeholder {
+    padding-left: 10px;
+    color: #3a2d34;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+
+.input-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+#formBtn{
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: #3a2d34;
+    border: none;
+}
+
+#mensaje-enviado{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+    text-decoration:underline;
+    color: #3f2a52;
+}
