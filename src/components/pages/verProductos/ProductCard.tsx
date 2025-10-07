@@ -20,8 +20,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className="p-precio">Precio: ${product.price}</p>
 
         <div className="rediProduct">
-          <Link to = {`/producto/${product.id}`}>
-          <button className="btn-vermas">Ver mas</button>
+          <Link to={`/producto/${product.id}`}>
+          <button className="btn-vermas">Ver más</button>
           </Link>
         </div>
 

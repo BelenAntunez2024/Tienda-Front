@@ -1,25 +1,34 @@
 import { useParams } from "react-router-dom";
 import type { Product } from "../verProductos/interfaces/Product";
 import productsData from "../verProductos/data/productsArray.json"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Comment } from "./interfaces/comment";
 import "./ProductDetail.css";
+import { Link } from "react-router-dom";
+
 
 
 const ProductDetail: React.FC = () =>{
     const {id} = useParams<{id:string}>();
-    const product: Product | undefined = productsData.find(
-        (p) => p.id === Number(id)
+    const [product, setProduct] = useState<Product | undefined>
+      ( productsData.find((p) =>  p.id === Number(id))
     );
 
     const[comments,setComments] = useState <Comment[]>([]);
     const[newComment,setNewComment] = useState("");
     const[rating,setRating] = useState(0);
-
+  
     if(!product){
         return <h2>Producto no encontrado</h2>
     }
      
+     // 👇 Este useEffect actualiza el producto cuando cambia el id
+    useEffect(() => {
+    const foundProduct = productsData.find((p) => p.id === Number(id));
+    setProduct(foundProduct);
+    window.scrollTo(0, 0); // opcional, para hacer scroll arriba
+    }, [id]);
+
     /*Manejo del nuevo comentario */
     const handleAddComment = () =>{
         if(newComment.trim()){
@@ -36,7 +45,7 @@ const ProductDetail: React.FC = () =>{
       };
     };
     
-    /* Manejo de Replicas?*/
+    /* Manejo de Replicas*/
     const handleReply = (id: number, reply: string) =>{
         setComments((prev)=>
         prev.map((c) =>
@@ -44,7 +53,23 @@ const ProductDetail: React.FC = () =>{
     )
     );
     };
-
+    /*Manejo de envio */
+    const handleEnvioAndreani = () =>{
+      const url =  `https://www.andreani.com/?tab=cotizar-envio`;
+      window.open(url, "_blank")
+    };
+    const handleEnvioOCA = () =>{
+      const url =  `https://www.oca.com.ar/`;
+      window.open(url, "_blank");
+    };
+    // Filtramos para excluir el producto actual
+    const filteredProducts = productsData.filter((p) => p.id !== product.id);
+    
+    // Mezclamos el array aleatoriamente
+    const shuffled = [...filteredProducts].sort(() => Math.random() - 0.5);
+    
+    // Tomamos los 3 primeros
+    const suggestedProducts = shuffled.slice(0, 3);
 return (
   <>
     <div className="product-detail">
@@ -83,9 +108,10 @@ return (
           <button className="btn-buy">Comprar ahora</button>
         </div>
 
-         <div className="Metodopago">
-          <p>🚚 Entregas para el CP: <strong></strong></p>
-          <button className="btn-cp">Cambiar CP</button>
+         <div className="MetodoEnvio">
+          <p>🚚 Consulta tu envio por codigo postal: <strong></strong></p>
+          <button className="btn-cp" onClick={handleEnvioAndreani}>Consultar en Andreani</button>
+          <button className="btn-cp" onClick={handleEnvioOCA}>Consultar en OCA</button>
         </div>
       </div>
     </div>
@@ -153,11 +179,16 @@ return (
     <div className="related-products">
       <h3>Podés comprar también:</h3>
       <div className="related-grid">
-        {productsData.slice(0, 3).map((p) => (
+        {suggestedProducts.map((p) => (
           <div key={p.id} className="related-item">
-            <img src={p.image} alt={p.name} />
-            <p>{p.name}</p>
-            <span>${p.price}</span>
+            <Link to={`/producto/${p.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+              <img src={p.image} alt={p.name}/>
+              <p>{p.name}</p>
+              <span>${p.price}</span>
+              <div className="rediProduct">
+                <button className="btn-vermas">Ver mas</button>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

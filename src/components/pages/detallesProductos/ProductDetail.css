@@ -103,7 +103,7 @@
 }
 
 
-.metodopago {
+.metodoEnvio {
   margin-top: 15px;
 }
 
@@ -239,8 +239,11 @@
 
 .related-item img {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
 }
 
 .related-item span {
