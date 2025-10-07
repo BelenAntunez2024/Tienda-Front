@@ -2,52 +2,33 @@ import React from "react";
 import "./ComoComprar.css";
 
 const pasos = [
-    {
-        icon: "🛍️",
-        titulo: "Explora y Añade al Carrito",
-        texto: "navega por nuestro catalogo o busca lo que mas te guste. Agrega tus productos favoritos al carrito."
-    },{
-        icon: "🧾",
-        titulo: "Revisa tu Pedido",
-        texto: "Verifica los productos, cantitades y modelos antes de continuar con tu compra."
-    },{
-        icon: "✍️",
-        titulo: "Datos del Contacto",
-        texto: "Inicia sesion o registrate para confirmar tu compra."
-    },{
-        icon: "📦",
-        titulo: "Direccion y Envio",
-        texto: "Completa tu direccion y elegi el metodo de envio que prefieres."
-    },{
-        icon: "💳",
-        titulo: "Selecciona el Pago",
-        texto: "Elegi tu medio de pago favorito y aplica tus descuentos si tenes uno."
-    },{
-        icon: "✅",
-        titulo: "Confirma tu Compra",
-        texto: "Revisa todos los datos y luego, confirma tu compra."
-    },{
-        icon: "📩",
-        titulo: "Recibi la Confirmacion",
-        texto: "Te enviaremos un correo con los detalles y el seguimiento de tu pedido." 
-    }
+    {icon: "🛍️", titulo: "Explora y Añade al Carrito", texto: "navega por nuestro catalogo o busca lo que mas te guste. Agrega tus productos favoritos al carrito."},
+    {icon: "🧾", titulo: "Revisa tu Pedido", texto: "Verifica los productos, cantitades y modelos antes de continuar con tu compra."},
+    {icon: "✍️", titulo: "Datos del Contacto", texto: "Inicia sesion o registrate para confirmar tu compra."},
+    {icon: "📦", titulo: "Direccion y Envio", texto: "Completa tu direccion y elegi el metodo de envio que prefieres."},
+    {icon: "💳", titulo: "Selecciona el Pago", texto: "Elegi tu medio de pago favorito y aplica tus descuentos si tenes uno."},
+    {icon: "✅", titulo: "Confirma tu Compra", texto: "Revisa todos los datos y luego, confirma tu compra."},
+    {icon: "📩", titulo: "Recibi la Confirmacion", texto: "Te enviaremos un correo con los detalles y el seguimiento de tu pedido."}
 ];
 
 const ComoComprar: React.FC = () =>{
     return (
         <section className="como-Comprar">
-            <div className="container">
-                <h2 className="titulo-principal"> Como Comprar en Wisteria</h2>
-                <p className="intro">
+                <h2 className="titulo-wisteria">✨ Cómo Comprar en Wisteria ✨</h2>
+                  <p className="intro">
                     Queremos que tu experiencia de comprar sea magica, con confianza y sencilla. 
                     Segui estos pasos y recibi tus productos. 
                 </p>
-                <div className="grid-pasos">
+                <div className="timeline">
                     {pasos.map((p, index) =>(
-                        <div className="card-paso" key={index}>
+                        <div className="paso" key={index}>
+                            <div className="circulo">
                             <span className="icono">{p.icon}</span>
+                            <div className="destello"></div>
+                            </div>
                             <h3>{p.titulo}</h3>
                             <p>{p.texto}</p>
+                            {index <pasos.length && <div className="linea"/>}
                         </div>
                     ))}
                 </div>
@@ -81,7 +62,7 @@ const ComoComprar: React.FC = () =>{
                     </p>
                     <button className="btn-politica">Ver Politica Completa</button>
                 </section>
-            </div>
+
         </section>
     );
 };
