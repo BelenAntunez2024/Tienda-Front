@@ -1,20 +1,47 @@
 /*Mostrar dire, email,redes, horarios, q&a */
 
-import { useState, type FormEvent } from "react";
 import IconEnvelope from "../../icons/IconEnvelope";
 import IconIG from "../../icons/IconIG";
 import IconLocation from "../../icons/IconLocation";
 import IconChat from "../../icons/IconChat";
 import IconFacebook from "../../icons/IconFacebook";
 import IconWsp from "../../icons/IconWsp";
+import { useState } from "react";
 
 const VerDatosDeContacto = () => {
+    const [mensaje, setMensaje] = useState(""); // contenido del mensaje
+    const [emailIngresado, setEmailIngresado] = useState('');
+    const [tipoConsulta, setTipoConsulta] = useState(""); 
+    const [error, setError] = useState(''); //para mostrar errores de validacion
     const [mensajeEnviado, setMensajeEnviado] = useState(false);
-    const mostrarMensaje = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+
+
+    const handleSubmit  = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!emailIngresado || !mensaje || !tipoConsulta) {
+            setError("Todos los campos son obligatorios");
+        return;
+        }
+        if (!/\S+@\S+\.\S+/.test(emailIngresado)) {
+            setError("El email no es válido");
+            return;
+        }
+        // Si pasó validaciones
+        setError("");
         setMensajeEnviado(true);
-        setTimeout(() => setMensajeEnviado(false), 3000);
-    };
+        
+        // Limpiar formulario
+        setEmailIngresado("");
+        setMensaje("");
+        setTipoConsulta("");
+
+        // Ocultar mensaje después de 3 segundos
+        setTimeout(() => setMensajeEnviado(false), 3000);      
+        
+    }
+   
+
     return (
         <main>
                 <h1>Quienes somos</h1>
@@ -48,7 +75,7 @@ const VerDatosDeContacto = () => {
                             </div>
 
                             <div>
-                                <strong>Nuestras redes: </strong>
+                                <strong>Contactanos por nuestras redes: </strong>
                                 <br/>
                                 <a href="http://" className="icons"><IconIG/></a> 
                                 <a href="http://" className="icons"><IconFacebook/></a>
@@ -65,29 +92,63 @@ const VerDatosDeContacto = () => {
                             </h4>
                         </div>
                         <div className="formContainer">
-                            <form onSubmit={mostrarMensaje}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-group icon-input">
                                     <label htmlFor="email">Email</label>
                                     <div className="input-wrapper">
-                                        <input type="text" id="email" name="mail" placeholder="Ingrese su email" required />
+                                        <input 
+                                            type="text" 
+                                            placeholder="Ingresa tu email" 
+                                            className="input_text" 
+                                            value={emailIngresado}
+                                            onChange={(e) => setEmailIngresado(e.target.value)} 
+                                        />
                                         <span className="input-icon">
                                             <IconEnvelope/>
                                         </span>
                                     </div>
                                 </div>
+                                <p className="tipoConsulta">Seleccione el tipo de consulta</p>
+                                <div className="btnContainer">
+                                    {["Consulta", "Reclamo", "Otra"].map((tipo) => (
+                                        <button
+                                        type="button"
+                                        className="consultaTipo-btn"
+                                        key={tipo}
+                                        onClick={() => setTipoConsulta(tipo)} 
+                                        >
+                                        {tipo}
+                                        </button>
+                                    ))}
+
+                                </div>
                                 <div className="form-group icon-input">
                                     <label htmlFor="message">Mensaje:</label>
                                     <div className="input-wrapper">
-                                        <input type="text" id="message" name="mensaje" placeholder="Ingrese su mensaje" required />
+                                        <input
+                                            type="text"
+                                            id="message"
+                                            name="mensaje"
+                                            placeholder="Ingrese su mensaje"
+                                            value={mensaje}
+                                            onChange={(e) => setMensaje(e.target.value)}
+                                            />
                                         <span className="input-icon">
                                         <IconChat/>
                                         </span>
                                     </div>
                                 </div>
+
+                                {error && (
+                                    <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+                                )}
+
                                 <button type="submit" id="formBtn">Enviar</button>
                                 <div id="mensaje-enviado" style={{ display: mensajeEnviado ? "block" : "none" }}>
-                                    <p>Mensaje enviado correctamente...</p>
+                                    <p>Se envio correctamente! En breve nos comunicaremos contigo.</p>
+
                                 </div>
+
                             </form>
                         </div>
                     </div>

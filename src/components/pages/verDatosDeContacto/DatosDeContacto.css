@@ -37,7 +37,9 @@ h1{
 
 .seccion1 {
   flex: 1;
-  width: 400px;
+}
+.info{
+    width: 400px;
 }
 
 .mapContainer{
@@ -48,7 +50,7 @@ h1{
 
 
 .icons{
-    padding: 5px;
+    margin-left: 35px;
     text-decoration: none;
     color: #3a2d34;
 }
@@ -57,18 +59,19 @@ h1{
   flex: 2;
   align-items: right;
   justify-content: right;
-  margin-left: 350px;
+  margin-left: 275px;
 }
 
 .formContainer{
     width: 420px;
-    height: 300px;
+    height: 340px;
     background: transparent;
-    border: 2px solid white;
+    border: 2px solid #3a2d34;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgb( 0, 0, 0.1);
 }
+
 .form-group{
     position: relative;
     display: flex;
@@ -82,7 +85,7 @@ h1{
     width: 350px;
     height: 30px;
     background: transparent;
-    border: 2px solid white;
+    border: 2px solid #e6eff7;
     border-radius: 20px;
 }
 
@@ -91,21 +94,42 @@ h1{
     color: #3a2d34;
 }
 
-label {
-    margin-bottom: 5px;
-    font-size: 20px;
-    padding-left: 10px;
-}
-
-
 .input-icon {
     position: absolute;
     right: 18px;
-    top: 50%;
+    top: 55%;
     font-size: 18px;
     display: flex;
     align-items: center;
     padding: 5px;
+}
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    gap: 12px; 
+    margin-top: 20px;
+}
+label {
+    text-decoration: underline;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.tipoConsulta{
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.consultaTipo-btn{
+    gap: 5px;
+    background-color: transparent;
+    border: 1px solid #3a2d34;
+    box-shadow: 0 0 4px rgb( 0, 0, 0.1);
+
+}
+.consultaTipo-btn:hover{
+    background-color: #3a2d34;
+    border: none;
 }
 
 #formBtn{
@@ -113,6 +137,7 @@ label {
     margin: 20px auto 0 auto;
     background-color: #3a2d34;
     border: none;
+    box-shadow: 0 0 6px rgb( 0, 0, 0.1);
 }
 
 #mensaje-enviado{
