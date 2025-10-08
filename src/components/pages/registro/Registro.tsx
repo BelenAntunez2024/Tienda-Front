@@ -88,7 +88,6 @@ const Registro = () => {
         <h1 className="title">WISTERIA</h1>
         <h2 className="subTitle">Registrate</h2>
       </div>
-
       {/* FORMULARIO ORDENADO */}
         <form onSubmit={handleSubmit}>
          <div className="registro-form">
