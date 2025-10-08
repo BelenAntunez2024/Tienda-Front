@@ -12,7 +12,7 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
 
 .titulo-wisteria {
   text-align: center;
-  font-size: 2.7rem;
+  font-size: 2rem;
   color: #5a3e8b;
   margin-bottom: 3rem;
   text-shadow: 0 10px 20px rgba(186, 149, 255, 0.4);
@@ -152,7 +152,7 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
 }
 
 .pagos p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #4b3b6b;
   margin-bottom: 2rem;
 }
@@ -162,13 +162,13 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 7rem;
+  gap: 5rem;
   margin: 1rem auto;
 }
 
 .logos-pago img {
-  height: 95px;
-  width: 110px;
+  height: 50px;
+  width: auto ;
   filter: grayscale(40%) brightness(1.1);
   opacity: 0.90;
   transition: all 0.3s ease;
@@ -179,14 +179,6 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
   transform: scale(1.1);
   filter: none;
   opacity: 1;
-  box-shadow: 0 0 12px rgba(186, 149, 255, 0.4);
-}
-
-.detalle-pago {
-  font-size: 1.1rem;
-  color: #4b3b6b;
-  margin-top: 2rem;
-  font-style: italic;
 }
 
 /* Animación de aparición */

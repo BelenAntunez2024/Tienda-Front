@@ -52,8 +52,7 @@ const ComoComprar: React.FC = () =>{
                         className="footer__top__icon" alt="Medio Pago"></img>
                     </div>
                      <p className="detalle-pago">
-                        Tambien podes pagar con transferencia bancaria. Nuestra plataforma esta protegida con cifrado seguro 🔒.
-                     </p>
+                        Tambien podes pagar con transferencia bancaria. Nuestra plataforma esta protegida con cifrado seguro 🔒.</p>
                 </section>
                 <section className="devoluciones">
                     <h2> Cambios y Devoluciones </h2>
