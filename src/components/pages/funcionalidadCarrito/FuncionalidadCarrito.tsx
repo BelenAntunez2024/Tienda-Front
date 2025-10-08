@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./carrito.css"
 import IconCart from "./icons/IconCart";
 import IconDelete from "./icons/IconDelete";
+import { Link } from "react-router-dom";
+
+
+
 
 const FuncionalidadCarrito = () => {
-    /*      CRITERIOS DE APROBACIÓN
-    Crear botón para agregar al carrito. +
-    Crear botón individual para eliminar producto del carrito. +
-    Crear botón para eliminar la totalidad del carrito. +
-    Crear botón (+) para añadir stock del mismo producto. +
-    Crear botón (-) para eliminar stock del mismo producto. +
-    Resumen de los productos elegidos
-    ----------------------------------------------------------
-    RESUMEN DE LOS PRODUCTOS ELEGIDOS:
-    Nombre Imagen Cantidad Precio unitario Total
-    */
+
+
     type Producto = {
         id: number;
         nombre: string;
@@ -31,10 +26,6 @@ const FuncionalidadCarrito = () => {
 
 
     const [carrito, setCarrito] = useState<Producto[]>([]);
-
-    useEffect(() => {
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }, [carrito]);
 
     //funcion para agregar productos al carrito
     const agregarAlCarrito = (producto: Producto) => {
@@ -108,6 +99,9 @@ const FuncionalidadCarrito = () => {
         return total + producto.precio * (producto.cantidad || 1);
     }, 0);
 
+
+    const usuarioLogueado = false; //simulación del estado de autenticación del usuario
+
     return (
         <main>
 
@@ -163,7 +157,30 @@ const FuncionalidadCarrito = () => {
             </div>
 
             {carrito.length > 0 && (  //si el carrito no tiene nada no muestra total
-                <h3>Su total es: ${calcularTotal}</h3>
+                <>
+                    <h3>Su total es: ${calcularTotal}</h3>
+                    {usuarioLogueado ? (
+                        <Link to="/formulario-compra">
+                            <button className="botonConfirmar">Confirmar compra</button>
+                        </Link>
+                    ) : (
+                        <button
+                            className="botonConfirmar"
+                            onClick={() => {
+                                const accion = window.confirm(
+                                    "No estas logueado. ¿Queres iniciar sesion? Cancelar para registrarte."
+                                );
+                                if (accion) {
+                                    window.location.href = "./login";
+                                } else {
+                                    window.location.href = "./registro";
+                                }
+                            }}
+                        >
+                            Confirmar compra
+                        </button>
+                    )}
+                </>
             )}
         </main>
     )

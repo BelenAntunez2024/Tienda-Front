@@ -1,12 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito'
-
+import Login from './components/pages/login/Login'
+import Registro from './components/pages/registro/Registro'
 function App() {
 
   return (
     <>
-    <FuncionalidadCarrito />
-  </>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />  {/* Página de inicio */}
+          <Route path="/registro" element={<Registro/>} /> {/* Página del perfil */}
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
