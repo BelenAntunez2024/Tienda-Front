@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./carrito.css"
 import IconCart from "./icons/IconCart";
 import IconDelete from "./icons/IconDelete";
 import { Link } from "react-router-dom";
+import AlertaCustom from "../funcionalidadCarrito/AlertaCustom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -24,8 +26,28 @@ const FuncionalidadCarrito = () => {
         { id: 3, nombre: "Rubi", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYxMK1zbB5igrA2I5u7nSEC0jltT8JrlJng&s", precio: 15000 },
     ];
 
-
+    const navigate = useNavigate();
     const [carrito, setCarrito] = useState<Producto[]>([]);
+    const [mostrarAlerta, setMostrarAlerta] = useState(false);
+    const [usuarioLogueado, setUsuarioLogueado] = useState<boolean>(false); // simulado, reemplazar con lógica real -  estaba en true y lo puse en false
+
+    //AGREGADO: esto verifica automáticamente si el usuario está logueado al cargar el componente
+    useEffect(() => {
+        const usuario = localStorage.getItem("usuarioLogueado");
+        if (usuario) {
+            setUsuarioLogueado(true);
+        } else {
+            setUsuarioLogueado(false);
+        }
+    }, []);
+
+
+    const handlerLogin = () => {
+        setMostrarAlerta(false);
+        navigate("/login");
+        console.log("Navegando a login");
+    }
+
 
     //funcion para agregar productos al carrito
     const agregarAlCarrito = (producto: Producto) => {
@@ -100,7 +122,19 @@ const FuncionalidadCarrito = () => {
     }, 0);
 
 
-    const usuarioLogueado = false; //simulación del estado de autenticación del usuario
+
+    // mantener el estado del logueo context para saber el estado
+    const handleConfirmarCompra = () => {
+        if (!usuarioLogueado) {
+            setMostrarAlerta(true);
+        } else {
+            // redirigir al formulario de compra
+            //window.location.href = "/formulario-compra";
+            navigate("/formulario-compra");
+        }
+    };
+
+
 
     return (
         <main>
@@ -159,26 +193,29 @@ const FuncionalidadCarrito = () => {
             {carrito.length > 0 && (  //si el carrito no tiene nada no muestra total
                 <>
                     <h3>Su total es: ${calcularTotal}</h3>
+
                     {usuarioLogueado ? (
                         <Link to="/formulario-compra">
-                            <button className="botonConfirmar">Confirmar compra</button>
+                            <button onClick={handleConfirmarCompra}>Confirmar compra</button>
                         </Link>
                     ) : (
-                        <button
-                            className="botonConfirmar"
-                            onClick={() => {
-                                const accion = window.confirm(
-                                    "No estas logueado. ¿Queres iniciar sesion? Cancelar para registrarte."
-                                );
-                                if (accion) {
-                                    window.location.href = "./login";
-                                } else {
-                                    window.location.href = "./registro";
-                                }
-                            }}
-                        >
-                            Confirmar compra
-                        </button>
+                        <div>
+                            <button
+                                className="botonConfirmar"
+                                onClick={() => setMostrarAlerta(true)}
+                            >
+                                Confirmar compra
+                            </button>
+
+                            {mostrarAlerta && (
+                                <AlertaCustom
+                                    mensaje="Para confirmar tu compra, necesitás iniciar sesión o registrarte."
+                                    onLogin={handlerLogin}
+                                    onRegistro={() => (setMostrarAlerta(false), navigate("/registro"))}
+                                    onCerrar={() => setMostrarAlerta(false)}
+                                />
+                            )}
+                        </div>
                     )}
                 </>
             )}
