@@ -3,85 +3,80 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
     const navigate = useNavigate();
-    const [emailIngresado, setEmailIngresado] = useState(""); //guarda lo que escribe el usuario
-    const [passwordIngresado, setPasswordIngresado] = useState("");
-    const [error, setError] = useState(""); //para mostrar errores de validacion
+    const [email, setEmail] = useState("");
+    const [contraseña, setContraseña] = useState("");
+    const [error, setError] = useState("");
 
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-    const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+        if (!email || !contraseña) {
+            setError("Todos los campos son obligatorios");
+            return;
+        }
 
-    // Simulación JSON con LocalStorage
-    const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
+        try {
+            const response = await fetch("http://localhost:3000/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, contraseña }),
+            });
 
-    if (!emailIngresado || !passwordIngresado) {
-        setError("Todos los campos son obligatorios");
-    return;
-    }
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
 
-    if (!/\S+@\S+\.\S+/.test(emailIngresado)) {
-        setError("El email no es válido");
-        return;
-    }
-    const usuarioExistente = usuarios.find((u: any) => u.email === emailIngresado); //busca si el email ingresado existe
+            const data = await response.json();
+            localStorage.setItem("token", data.token);
 
-    if (!usuarioExistente) {
-        setError("No existe un usuario con este email");
-        navigate("/registro"); //redirecciona a registr
-        return;
-    }
-    if (usuarioExistente.password !== passwordIngresado) {
-        setError("Contraseña incorrecta");
-        return;
-    }
-    setError("");
-    alert("Login exitoso");
-    navigate("/"); //redirecciona a la pagina principal
-    }
+            alert("Login exitoso");
+            navigate("/");
 
-    function handleforgotPassword() {
-    const email = prompt("Ingresa tu email para recuperar la contraseña:");//pide mail al usuario
+        } catch (err) {
+            console.error("Error al iniciar sesión:", err);
+            setError("Error al iniciar sesión. Verificá tus credenciales.");
+        }
+    };
 
-    const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-    const usuario = usuarios.find((u:any) => u.email === email);
+    const handleForgotPassword = () => {
+        const email = prompt("Ingresa tu email para recuperar la contraseña:");
+        const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
+        const usuario = usuarios.find((u:any) => u.email === email);
 
-    if (!usuario) {
-        alert("No se encontró un usuario con ese email");
-        return;
-    }
+        if (!usuario) {
+            alert("No se encontró un usuario con ese email");
+            return;
+        }
 
-    const nuevaPassword = prompt("Ingresa tu nueva contraseña (mínimo 6 caracteres):");
+        const nuevaPassword = prompt("Ingresa tu nueva contraseña (mínimo 6 caracteres):");
+        if (!nuevaPassword || nuevaPassword.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres");
+            return;
+        }
 
-    if (!nuevaPassword || nuevaPassword.length < 6) { //valida la nueva contraseña
-        alert("La contraseña debe tener al menos 6 caracteres");
-        return;
-    }
+        usuario.password = nuevaPassword;
+        localStorage.setItem("Usuarios", JSON.stringify(usuarios));
+        alert("Contraseña actualizada exitosamente.");
+    };
 
-    usuario.password = nuevaPassword; //actualiza la contraseña
-    localStorage.setItem("Usuarios", JSON.stringify(usuarios));
-
-    alert("Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con la nueva contraseña.");
-    }
-
-
-
-   return (
+    return (
         <main>
             <div>
-                <img src="/public/logo.png" alt="logo" id="Logo"/>
+                <img src="/public/logo.png" alt="logo" id="Logo" />
             </div>
             <h1>Wisteria</h1>
 
-            <form className="formContainer" onSubmit={handleSubmit}>  
+            <form className="formContainer" onSubmit={handleSubmit}>
                 <div>
-                    <input 
-                        type="text" 
-                        placeholder="Ingresa tu email" 
-                        className="input_text" 
-                        value={emailIngresado}
-                        onChange={(e) => setEmailIngresado(e.target.value)} 
+                    <input
+                        type="text"
+                        placeholder="Ingresa tu email"
+                        className="input_text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
@@ -89,18 +84,17 @@ const Login = () => {
                         type="password"
                         placeholder="Ingresa tu contraseña"
                         className="input_text"
-                        value={passwordIngresado}
-                        onChange={(e) => setPasswordIngresado(e.target.value)} 
+                        value={contraseña}
+                        onChange={(e) => setContraseña(e.target.value)}
                     />
                 </div>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-
-                <button type="submit">Login</button>
-
-                <a href="#" id="editPassword" onClick={handleforgotPassword}>Olvidaste tu contraseña?</a>
+                <button type="submit">Iniciar sesión</button>
+                {error && <p className="error">{error}</p>}
             </form>
-        </main>
 
+            <button onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
+        </main>
     );
 };
+
 export default Login;
