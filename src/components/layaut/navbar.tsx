@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="nav-left">
           <HamburgerMenu/>
         </div>
-
+        
         {/* Logo en el centro */}
         <div className="nav-center">
           <h1 className="logo">WISTERIA</h1>
