@@ -25,7 +25,7 @@ const ProductList: React.FC = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer`
+            'Authorization': `Bearer ${token}` // Incluye el token en el encabezado Authorization
           }
         });
         
@@ -38,7 +38,7 @@ const ProductList: React.FC = () => {
         console.log('Productos consultados:', data);
         setError(null);
       } catch (err) {
-        setError(err.message);
+        setError(null);
         console.error('Error al consultar productos:', err);
       } finally {
         setLoading(false);
