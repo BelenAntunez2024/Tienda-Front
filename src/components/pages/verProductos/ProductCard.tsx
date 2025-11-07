@@ -13,10 +13,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <>
       <div className="div-product-card">
         {/*product. muestra la información del producto que solicito*/}
-        <h2>{product.name}</h2>
-        <img src={product.image} alt={product.name} width={200} />
-        <p className="p-description">{product.description}</p>
-        <p className="p-precio">Precio: ${product.price}</p>
+        <h2>{product.nombre}</h2>
+        <img src={product.imagen} alt={product.nombre} width={200} />
+        {/*<p className="p-description">{product.descripcion}</p>*/}
+        <p className="p-precio">Precio: ${product.precio}</p>
       </div>
     </>
   );

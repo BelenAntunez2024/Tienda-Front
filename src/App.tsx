@@ -8,7 +8,7 @@ import MainLayout from './components/MainLayout';
 import HomePage from "./components/pages/homepage/Homepage";
 import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
-import ProductList from "./components/pages/verProductos/ProductList";
+import VerProductos from './components/pages/verProductos/page/VerProductos';
 //import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
@@ -27,7 +27,7 @@ function App() {
           <Route element={<MainLayout />}>
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/verProductos" element={<ProductList />} />
+            <Route path="/verProductos" element={<VerProductos />} />
             {/*<Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />*/}
           </Route>
 
