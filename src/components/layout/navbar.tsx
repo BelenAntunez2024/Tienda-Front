@@ -1,5 +1,6 @@
 import "./navbar.css";
 import HamburgerMenu from "./HamburgerMenu"; // 👈 importamos el menú
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -21,9 +22,11 @@ const Navbar = () => {
 
         {/* Carrito a la derecha */}
         <div className="nav-right">
-          <button className="cart-button">
-            <i className="fas fa-shopping-cart" style={{ fontSize: "30px", color: "#5a3a70" }}></i>
-          </button>
+          <Link to={``}>
+            <button className="cart-button">
+              <i className="fas fa-shopping-cart" style={{ fontSize: "30px", color: "#5a3a70" }}></i>
+            </button>
+          </Link>
         </div>
       </nav>
 

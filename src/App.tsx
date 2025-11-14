@@ -1,20 +1,17 @@
 
 import './App.css'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
-
-//import Navbar from "./components/layaut/navbar";
 import HomePage from "./components/pages/homepage/Homepage";
 import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
 import VerProductos from './components/pages/verProductos/page/VerProductos';
+import ProductDetail from './components/pages/detallesProductos/ProductDetail';
 //import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
-
-function App() {
+function App ()  {
 
   return (
     <>
@@ -36,13 +33,23 @@ function App() {
           {/* ======================================= */}
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path='/producto/:id' element={<ProductDetail/>} />
 
 
-          {/* Puedes añadir una ruta de 404 aquí si quieres */}
           {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
 
         </Routes>
       </BrowserRouter>
+      {/*<Navbar/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<VerProductos/>} />
+        <Route path='/producto/:id' element={<ProductDetail/>} />
+      </Routes>
+    </BrowserRouter>
+      <Footer></Footer>*/}
+
+
     </>
   );
 };

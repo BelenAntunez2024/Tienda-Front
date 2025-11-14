@@ -61,7 +61,7 @@ const ProductList: React.FC = () => {
       <div className="div-product-list">
         {/*mapeo de la array de productos y para cada producto se renderiza un ProductCard*/}
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id_producto} product={product} />
         ))}
       </div>
     </>
