@@ -48,7 +48,7 @@ const EditarPerfil = () => {
     try{
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:3000/usuario/${Id_usuario}`, {
+      const response = await fetch(`http://localhost:3000/usuario/id`, {
         method: 'PUT',
         headers: {
            "Content-Type": "application/json",
