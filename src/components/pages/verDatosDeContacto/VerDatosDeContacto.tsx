@@ -16,7 +16,7 @@ const VerDatosDeContacto = () => {
     const [mensajeEnviado, setMensajeEnviado] = useState(false);
 
 
-    const handleSubmit  = (e: React.FormEvent) => {
+    const handleSubmit  = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!emailIngresado || !mensaje || !tipoConsulta) {
@@ -27,6 +27,7 @@ const VerDatosDeContacto = () => {
             setError("El email no es válido");
             return;
         }
+        /*
         // Si pasó validaciones
         setError("");
         setMensajeEnviado(true);
@@ -37,11 +38,36 @@ const VerDatosDeContacto = () => {
         setTipoConsulta("");
 
         // Ocultar mensaje después de 3 segundos
-        setTimeout(() => setMensajeEnviado(false), 3000);      
+        setTimeout(() => setMensajeEnviado(false), 3000);*/
+        
+         // Construir el objeto con los nombres correctos para el backend:
+        const datos = {
+        email: emailIngresado,
+        clasificacion_mjs: tipoConsulta.toLowerCase(), // en minúscula según tu ENUM
+        mensaje
+       };
+
+       try{
+        const response = await fetch("http://localhost:3000/correo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos)
+       });
+
+        if (!response.ok) 
+            throw new Error ("Error al enviar el mensaje");
+        setMensajeEnviado(true);
+        setEmailIngresado("");
+        setMensaje("");
+        setTipoConsulta("");
+        setTimeout(() => setMensajeEnviado(false), 3000);
+
+        }catch(err){
+            setError("Error al enviar el mensaje.");
+        }
         
     }
    
-
     return (
         <main>
                 <h1>Quienes somos</h1>
