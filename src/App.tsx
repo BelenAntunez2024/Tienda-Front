@@ -7,7 +7,7 @@ import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
 import VerProductos from './components/pages/verProductos/page/VerProductos';
 import ProductDetail from './components/pages/detallesProductos/ProductDetail';
-//import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
@@ -25,7 +25,9 @@ function App ()  {
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
             <Route path="/" element={<HomePage />} />
             <Route path="/verProductos" element={<VerProductos />} />
-            {/*<Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />*/}
+            <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
+            <Route path='/producto/:id' element={<ProductDetail/>} />
+
           </Route>
 
           {/* ======================================= */}
@@ -33,7 +35,6 @@ function App ()  {
           {/* ======================================= */}
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path='/producto/:id' element={<ProductDetail/>} />
 
 
           {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}

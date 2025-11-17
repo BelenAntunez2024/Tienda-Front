@@ -1,10 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { CarritoItem } from "./interfaces/CarritoItem";
+import '../verProductos/ProductCard.css';
 
 const FuncionalidadCarrito = () => {
 
     const [carrito, setCarrito] = useState<CarritoItem[]>([]);
     
+    //carga los items del carrito desde el backend
+    useEffect(() => {
+    const fetchCarrito = async () => {
+        try {
+            const token = localStorage.getItem('token') || '';
+            const response = await fetch('http://localhost:3000/item-ordenes', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+        const data = await response.json();
+        const mappedCarrito = data.map((item: any) => ({
+            ...item.producto,  // Copia todos los campos del producto
+            cantidad: item.cantidad_productos,  // Renombra el campo
+            id_item_orden: item.id_item_orden
+        }));
+        console.log('Datos mapeados:', mappedCarrito);
+        setCarrito(mappedCarrito);
+        } catch (err) {
+            console.error('Error al obtener el carrito:', err);
+        }
+    };
+    fetchCarrito();
+}, []);
+
     const actualizarCantidad = async (idItemOrden: number, nuevaCantidad: number) => {
         const token = localStorage.getItem('token') || '';
         const response = await fetch(`http://localhost:3000/item-ordenes/${idItemOrden}`, {
@@ -19,14 +50,14 @@ const FuncionalidadCarrito = () => {
         });
 
         if (!response.ok) {
-            throw new Error(`Error ${response.status}: No se pudo actualizar la cantidad en el servidor.`);
+            throw new Error(`Error ${response.status}: No se pudo actualizar la cantidad.`);
         }
     };
 
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
         
-        const response = await fetch(`http://localhost:3000/item-ordenes/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar
@@ -34,10 +65,10 @@ const FuncionalidadCarrito = () => {
         });
 
         if (!response.ok) {
-            throw new Error(`Error ${response.status}: No se pudo eliminar el producto del servidor.`);
+            throw new Error(`Error ${response.status}: No se pudo eliminar el producto.`);
         }        
     };
-
+    //llama al DELETE y elimina el producto del estado del carrito
     const eliminarDelCarrito = async (idItemOrden: number, productoId: number) => {
         try {
             await eliminar(idItemOrden); 
@@ -102,11 +133,15 @@ const FuncionalidadCarrito = () => {
     <div>
         <h2>Productos elegidos</h2>
         <div>
-            {carrito.map((producto) => (
-                <div key={producto.id_item_orden}> 
-                    <p>
-                        {producto.nombre} - Cantidad: **{producto.cantidad}** 
-                    </p>
+        {carrito.map((producto) => (
+            <div key={producto.id_item_orden} className="div-product-card">
+                <h2>{producto.nombre}</h2>
+                <img src={producto.imagen} alt={producto.nombre} width={200} />
+                <p className="p-description">{producto.descripcion}</p>
+                <p className="p-precio">
+                    Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
+                </p>                                            
+                <p>Cantidad: {producto.cantidad}</p>
                     
                     <button 
                         onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>

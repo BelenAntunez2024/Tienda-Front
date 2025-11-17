@@ -49,7 +49,7 @@ const ProductList: React.FC = () => {
   }, []); // Array vacío = se ejecuta solo al montar el componente
 
   if (loading) return <div>Cargando...</div>; //agregar estilos
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error: {error} </div>;
 
 
 
