@@ -40,7 +40,7 @@ const VerDatosDeContacto = () => {
         // Ocultar mensaje después de 3 segundos
         setTimeout(() => setMensajeEnviado(false), 3000);*/
         
-         // Construir el objeto con los nombres correctos para el backend:
+         // Construir el objeto con los nombres correctos para el backend: (VER SI DEJARLA COMO CONST O INTERFACE)
         const datos = {
         email: emailIngresado,
         clasificacion_mjs: tipoConsulta.toLowerCase(), // en minúscula según tu ENUM
