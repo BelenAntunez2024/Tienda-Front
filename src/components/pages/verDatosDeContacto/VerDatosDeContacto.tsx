@@ -27,19 +27,6 @@ const VerDatosDeContacto = () => {
             setError("El email no es válido");
             return;
         }
-        /*
-        // Si pasó validaciones
-        setError("");
-        setMensajeEnviado(true);
-        
-        // Limpiar formulario
-        setEmailIngresado("");
-        setMensaje("");
-        setTipoConsulta("");
-
-        // Ocultar mensaje después de 3 segundos
-        setTimeout(() => setMensajeEnviado(false), 3000);*/
-        
          // Construir el objeto con los nombres correctos para el backend: (VER SI DEJARLA COMO CONST O INTERFACE)
         const datos = {
         email: emailIngresado,
