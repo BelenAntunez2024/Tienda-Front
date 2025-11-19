@@ -68,6 +68,7 @@ const HistorialCompras: React.FC = () => {
 
   return (
     <>
+
       <div className="container-historial">
         <h1>Historial de Compras</h1>
         <ul>
@@ -85,6 +86,7 @@ const HistorialCompras: React.FC = () => {
           ))}
         </ul>
 
+
         {compraSeleccionada && (
           <div className="detalles-compra">
             <h2>Detalles de la compra #{compraSeleccionada.id_orden}</h2>
@@ -97,10 +99,9 @@ const HistorialCompras: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <p>
+            <p className="total-compra">
               <strong>Metodo de pago:</strong> {compraSeleccionada.metodoPago} <br />
               <strong>Total:</strong> ${compraSeleccionada.total}
-
             </p>
             <button
               className="btn-cerrar"

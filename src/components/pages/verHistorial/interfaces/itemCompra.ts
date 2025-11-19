@@ -5,4 +5,5 @@ export interface ItemCompra{
   cantidad: number;
   precioUnitario: number;
   descripcion?: string; //opcional
+  image?: string; //opcional
 }
