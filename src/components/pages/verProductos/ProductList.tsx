@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import './ProductList.css';
 import ProductCard from "./ProductCard";
 import type { Product } from "./interfaces/Product";
-//importacion del archivo JSON que contiene los productos
-//import productsData from "./data/productsArray.json";
-
-
 
 //React.FC indica que es un componente funcional de React
 const ProductList: React.FC = () => {
@@ -50,11 +46,6 @@ const ProductList: React.FC = () => {
 
   if (loading) return <div>Cargando...</div>; //agregar estilos
   if (error) return <div>Error: {error}</div>;
-
-
-
-  //se tipea la array de productos como Product[], esto asegura que cada elemento del array cumple con la interfaz Product
-  //const products: Product[] = productsData;
 
   return (
     <>

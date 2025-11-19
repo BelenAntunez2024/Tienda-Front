@@ -1,8 +1,8 @@
 
 export interface ItemCompra{
-  id?: number; //opcional
-  name: string;
-  amount: number; //amount es la cantidad
-  unitPrice: number; //s el precio unitario
+  id_producto?: number; //opcional
+  nombre: string;
+  cantidad: number;
+  precioUnitario: number;
   descripcion?: string; //opcional
 }

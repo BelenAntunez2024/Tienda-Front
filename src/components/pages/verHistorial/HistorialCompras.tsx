@@ -1,53 +1,70 @@
 import "./HistorialCompras.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Compra } from "./interfaces/compra";
 
 
 const HistorialCompras: React.FC = () => {
 
-  //compras de ejemplo
-  const [compras] = useState<Compra[]>([
-    {
-      id: 1,
-      date: "2025-09-10",
-      total: 150,
-      metodoPago: "Tarjeta de credito",
-      items: [
-        { name: "Amuleto protector", amount: 1, unitPrice: 100, descripcion: "Protege contra energias negativas" },
-        { name: "Vela negra", amount: 2, unitPrice: 25, descripcion: "Vela para rituales de proteccion" },
-      ],
-    },
-    {
-      id: 2,
-      date: "2025-09-15",
-      total: 200,
-      metodoPago: "Mercado Pago",
-      items: [
-        { name: "Libro esoterico", amount: 1, unitPrice: 200, descripcion: "Guia de hechizos antiguos" },
-      ],
-    },
-    {
-      id: 3,
-      date: "2025-09-20",
-      total: 75,
-      metodoPago: "Efectivo",
-      items: [
-        { name: "Cristal cuarzo", amount: 3, unitPrice: 25, descripcion: "Cristal para meditacion y energia positiva" },
-      ],
-    },
-    {
-      id: 4,
-      date: "2025-09-22",
-      total: 180,
-      metodoPago: "Tarjeta de débito",
-      items: [
-        { name: "Incienso de sandalo", amount: 2, unitPrice: 40, descripcion: "Incienso para limpieza energetica" },
-        { name: "Aceite esencial", amount: 1, unitPrice: 100, descripcion: "Aceite para rituales de purificacion" },
-      ],
-    },
-  ]);
-
+  //compras de ejemplo - BORRAR CUANDO ESTE CONECTADO CON BACKEND
+  const [compras, setCompras] = useState<Compra[]>([]);
   const [compraSeleccionada, setCompraSeleccionada] = useState<Compra | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCompras = async () => {
+      try {
+        setLoading(true);
+        // Obtén el token desde donde lo tengas guardado
+        const token = localStorage.getItem("token") || ""; // o desde context, state, etc.
+
+        const response = await fetch("http://localhost:3001/ordenes", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Incluye el token en el encabezado Authorization
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        //esto mapea la respuesta del backend al formato esperado en el frontend
+        const comprasMapeadas: Compra[] = data.map((orden: any) => ({
+          id_orden: orden.id_orden,
+          fecha: orden.fecha,
+          total: orden.total,
+          metodoPago: orden.metodoPago ?? null, // opcional
+          //mapeamos itemOrdenes del backend a items del frontend
+          items: orden.itemOrdenes.map((item: any) => ({
+            nombre: item.producto.nombre,
+            cantidad: item.cantidad_productos,
+            precioUnitario: item.producto.precio,
+            descripcion: item?.producto?.descripcion ?? "Sin descripción",
+            id_producto: item?.producto?.id_producto ?? undefined, //opcional
+          })),
+        }));
+
+        setCompras(comprasMapeadas);
+        console.log("Compras transformadas:", comprasMapeadas);
+
+        setError(null);
+      } catch (err) {
+        setError(null);
+        console.error("Error al consultar compras:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCompras();
+  }, []);
+
+  if (loading) return <div>Cargando...</div>; //agregar estilos
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <>
@@ -56,8 +73,8 @@ const HistorialCompras: React.FC = () => {
         <ul>
           {/*recorre y muestra en la lisa las compras */}
           {compras.map((compra) => (
-            <li key={compra.id}>
-              <strong>Compra #{compra.id}</strong>  {compra.date} - Total: ${compra.total}
+            <li key={compra.id_orden}>
+              <strong>Compra #{compra.id_orden}</strong>  {compra.fecha} - Total: ${compra.total}
               <button
                 className="btn-historial-detalles"
                 onClick={() => setCompraSeleccionada(compra)}
@@ -70,13 +87,13 @@ const HistorialCompras: React.FC = () => {
 
         {compraSeleccionada && (
           <div className="detalles-compra">
-            <h2>Detalles de la compra #{compraSeleccionada.id}</h2>
+            <h2>Detalles de la compra #{compraSeleccionada.id_orden}</h2>
             <ul>
               {compraSeleccionada.items.map((item, index) => (
                 <li key={index} className="li-detalles">
-                  {item.name} - {item.amount} por ${item.unitPrice} <br />
+                  {item.nombre} - {item.cantidad} por ${item.precioUnitario} <br />
                   {item.descripcion} <br />
-                  Subtotal: ${item.amount * item.unitPrice}
+                  Subtotal: ${item.cantidad * item.precioUnitario}
                 </li>
               ))}
             </ul>
