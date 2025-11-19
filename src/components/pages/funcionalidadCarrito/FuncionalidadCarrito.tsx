@@ -1,87 +1,128 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { CarritoItem } from "./interfaces/CarritoItem";
+import '../verProductos/ProductCard.css';
 
 const FuncionalidadCarrito = () => {
-    /*      CRITERIOS DE APROBACIÓN
-    Crear botón para agregar al carrito. +
-    Crear botón individual para eliminar producto del carrito.
-    Crear botón para eliminar la totalidad del carrito. +
-    Crear botón (+) para añadir stock del mismo producto.
-    Crear botón (-) para eliminar stock del mismo producto.
-    Resumen de los productos elegidos
-    ----------------------------------------------------------
-    RESUMEN DE LOS PRODUCTOS ELEGIDOS:
-    Nombre Imagen Cantidad Precio unitario Total
-    */
-    type Producto = {
-        id: number;
-        nombre: string;
-        imagen: string;
-        precio: number;
-        cantidad?: number;
+
+    const [carrito, setCarrito] = useState<CarritoItem[]>([]);
+    
+    //carga los items del carrito desde el backend
+    useEffect(() => {
+    const fetchCarrito = async () => {
+        try {
+            const token = localStorage.getItem('token') || '';
+            const response = await fetch('http://localhost:3000/item-ordenes', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+        const data = await response.json();
+        const mappedCarrito = data.map((item: any) => ({
+            ...item.producto,  // Copia todos los campos del producto
+            cantidad: item.cantidad_productos,  // Renombra el campo
+            id_item_orden: item.id_item_orden
+        }));
+        console.log('Datos mapeados:', mappedCarrito);
+        setCarrito(mappedCarrito);
+        } catch (err) {
+            console.error('Error al obtener el carrito:', err);
+        }
     };
+    fetchCarrito();
+}, []);
 
-    const productosMock: Producto[] = [
-        { id: 1, nombre: "Camiseta", imagen: "https://via.placeholder.com/100", precio: 5000 },
-        { id: 2, nombre: "Pantalón", imagen: "https://via.placeholder.com/100", precio: 8500 },
-        { id: 3, nombre: "Zapatillas", imagen: "https://via.placeholder.com/100", precio: 15000 },
-    ];
+    const actualizarCantidad = async (idItemOrden: number, nuevaCantidad: number) => {
+        const token = localStorage.getItem('token') || '';
+        const response = await fetch(`http://localhost:3000/item-ordenes/${idItemOrden}`, {
+            method: 'PATCH', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                cantidad_productos: nuevaCantidad,
+            }),
+        });
 
-
-    const [carrito, setCarrito] = useState<Producto[]>([]);
-
-    //funcion para agregar productos al carrito
-    const agregarAlCarrito = (producto: Producto) => {
-
-        if (carrito.find((item) => item.id === producto.id)) {
-            const nuevoCarrito = carrito.map(item =>
-                item.id === producto.id ? { ...item, cantidad: item.cantidad! + 1 } : item
-            );
-            setCarrito(nuevoCarrito);
-        } else {
-            const nuevoProducto = { ...producto, cantidad: 1 }
-            setCarrito([...carrito, nuevoProducto])
-            console.log("Producto agregado:", producto.nombre);
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: No se pudo actualizar la cantidad.`);
         }
     };
 
-    const eliminarDelCarrito = (productoId: number) => {
-        if (carrito.find((item) => item.id === productoId)) {
-            const nuevoCarrito = carrito.filter((item) => item.id !== productoId);
-            setCarrito(nuevoCarrito);
-            console.log("Producto eliminado del carrito, ID:", productoId);
-        } else {
-            console.log("El producto no está en el carrito");
+    const eliminar = async (idItemOrden: number) => {
+        const token = localStorage.getItem('token') || '';
+        
+        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}` // Usamos el token para autenticar
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: No se pudo eliminar el producto.`);
+        }        
+    };
+    //llama al DELETE y elimina el producto del estado del carrito
+    const eliminarDelCarrito = async (idItemOrden: number, productoId: number) => {
+        try {
+            await eliminar(idItemOrden); 
+            setCarrito(prevCarrito => prevCarrito.filter((item) => item.id_producto !== productoId));
+            
+            console.log(`Producto eliminado del carrito, ID: ${productoId}`);
+            
+        } catch (err) {
+            console.error("Error al eliminar:", err);
         }
     }
 
-    const restarCantidad = (productoId: number) => {
-        const producto = carrito.find((item) => item.id === productoId); //valida si el prod existe(id)
-        if (producto && producto.cantidad && producto.cantidad > 1) {
-            //resta la cantidad del producto encontrado
-            const carritoItemRestado = carrito.map(item => item.id === productoId ? //si es el producto buscado
-                //le resta 1 a la cantidad             si no es el producto buscado, lo deja igual
-                { ...item, cantidad: item.cantidad! - 1 } : item
-
-            )
-            setCarrito(carritoItemRestado);
-        } if (producto && producto.cantidad === 1) { //si la cantidad es 0, elimina el producto del carrito
-            eliminarDelCarrito(productoId);
+    const restarCantidad = async (productoId: number, idItemOrden: number) => {
+        const producto = carrito.find((item) => item.id_producto === productoId); 
+        if (!producto) {
+            return "El producto no está en el carrito";
         }
-        else {
-            return ("El producto no está en el carrito");
+        try {
+            if (producto.cantidad > 1) {
+                const nuevaCantidad = producto.cantidad - 1;
+                await actualizarCantidad(idItemOrden, nuevaCantidad);
+                
+                setCarrito(prevCarrito => prevCarrito.map(item => 
+                    item.id_producto === productoId 
+                        ? { ...item, cantidad: nuevaCantidad } 
+                        : item
+                ));
+                alert("Cantidad actualizada con éxito.");
+            } else if (producto.cantidad === 1) { 
+                // Si la cantidad es 1, llamamos a la función de eliminación (DELETE)
+                await eliminarDelCarrito(idItemOrden, productoId); 
+            }
+        } catch (error) {
+            console.error("Error al restar cantidad:", error);
         }
     }
 
-    const sumarCantidad = (productoId: number) => {
-        const producto = carrito.find((item) => item.id === productoId); //valida si el prod existe(id)
-        if (producto) {
-            const carritoItemSumado = carrito.map(item => item.id === productoId ? { ...item, cantidad: item.cantidad! + 1 } //aumenta la cantidad del producto encontrado
-                : item //si no es el producto buscado, lo deja igual
-            )
-            setCarrito(carritoItemSumado);
+    const sumarCantidad = async (productoId: number, idItemOrden: number) => {
+        const producto = carrito.find((item) => item.id_producto === productoId); 
+        if (!producto) {
+            return "El producto no está en el carrito";
         }
-        else {
-            return ("El producto no está en el carrito");
+        try {
+            const nuevaCantidad = producto.cantidad + 1;
+            await actualizarCantidad(idItemOrden, nuevaCantidad);
+
+            setCarrito(prevCarrito => prevCarrito.map(item => 
+                item.id_producto === productoId 
+                    ? { ...item, cantidad: nuevaCantidad } // Actualiza la cantidad
+                    : item 
+            ));
+            alert("Cantidad actualizada con éxito.");
+        } catch (error) {
+            console.error("Error al sumar cantidad:", error);
         }
     }
 
@@ -89,27 +130,37 @@ const FuncionalidadCarrito = () => {
         <main>
             <h1> Carrito </h1>
 
-            <div>
-                <h2>Productos elegidos</h2>
-                <div>
-                    {carrito.map((producto) => (
-                        <div key={producto.id}>
-                            <button onClick={() => sumarCantidad(producto.id)}>+</button>
-                            <button onClick={() => restarCantidad(producto.id)}>-</button>
-                            <button onClick={() => eliminarDelCarrito(producto.id)}>Eliminar</button>
-                        </div>
-                    ))}
+    <div>
+        <h2>Productos elegidos</h2>
+        <div>
+        {carrito.map((producto) => (
+            <div key={producto.id_item_orden} className="div-product-card">
+                <h2>{producto.nombre}</h2>
+                <img src={producto.imagen} alt={producto.nombre} width={200} />
+                <p className="p-description">{producto.descripcion}</p>
+                <p className="p-precio">
+                    Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
+                </p>                                            
+                <p>Cantidad: {producto.cantidad}</p>
+                    
+                    <button 
+                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
+                        +
+                    </button>
+                    
+                    <button 
+                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
+                        -
+                    </button>
+                    
+                    <button 
+                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
+                        Eliminar
+                    </button>
                 </div>
-            </div>
-
-            {productosMock.map((producto) => (
-                <div key={producto.id}>
-                    <button onClick={() => agregarAlCarrito(producto)}>Agregar</button>
-                </div>
-
-
             ))}
-
+        </div>
+    </div>
         </main>
     )
 }

@@ -45,14 +45,14 @@ const ProductList: React.FC = () => {
   }, []); // Array vacío = se ejecuta solo al montar el componente
 
   if (loading) return <div>Cargando...</div>; //agregar estilos
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error: {error} </div>;
 
   return (
     <>
       <div className="div-product-list">
         {/*mapeo de la array de productos y para cada producto se renderiza un ProductCard*/}
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id_producto} product={product} />
         ))}
       </div>
     </>
