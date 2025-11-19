@@ -22,7 +22,7 @@ const Navbar = () => {
 
         {/* Carrito a la derecha */}
         <div className="nav-right">
-          <Link to={`/funcionalidadCarrito`}>
+          <Link to={`/funcionalidadCarrito`} style={{ textDecoration: 'none' }}>
             <button className="cart-button">
               <i className="fas fa-shopping-cart" style={{ fontSize: "30px", color: "#5a3a70" }}></i>
             </button>

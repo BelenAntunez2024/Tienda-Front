@@ -8,10 +8,11 @@ import Registro from './components/pages/registro/Registro';
 import VerProductos from './components/pages/verProductos/page/VerProductos';
 import ProductDetail from './components/pages/detallesProductos/ProductDetail';
 import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import VerDatosDeContacto from './components/pages/verDatosDeContacto/VerDatosDeContacto';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
-function App ()  {
+function App() {
 
   return (
     <>
@@ -25,8 +26,10 @@ function App ()  {
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
             <Route path="/" element={<HomePage />} />
             <Route path="/verProductos" element={<VerProductos />} />
-            <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
-            <Route path='/producto/:id' element={<ProductDetail/>} />
+            <Route path='/producto/:id' element={<ProductDetail />} />
+            <Route path="/contacto" element={<VerDatosDeContacto />} />
+            
+            
 
           </Route>
 

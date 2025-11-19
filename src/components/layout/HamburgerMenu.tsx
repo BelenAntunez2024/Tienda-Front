@@ -1,27 +1,27 @@
 
-import { GiSpiralBottle, GiStarsStack } from "react-icons/gi"; 
+import { GiSpiralBottle, GiStarsStack } from "react-icons/gi";
 import React, { useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import useCerrarSesion from "../hooks/CerrarSesion";
 
 const HamburgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { logout } = useCerrarSesion();
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="hamburger-container">
       {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
-
       <button
         className={`hamburger-button ${isOpen ? "active" : ""}`}
         onClick={toggleMenu}>
         {isOpen ? (
-        <GiStarsStack size={40} color="#FFD700" /> // ✨ Estrella cuando está abierto
-         ) : (
-        <GiSpiralBottle size={40} color="#5a3a70"  /> // 🧪 Botella cuando está cerrado
+          <GiStarsStack size={40} color="#FFD700" /> // ✨ Estrella cuando está abierto
+        ) : (
+          <GiSpiralBottle size={40} color="#5a3a70" /> // 🧪 Botella cuando está cerrado
         )}
-        </button>
+      </button>
 
       <ul className={`hamburger-menu ${isOpen ? "open" : ""}`}>
         <li><Link to="/">Inicio</Link></li>
@@ -32,6 +32,7 @@ const HamburgerMenu: React.FC = () => {
         <li><Link to="/quienesSomos">Quienes Somos</Link></li>
         <li><Link to="/comoComprar">Como Comprar</Link></li>
         <li><Link to="/pregFrecuentes">Preguntas Frecuentes</Link></li>
+        <li><button onClick={logout} >Cerrar sesión</button></li>
       </ul>
     </nav>
   );
