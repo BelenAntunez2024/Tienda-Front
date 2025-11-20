@@ -7,7 +7,6 @@ import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
 import VerProductos from './components/pages/verProductos/page/VerProductos';
 import ProductDetail from './components/pages/detallesProductos/ProductDetail';
-import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 import VerDatosDeContacto from './components/pages/verDatosDeContacto/VerDatosDeContacto';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
