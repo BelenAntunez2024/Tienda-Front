@@ -1,23 +1,20 @@
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
-//import Navbar from "./components/layaut/navbar";
 import HomePage from "./components/pages/homepage/Homepage";
 import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
-import ProductList from "./components/pages/verProductos/ProductList";
-//import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import VerProductos from './components/pages/verProductos/page/VerProductos';
+import EditarPerfil from './components/pages/editarPerfil/EditarPerfil';
+//import ProductDetail from './components/pages/detallesProductos/ProductDetail';
+import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import PerfilUsuario from './components/pages/editarPerfil/Perfil';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
-
 function App ()  {
+
+  return (
     <>
-
-      {/*<Navbar/>
-    <ComoComprar></ComoComprar>
-      <Footer></Footer>*/}
-
       <BrowserRouter>
         <Routes>
 
@@ -26,9 +23,13 @@ function App ()  {
           {/* ======================================= */}
           <Route element={<MainLayout />}>
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
+            <Route path="/perfil" element={<PerfilUsuario />} />
+            <Route path="/editar-perfil" element={<EditarPerfil />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/verProductos" element={<ProductList />} />
-            {/*<Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />*/}
+            <Route path="/verProductos" element={<VerProductos />} />
+            <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
+            
+
           </Route>
 
           {/* ======================================= */}
@@ -38,13 +39,23 @@ function App ()  {
           <Route path="/registro" element={<Registro />} />
 
 
-          {/* Puedes añadir una ruta de 404 aquí si quieres */}
           {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
 
         </Routes>
       </BrowserRouter>
+      {/*<Navbar/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<VerProductos/>} />
+        <Route path='/producto/:id' element={<ProductDetail/>} />
+      </Routes>
+    </BrowserRouter>
+      <Footer></Footer>*/}
+
+
     </>
-  
-};
+  )
+}
 
 export default App;
+

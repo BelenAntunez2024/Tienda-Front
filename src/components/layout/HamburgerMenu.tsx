@@ -25,6 +25,7 @@ const HamburgerMenu: React.FC = () => {
 
       <ul className={`hamburger-menu ${isOpen ? "open" : ""}`}>
         <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/perfil">Perfil</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/registro">Registro</Link></li>
         <li><Link to="/verProductos">Productos</Link></li>

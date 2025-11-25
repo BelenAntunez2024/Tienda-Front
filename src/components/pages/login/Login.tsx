@@ -1,6 +1,7 @@
 import './Login.css';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './login.css'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -15,14 +16,14 @@ const Login = () => {
             setError("Todos los campos son obligatorios");
             return;
         }
-
+        console.log("Enviando datos de login:", { email, contraseña });
         try {
             const response = await fetch("http://localhost:3000/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, contraseña }),
+                body: JSON.stringify({ email, password: contraseña}),
             });
 
             if (!response.ok) {
@@ -61,6 +62,7 @@ const Login = () => {
         localStorage.setItem("Usuarios", JSON.stringify(usuarios));
         alert("Contraseña actualizada exitosamente.");
     };
+
 
     return (
         <main>

@@ -13,6 +13,7 @@ const EditarPerfil = () => {
         foto: ""
     });
 
+
   const [perfilActualizado, setPerfilActualizado] = useState(false); //para mostrar mensaje de exito
 
   const [error, setError] = useState(""); //para mostrar errores de validacion
@@ -87,7 +88,7 @@ const EditarPerfil = () => {
 
   //Vista del componente
 
-    <main>
+    <>
       <section>
         <h2>Editar Perfil</h2>
 
@@ -152,7 +153,7 @@ const EditarPerfil = () => {
             name="foto"
             value={editData.foto}
             onChange={handleChange}
-            required
+            //required
           />
 
           <button type="submit">Guardar</button>
@@ -172,7 +173,7 @@ const EditarPerfil = () => {
         )}
 
       </section>
-    </main>
+    </>
   );
 };
 
