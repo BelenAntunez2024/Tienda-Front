@@ -1,0 +1,123 @@
+footer {
+  background-color: #e6eff7;
+  color: #3a2d34;
+  padding: 10px 5px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.email-subscribe {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.email-subscribe p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 10px;
+  width: fit-content;
+}
+
+.subscribe-form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  margin-right: 10px;
+}
+
+.subscribe-form button {
+  background-color: #75619d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+hr {
+  border: 1px solid #3a2d34;
+  margin: 30px 0;
+}
+
+
+.footer-sections {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-title {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* Modificamos esta clase para controlar las imágenes dentro de ambas secciones */
+.footer__top__icon {
+  width: 80px;
+  height: auto;
+  margin-bottom: 5px;
+  display: block;
+  /* Elimina cualquier espacio adicional debajo de la imagen */
+}
+
+.pagos-icons {
+  display: grid;
+  /* Creamos una cuadrícula con 3 columnas de igual tamaño */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  /* Espacio entre los iconos */
+  align-items: center;
+  /* Centra los iconos verticalmente */
+  max-width: 300px;
+  /* Limita el ancho máximo del contenedor */
+  margin: 0 auto;
+  /* Centra el contenedor horizontalmente */
+
+}
+
+/* Para que los íconos de envío se vean mejor, también podemos ajustar su cuadrícula. */
+.shipping-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.social-icons a {
+  color: #3a2d34;
+  font-size: 2rem;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.contact-info p,
+.contact-info a {
+  margin: 5px 0;
+  color: #3a2d34;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-p {
+  line-height: 1.9;
+}

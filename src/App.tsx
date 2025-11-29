@@ -1,13 +1,68 @@
-import './components/pages/verDatosDeContacto/DatosDeContacto.css'
-import VerDatosDeContacto from './components/pages/verDatosDeContacto/VerDatosDeContacto'
 
-function App() {
+import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/MainLayout';
+import HomePage from "./components/pages/homepage/Homepage";
+import Login from './components/pages/login/Login';
+import Registro from './components/pages/registro/Registro';
+import VerProductos from './components/pages/verProductos/page/VerProductos';
+import ProductDetail from './components/pages/detallesProductos/ProductDetail';
+import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import FormularioCompra from './components/pages/confirmarCompra/FormularioCompra';
+import PagosMP from './components/pages/MetodoDePago/pagosMP';
+import PagoExitoso from './components/pages/MetodoDePago/PagoExitoso';
+import PagoFallido from './components/pages/MetodoDePago/PagoFallido';
+import PagoPendiente from './components/pages/MetodoDePago/PagoPendiente';
+//import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
+//import Footer from "./components/layaut/footer";
+
+function App ()  {
 
   return (
     <>
-      <VerDatosDeContacto/>
+      <BrowserRouter>
+        <Routes>
+
+          {/* ======================================= */}
+          {/* GRUPO 1: RUTAS QUE SÍ LLEVAN NAVBAR Y FOOTER */}
+          {/* ======================================= */}
+          <Route element={<MainLayout />}>
+            {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/verProductos" element={<VerProductos />} />
+            <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
+            <Route path='/producto/:id' element={<ProductDetail/>} />
+            <Route path="/confirmarCompra" element={<FormularioCompra />} />
+            <Route path="/metodoDePago" element={<PagosMP />} />
+            <Route path="/success" element={<PagoExitoso />} />
+            <Route path="/failure" element={<PagoFallido />} />
+            <Route path="/pending" element={<PagoPendiente />} />
+
+          </Route>
+
+          {/* ======================================= */}
+          {/* GRUPO 2: RUTAS SIN NAVBAR NI FOOTER */}
+          {/* ======================================= */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+
+
+          {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
+
+        </Routes>
+      </BrowserRouter>
+      {/*<Navbar/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<VerProductos/>} />
+        <Route path='/producto/:id' element={<ProductDetail/>} />
+      </Routes>
+    </BrowserRouter>
+      <Footer></Footer>*/}
+
+
     </>
   )
 }
 
-export default App
+export default App;

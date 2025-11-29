@@ -1,0 +1,150 @@
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.titulo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f6f3f9;
+  padding: 5px 10px;
+  border-radius: 25px;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ========== HAMBURGER MENU ========== */
+.hamburger-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Botón */
+.cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.hamburger-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  z-index: 2000;
+  position: relative; /* ahora relativo dentro de la nav */
+}
+
+/* ✨ Activo */
+.hamburger-button.active {
+  transform: rotate(360deg) scale(1.2);
+  filter: drop-shadow(0 0 10px #FFD700);
+  margin-top: 10px;
+}
+
+/* Menú lateral */
+.hamburger-menu {
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.886);
+  padding: 100px 10px 10px 15px;
+  margin-top: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  z-index: 1500;
+  transform: translateX(-100%);
+  display: none;
+}
+
+.hamburger-menu.open {
+  transform: translateX(0);
+  display: block;
+}
+
+.hamburger-menu li {
+  margin-bottom: 15px;
+}
+
+.hamburger-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
