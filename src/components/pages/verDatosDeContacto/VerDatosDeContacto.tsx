@@ -106,7 +106,7 @@ const VerDatosDeContacto = () => {
                         </h4>
                     </div>
                     <div className="formContainer">
-                        <form onSubmit={handleSubmit}>
+                        <form className="form-contacto" onSubmit={handleSubmit}>
                             <div className="form-group icon-input">
                                 <label htmlFor="email">Email</label>
                                 <div className="input-wrapper">

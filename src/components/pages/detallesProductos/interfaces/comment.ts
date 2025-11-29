@@ -4,5 +4,4 @@ export interface Comment{
     text: string;
     rating: number;
     replies: string[];
-
 }
