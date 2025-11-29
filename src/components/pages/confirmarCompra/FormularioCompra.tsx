@@ -1,18 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./FormularioCompra.css"
 import type { FormData } from "./interface/formData";
-import { jwtDecode } from "jwt-decode";
-
 
 function FormularioCompra() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<FormData>({
     nombre: "",
     email: "",
     direccion: "",
     metodoPago: "tarjeta",
-    numeroTarjeta: "",
-    vencimientoTarjeta: "",
-    cvvTarjeta: "",
+    // ❌ Ya no usamos datos de tarjeta
+    //numeroTarjeta: "",
+    //vencimientoTarjeta: "",
+    //cvvTarjeta: "",
   });
 
   const [error, setError] = useState("");
@@ -26,9 +28,8 @@ function FormularioCompra() {
     });
   };
 
-
   //handler para enviar el formulario
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     //validaciones basicas
@@ -44,98 +45,22 @@ function FormularioCompra() {
       return;
     }
 
-    //validacion de tarjeta
-    if (
-      formData.metodoPago === "tarjeta" && (
-        !formData.numeroTarjeta?.trim() ||
-        !formData.vencimientoTarjeta?.trim() ||
-        !formData.cvvTarjeta?.trim())
-    ) {
-      setError("Complete todos los datos de la tarjeta");
-      setExito("");
-      return;
-    }
+    // ❌ Ya NO valido tarjeta porque Checkout Pro lo maneja afuera
 
-    //validacion de transferencia
     if (formData.metodoPago === "transferencia" && !formData.bancoCliente?.trim()) {
       setError("Complete el nombre del banco para la transferencia");
       setExito("");
       return;
     }
 
-    //ARMAR OBJETO DE COMPRA
-    const token = localStorage.getItem("token") || "";
-    const decoded: any = jwtDecode(token);
-    const userId = decoded.id || decoded.Id_usuario || decoded.sub;
+    //guardar el email para el pago
+    localStorage.setItem("emailCompra", formData.email);
 
-    //traer carrito del back
-    const carritoRes = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
-      headers: { "Authorization": `Bearer ${token}` }
-    });
+    setError("");
 
-    const carrito = await carritoRes.json();
-
-    const items = carrito.map((item: any) => ({
-      id_producto: item.producto.id_producto,
-      cantidad_productos: item.cantidad_productos,
-      userId: decoded.id || decoded.Id_usuario || decoded.sub,
-    }));
-
-    const compra = {
-      items,
-      Id_usuario: userId,
-      //userId: decoded.id || decoded.Id_usuario || decoded.sub,
-    };
-
-    try {
-      const response = await fetch("http://localhost:3000/ordenes/comprar", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(compra)
-      });
-
-      if (!response.ok) {
-        throw new Error("Error al procesar la compra");
-      }
-
-      //simulacion de envio exitosa
-      setError("");
-      setExito("Compra realizada con exito!");
-
-      //vaciar carrito si la compra fue exitosa
-      if (response.ok) {
-        await fetch(`http://localhost:3000/item-ordenes/vaciar-carrito/${userId}`, {
-          method: "DELETE",
-          headers: { "Authorization": `Bearer ${token}` }
-        });
-        localStorage.removeItem("carrito");
-      }
-
-    } catch (error) {
-      console.error(error);
-      setError("No se pudo realizar la compra. Intente nuevamente");
-    }
-
-
-    //limpiar el formulario
-    setFormData({
-      nombre: "",
-      email: "",
-      direccion: "",
-      metodoPago: "tarjeta",
-      numeroTarjeta: "",
-      vencimientoTarjeta: "",
-      cvvTarjeta: "",
-    });
-
-    //borrar mensaje de exito a los tres segundos
-    setTimeout(() => setExito(""), 3000);
+    //redirigir al componente PagosMP
+    navigate("/metodoDePago");
   };
-
-
 
 
   return (
@@ -183,49 +108,20 @@ function FormularioCompra() {
           value={formData.metodoPago}
           onChange={handleChange}
         >
-          <option value="tarjeta">Tarjeta</option>
+          <option value="tarjeta">Tarjeta (Mercado Pago)</option>
           <option value="transferencia">Transferencia</option>
         </select>
 
-        {/*para la tarjeta*/}
+        {/* Tarjeta (Checkout Pro) */}
         {formData.metodoPago === "tarjeta" && (
-          <>
-            <label htmlFor="numeroTarjeta">Numero de tarjeta:</label>
-            <input
-              type="text"
-              name="numeroTarjeta"
-              placeholder="XXXX-XXXX-XXXX-XXXX"
-              value={formData.numeroTarjeta}
-              onChange={handleChange}
-              autoComplete="off"
-              maxLength={19}
-            />
-
-            <label htmlFor="vencimientoTarjeta">Fecha de vencimiento:</label>
-            <input
-              type="month"
-              name="vencimientoTarjeta"
-              placeholder="MM/AA"
-              value={formData.vencimientoTarjeta}
-              onChange={handleChange}
-              autoComplete="off"
-              maxLength={7}
-            />
-
-            <label htmlFor="cvvTarjeta">Codigo de seguridad (CVV):</label>
-            <input
-              type="text"
-              name="cvvTarjeta"
-              placeholder="XXX"
-              value={formData.cvvTarjeta}
-              onChange={handleChange}
-              autoComplete="off"
-              maxLength={3}
-            />
-          </>
+          <div style={{ marginTop: "10px", color: "#444" }}>
+            <p>
+              Serás redirigido automáticamente a <strong>Mercado Pago</strong> para completar el pago de forma segura.
+            </p>
+          </div>
         )}
 
-        {/*para la transferencia*/}
+        {/* Transferencia 
         {formData.metodoPago === "transferencia" && (
           <>
             <h4>Datos de la transferencia</h4>
@@ -234,8 +130,6 @@ function FormularioCompra() {
             <p><strong>CBU:</strong> 123456789</p>
             <p><strong>Alias:</strong> wisteria.aya</p>
             <p><strong>Titular:</strong> Wisteria Tienda Esoterica</p>
-
-
 
             <label htmlFor="bancoCliente">Banco desde el cual se realiza la transferencia:</label>
             <input
@@ -277,32 +171,25 @@ function FormularioCompra() {
               autoComplete="off"
             />
           </>
-        )}
+        )}*/}
 
         <button
           type="submit"
-          onClick={handleSubmit}
-          disabled={!!exito} //deshabilita el boton si ya se envio con exito
+          disabled={!!exito}
         >
           Confirmar compra
         </button>
 
-
-        {/*muestra los msjs de error o exito*/}
         {error && (
           <div className="mensaje-error" style={{ color: "red", marginTop: "10px" }}>
             <h3>{error}</h3>
           </div>
         )}
 
-        {exito && (
-          <div className="mensaje-exito" style={{ color: "green", marginTop: "10px" }}>
-            <h3>{exito}</h3>
-          </div>
-        )}
       </form>
     </>
   );
 }
 
 export default FormularioCompra;
+
