@@ -27,11 +27,13 @@ const HamburgerMenu: React.FC = () => {
         <li><Link to="/">Inicio</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/registro">Registro</Link></li>
+        <li><Link to="/perfilUsuario">Perfil Usuario</Link></li>
         <li><Link to="/verProductos">Productos</Link></li>
         <li><Link to="/contacto">Contacto</Link></li>
         {/*<li><Link to="/quienesSomos">Quienes Somos</Link></li>*/}
         <li><Link to="/comoComprar">Como Comprar</Link></li>
         {/*<li><Link to="/pregFrecuentes">Preguntas Frecuentes</Link></li>*/}
+        <li><Link to="/historialCompras">Historial de Compras</Link></li>
         <li><button onClick={logout} >Cerrar sesión</button></li>
       </ul>
     </nav>

@@ -11,6 +11,8 @@ import ComoComprar from './components/pages/comoComprar/ComoComprar';
 import VerDatosDeContacto from './components/pages/verDatosDeContacto/VerDatosDeContacto';
 import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 import FormularioCompra from './components/pages/confirmarCompra/FormularioCompra';
+import HistorialCompras from './components/pages/verHistorial/HistorialCompras';
+import PerfilUsuario from './components/pages/editarPerfil/Perfil';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
@@ -33,7 +35,8 @@ function App() {
             <Route path="/comoComprar" element={<ComoComprar />} />
             <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
             <Route path="/confirmarCompra" element={<FormularioCompra />} />
-            {/* <Route path="/historialCompras" element={<HistorialCompras />} /> */}
+            <Route path="/historialCompras" element={<HistorialCompras />} />
+            <Route path="/perfilUsuario" element={<PerfilUsuario />} />
 
           </Route>
 

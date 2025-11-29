@@ -1,0 +1,156 @@
+/* Fondo general */
+.perfil-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  padding: 40px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Fondo animado */
+.perfil-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, #8b4fa6, transparent 60%),
+              radial-gradient(circle at 80% 80%, #522d6d, transparent 60%),
+              linear-gradient(135deg, #1c0f29, #12091a);
+  z-index: -1;
+  animation: backgroundFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundFloat {
+  0% { filter: blur(0); transform: scale(1); }
+  100% { filter: blur(2px); transform: scale(1.05); }
+}
+
+/* Tarjeta general */
+
+.perfil-card {
+  max-width: 620px;
+  margin: auto;
+  background: #ffffff;           /* TARJETA BLANCA */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 1s ease;
+  color: #3a2d4f;                /* Texto gris-violeta elegante */
+}
+
+
+/* HEADER: avatar + nombre */
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.perfil-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(140, 108, 180, 0.4); /* borde lavanda suave */
+  box-shadow: 0 0 15px rgba(165, 130, 210, 0.4);
+  animation: floatAvatar 3s ease-in-out infinite;
+}
+
+.perfil-avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(200, 180, 225, 0.4);
+  border: 3px solid rgba(140, 108, 180, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes floatAvatar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.perfil-nombre {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.perfil-email {
+  opacity: 0.8;
+}
+
+/* INFORMACIÓN */
+.perfil-info {
+  margin-top: 30px;
+  background: #f7f4fb;  /* lavanda super suave, casi blanco */
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.perfil-info h2 {
+  margin-bottom: 20px;
+  color: #3a2d4f;
+  text-align: center;
+}
+
+.perfil-info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  color: #3a2d4f;
+  font-weight: 500;
+}
+
+.perfil-info-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  opacity: 0.8;
+}
+
+/* Botón */
+.perfil-actions {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.perfil-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #9f57c1;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(159,87,193,0.6);
+}
+
+.perfil-btn:hover {
+  background: #b368da;
+  box-shadow: 0 0 20px rgba(179,104,218,0.8);
+  transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cargando / Error */
+.perfil-cargando,
+.perfil-error {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 100px;
+}

@@ -83,7 +83,8 @@ function FormularioCompra() {
 
     const compra = {
       items,
-      userId: decoded.id || decoded.Id_usuario || decoded.sub,
+      Id_usuario: userId,
+      //userId: decoded.id || decoded.Id_usuario || decoded.sub,
     };
 
     try {
@@ -104,11 +105,14 @@ function FormularioCompra() {
       setError("");
       setExito("Compra realizada con exito!");
 
-      //vaciar carrito
-      await fetch("http://localhost:3000/ordenes/vaciar-carrito", {
-        method: "DELETE",
-        headers: { "Authorization": `Bearer ${token}` }
-      });
+      //vaciar carrito si la compra fue exitosa
+      if (response.ok) {
+        await fetch(`http://localhost:3000/item-ordenes/vaciar-carrito/${userId}`, {
+          method: "DELETE",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        localStorage.removeItem("carrito");
+      }
 
     } catch (error) {
       console.error(error);

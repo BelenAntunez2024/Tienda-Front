@@ -1,6 +1,7 @@
 import "./HistorialCompras.css";
 import { useEffect, useState } from "react";
 import type { Compra } from "./interfaces/compra";
+import { jwtDecode } from "jwt-decode";
 
 
 const HistorialCompras: React.FC = () => {
@@ -17,8 +18,10 @@ const HistorialCompras: React.FC = () => {
         setLoading(true);
         // Obtén el token desde donde lo tengas guardado
         const token = localStorage.getItem("token") || ""; // o desde context, state, etc.
+        const decoded: any = jwtDecode(token);
+        const userId = decoded.id || decoded.Id_usuario || decoded.sub;
 
-        const response = await fetch("http://localhost:3001/ordenes", {
+        const response = await fetch(`http://localhost:3000/ordenes/historial/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -49,6 +52,7 @@ const HistorialCompras: React.FC = () => {
         }));
 
         setCompras(comprasMapeadas);
+
         console.log("Compras transformadas:", comprasMapeadas);
 
         setError(null);
@@ -66,16 +70,25 @@ const HistorialCompras: React.FC = () => {
   if (loading) return <div>Cargando...</div>; //agregar estilos
   if (error) return <div>Error: {error}</div>;
 
+
+
+
   return (
     <>
-
       <div className="container-historial">
         <h1>Historial de Compras</h1>
+
+        {compras.length === 0 && !loading &&(
+          <p className="sin-compras">
+            Todavía no realizaste una compra.
+          </p>
+        )}
+
         <ul>
           {/*recorre y muestra en la lisa las compras */}
           {compras.map((compra) => (
             <li key={compra.id_orden}>
-              <strong>Compra #{compra.id_orden}</strong>  {compra.fecha} - Total: ${compra.total}
+              <strong>Compra #</strong>  {compra.fecha} - Total: ${compra.total}
               <button
                 className="btn-historial-detalles"
                 onClick={() => setCompraSeleccionada(compra)}
@@ -89,20 +102,25 @@ const HistorialCompras: React.FC = () => {
 
         {compraSeleccionada && (
           <div className="detalles-compra">
-            <h2>Detalles de la compra #{compraSeleccionada.id_orden}</h2>
+            <h2>Detalles de la compra</h2>
             <ul>
-              {compraSeleccionada.items.map((item, index) => (
-                <li key={index} className="li-detalles">
+              {compraSeleccionada.items.map((item) => (
+                <li 
+                key={item.id_producto} 
+                className="li-detalles"
+                >
                   {item.nombre} - {item.cantidad} por ${item.precioUnitario} <br />
                   {item.descripcion} <br />
                   Subtotal: ${item.cantidad * item.precioUnitario}
                 </li>
               ))}
             </ul>
+
             <p className="total-compra">
               <strong>Metodo de pago:</strong> {compraSeleccionada.metodoPago} <br />
               <strong>Total:</strong> ${compraSeleccionada.total}
             </p>
+            
             <button
               className="btn-cerrar"
               onClick={() => setCompraSeleccionada(null)}>
