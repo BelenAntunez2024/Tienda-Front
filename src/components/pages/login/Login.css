@@ -1,48 +1,42 @@
-html, body{
-  margin: 0;
-  padding: 0;
-  max-height: 100%;
-  font-family: merryweather;
-}
-
-body{
-  display: flexbox;
+.main-container {
+  font-family: "Poppins", sans-serif;
+  display: flex;
   flex-direction: column;
-  background: rgb(190, 174, 219);
+  min-height: 100vh; 
 }
 
-#Logo{
-    display: block;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgb( 0, 0, 0.1);
+#Logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(0, 0, 0.1);
 }
 
 
-h1{
+h1 {
   color: black;
   text-align: center;
-  font-size: 50px;  
+  font-size: 50px;
 }
 
-.formContainer{
+.formContainer {
   width: 500px;
   margin: auto;
   padding: 20px;
-  background-color: rgb(255,255,255, 0.4);
+  background-color: rgb(255, 255, 255, 0.4);
   border-radius: 12px;
 }
 
-.input_text{
+.input_text {
   font-size: 20px;
   color: rgb(58, 45, 52);
 }
 
-input{
+input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -51,8 +45,8 @@ input{
   border-radius: 8px;
 }
 
-button{
-  background-color: rgb(117,97,157);
+.iniciarSesion {
+  background-color: rgb(117, 97, 157);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -67,8 +61,14 @@ button{
 
 }
 
-#editPassword{
-  display: block;
+.passwordOlvidada {
+  background: none;
+  border: none;
   color: rgb(58, 45, 52);
-
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 15px;
+  display: block;
+  text-align: center;
 }

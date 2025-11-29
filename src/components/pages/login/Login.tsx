@@ -2,6 +2,7 @@ import './Login.css';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './login.css'
+import VolverAtras from '../../layout/VolverAtras';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -64,9 +65,9 @@ const Login = () => {
     };
 
     return (
-        <main>
+        <div className='main-container'>
+            <VolverAtras />
             <div>
-                <img src="/public/logo.png" alt="logo" id="Logo" />
                 <img src="/public/logo.png" alt="logo" id="Logo" />
             </div>
             <h1>Wisteria</h1>
@@ -90,12 +91,14 @@ const Login = () => {
                         onChange={(e) => setContraseña(e.target.value)}
                     />
                 </div>
-                <button type="submit">Iniciar sesión</button>
+                <button className='iniciarSesion' type="submit" >Iniciar sesión</button>
                 {error && <p className="error">{error}</p>}
+
+                 <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
+
             </form>
 
-            <button onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
-        </main>
+        </div>
     );
 };
 

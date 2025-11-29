@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const HamburgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useCerrarSesion(); 
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -33,6 +34,7 @@ const HamburgerMenu: React.FC = () => {
         <li><Link to="/quienesSomos">Quienes Somos</Link></li>
         <li><Link to="/comoComprar">Como Comprar</Link></li>
         <li><Link to="/pregFrecuentes">Preguntas Frecuentes</Link></li>
+        <li><button onClick={logout} >Cerrar sesión</button></li>
       </ul>
     </nav>
   );
