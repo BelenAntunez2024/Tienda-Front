@@ -6,8 +6,10 @@ import HomePage from "./components/pages/homepage/Homepage";
 import Login from './components/pages/login/Login';
 import Registro from './components/pages/registro/Registro';
 import VerProductos from './components/pages/verProductos/page/VerProductos';
-import ProductDetail from './components/pages/detallesProductos/ProductDetail';
+import EditarPerfil from './components/pages/editarPerfil/EditarPerfil';
 import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
+import PerfilUsuario from './components/pages/editarPerfil/Perfil';
+import ProductDetail from './components/pages/detallesProductos/ProductDetail';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
@@ -23,8 +25,10 @@ function App ()  {
           {/* ======================================= */}
           <Route element={<MainLayout />}>
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
+            <Route path="/perfil" element={<PerfilUsuario />} />
+            <Route path="/editar-perfil" element={<EditarPerfil />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/verProductos" element={<VerProductos />} />
+            <Route path="/verProductos" element={<VerProductos/>} />
             <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
             <Route path='/producto/:id' element={<ProductDetail/>} />
 
@@ -51,8 +55,19 @@ function App ()  {
       <Footer></Footer>*/}
 
 
+      {/*<Navbar/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<VerProductos/>} />
+        <Route path='/producto/:id' element={<ProductDetail/>} />
+      </Routes>
+    </BrowserRouter>
+      <Footer></Footer>*/}
+
+
     </>
   )
 }
 
 export default App;
+

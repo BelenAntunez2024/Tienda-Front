@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
-import type { Product } from "../verProductos/interfaces/Product";
-import { useState, useEffect } from "react";
-import type { Comment } from "./interfaces/comment";
-import "./ProductDetail.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import type { Comment } from "./interfaces/Comment";
 import type { CarritoItem } from "../funcionalidadCarrito/interfaces/CarritoItem";
+import type { Product } from "../verProductos/interfaces/Product";
+
 
 
 const ProductDetail: React.FC = () =>{

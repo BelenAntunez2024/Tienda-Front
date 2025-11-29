@@ -1,5 +1,5 @@
 
-main{
+/*main{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,9 +7,9 @@ main{
   background: #beaedb;
   font-family: "Cinzel", serif;
   color: #e6eff7;
-}
+}*/
 
-section{
+.section editar-perfil{
   background: #e6eff7;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
@@ -86,4 +86,3 @@ section h2{
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
-

@@ -16,14 +16,14 @@ const Login = () => {
             setError("Todos los campos son obligatorios");
             return;
         }
-
+        console.log("Enviando datos de login:", { email, contraseña });
         try {
             const response = await fetch("http://localhost:3000/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, contraseña }),
+                body: JSON.stringify({ email, password: contraseña}),
             });
 
             if (!response.ok) {
@@ -64,7 +64,6 @@ const Login = () => {
     };
 
     return (
-    return (
         <main>
             <div>
                 <img src="/public/logo.png" alt="logo" id="Logo" />
@@ -72,7 +71,6 @@ const Login = () => {
             </div>
             <h1>Wisteria</h1>
 
-            <form className="formContainer" onSubmit={handleSubmit}>
             <form className="formContainer" onSubmit={handleSubmit}>
                 <div>
                     <input
