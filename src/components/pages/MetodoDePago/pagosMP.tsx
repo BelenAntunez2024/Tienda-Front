@@ -13,7 +13,7 @@ function PagosMP() {
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // 👉 Inicializar Mercado Pago con locale obligatorio
+  //Inicializar Mercado Pago con locale obligatorio
   useEffect(() => {
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
     if (!publicKey) {
@@ -24,7 +24,7 @@ function PagosMP() {
     initMercadoPago(publicKey, { locale: "es-AR" });
   }, []);
 
-  // 👉 Obtener productos + email guardado
+  //Obtener productos + email guardado
   useEffect(() => {
     const fetchProductos = async () => {
       try {
@@ -64,7 +64,7 @@ function PagosMP() {
     fetchProductos();
   }, []);
 
-  // 👉 Llamar al backend para crear la preferencia
+  //Llamar al backend para crear la preferencia
   const pagar = async () => {
     try {
       const res = await fetch("https://multiply-thankful-tate.ngrok-free.dev/mercado-pago/crear-preferencia", {

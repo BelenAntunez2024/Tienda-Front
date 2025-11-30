@@ -17,8 +17,7 @@ import PagosMP from './components/pages/MetodoDePago/pagosMP';
 import PagoExitoso from './components/pages/MetodoDePago/PagoExitoso';
 import PagoFallido from './components/pages/MetodoDePago/PagoFallido';
 import PagoPendiente from './components/pages/MetodoDePago/PagoPendiente';
-//import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
-//import Footer from "./components/layaut/footer";
+
 
 function App ()  {
 
@@ -54,20 +53,10 @@ function App ()  {
           <Route path="/registro" element={<Registro />} />
 
 
-          {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
+          <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
 
         </Routes>
       </BrowserRouter>
-      {/*<Navbar/>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<VerProductos/>} />
-        <Route path='/producto/:id' element={<ProductDetail/>} />
-      </Routes>
-    </BrowserRouter>
-      <Footer></Footer>*/}
-
-
     </>
   )
 }

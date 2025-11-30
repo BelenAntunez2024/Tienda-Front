@@ -5,7 +5,6 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "./Homepage.css";
 import { BsStars } from "react-icons/bs";
 
-
 const HomePage = () => {
   return (
     <div style={{ width: "100%" }}>
@@ -69,7 +68,7 @@ const HomePage = () => {
           </SwiperSlide>
         </Swiper>
       </section>
-      {/* 🔮 NUESTRA HISTORIA */}
+      {/* NUESTRA HISTORIA */}
       <section className="about-wisteria">
         <h2>✨ Wisteria: Magia Real, Ahora También Online ✨</h2>
 

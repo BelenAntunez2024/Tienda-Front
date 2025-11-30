@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import type { CarritoItem } from "./interfaces/CarritoItem";
 import '../verProductos/ProductCard.css';
-
-//AGREGADO:
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-
 
 const FuncionalidadCarrito = () => {
 

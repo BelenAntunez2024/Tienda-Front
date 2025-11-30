@@ -4,7 +4,6 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import type { CredentialResponse } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
-
 const Registro = () => {
   const [formData, setFormData] = useState({
     nombreCompleto: "",
@@ -61,9 +60,6 @@ const Registro = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-      //const data = await response.json();
-      //localStorage.setItem("token", data.token);
-
       alert("Registro exitoso");
       navigate("/login");
 
@@ -71,27 +67,9 @@ const Registro = () => {
       console.error("Error al registrar:", err);
       setError("Error al registrar. Verificá tus credenciales.");
     }
-
-    
-
-    // Simulación JSON con LocalStorage
-    /*const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-    const usuarioExistente = usuarios.find((u: any) => u.email === formData.email);
-
-    if (usuarioExistente) {
-      setError("Ya existe un usuario con este email");
-      return;
-    }
-
-    usuarios.push(formData);
-    localStorage.setItem("Usuarios", JSON.stringify(usuarios));*/
-
-    //alert("Registro Exitoso");
-    //window.location.href = "/login";
   };
+
   // Manejar login con Google
-
-
   useEffect(() => {
     /* @ts-ignore */
     if (window.google && btnRef.current) {
@@ -106,9 +84,6 @@ const Registro = () => {
         theme: "outline",
         size: "large",
       });
-
-      // (opcional) One Tap
-      // google.accounts.id.prompt();
     }
   }, []);
 
@@ -202,6 +177,5 @@ const Registro = () => {
     </GoogleOAuthProvider>
   );
 };
-
 
 export default Registro;

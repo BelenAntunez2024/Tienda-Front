@@ -3,10 +3,8 @@ import { useEffect, useState } from "react";
 import type { Compra } from "./interfaces/compra";
 import { jwtDecode } from "jwt-decode";
 
-
 const HistorialCompras: React.FC = () => {
 
-  //compras de ejemplo - BORRAR CUANDO ESTE CONECTADO CON BACKEND
   const [compras, setCompras] = useState<Compra[]>([]);
   const [compraSeleccionada, setCompraSeleccionada] = useState<Compra | null>(null);
   const [loading, setLoading] = useState(true);

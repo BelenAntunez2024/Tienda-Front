@@ -1,5 +1,3 @@
-/*Mostrar dire, email,redes, horarios, q&a */
-
 import IconEnvelope from "../../icons/IconEnvelope";
 import IconIG from "../../icons/IconIG";
 import IconLocation from "../../icons/IconLocation";
@@ -16,7 +14,6 @@ const VerDatosDeContacto = () => {
     const [error, setError] = useState(''); //para mostrar errores de validacion
     const [mensajeEnviado, setMensajeEnviado] = useState(false);
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -28,7 +25,7 @@ const VerDatosDeContacto = () => {
             setError("El email no es válido");
             return;
         }
-        // Construir el objeto con los nombres correctos para el backend: (VER SI DEJARLA COMO CONST O INTERFACE)
+
         const datos = {
             email: emailIngresado,
             clasificacion_mjs: tipoConsulta.toLowerCase(), // en minúscula según tu ENUM

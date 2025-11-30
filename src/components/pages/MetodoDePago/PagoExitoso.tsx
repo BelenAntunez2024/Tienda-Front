@@ -6,7 +6,7 @@ function PagoExitoso() {
   const paymentId = searchParams.get('payment_id');
 
   useEffect(() => {
-    // Aquí puedes limpiar el carrito o realizar otras acciones post-pago
+    //Esto es para limpiar el carrito o realizar otras acciones post-pago
     localStorage.removeItem('emailCompra');
   }, []);
 

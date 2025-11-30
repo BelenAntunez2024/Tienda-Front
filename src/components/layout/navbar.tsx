@@ -1,5 +1,5 @@
 import "./navbar.css";
-import HamburgerMenu from "./HamburgerMenu"; // 👈 importamos el menú
+import HamburgerMenu from "./HamburgerMenu"; //importamos el menú
 import { Link } from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       {/* NAVBAR */}
       <nav className="navbar">
-        {/* 👈 Menú hamburguesa a la izquierda */}
+        {/*  Menú hamburguesa a la izquierda */}
         <div className="nav-left">
           <HamburgerMenu />
         </div>

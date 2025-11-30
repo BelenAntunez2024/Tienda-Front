@@ -1,8 +1,6 @@
 import "./AlertaCustom.css";
 import { useNavigate } from "react-router-dom";
 
-
-
 interface AlertaCustomProps {
   mensaje: string;
   onLogin: () => void;
@@ -12,7 +10,6 @@ interface AlertaCustomProps {
 
 const AlertaCustom: React.FC<AlertaCustomProps> = ({ mensaje, onCerrar }) => {
   const navigate = useNavigate();
-
 
   return (
     <>
