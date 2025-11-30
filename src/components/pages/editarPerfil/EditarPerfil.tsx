@@ -6,12 +6,12 @@ const EditarPerfil = () => {
 
   //HOOKS DE ESTADO
   const [editData, setEditData] = useState({ //guarda los datos del form
-    nombreCompleto: "",
-    email: "",
-    password: "",
-    fecha: "",
-    foto: ""
-  });
+        nombreCompleto: "",
+        email: "",
+        password: "",
+        fecha: "",
+        foto: ""
+    });
 
 
   const [perfilActualizado, setPerfilActualizado] = useState(false); //para mostrar mensaje de exito
@@ -27,7 +27,7 @@ const EditarPerfil = () => {
   };
 
   //HANDLER DE ENVIO
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
 
     // Validaciones
@@ -42,18 +42,18 @@ const EditarPerfil = () => {
     }
 
     if (editData.password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres");
-      return;
+        setError("La contraseña debe tener al menos 6 caracteres");
+        return;
     }
 
-    try {
+    try{
       const token = localStorage.getItem('token');
 
       const response = await fetch(`http://localhost:3000/usuario/id`, {
         method: 'PUT',
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+           "Content-Type": "application/json",
+           "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           nombreCompleto: editData.nombreCompleto,
@@ -65,7 +65,7 @@ const EditarPerfil = () => {
         }),
       });
 
-      if (!response.ok) {
+      if(!response.ok){
         throw new Error(`Error: ${response.status}`);
       }
 
@@ -74,7 +74,7 @@ const EditarPerfil = () => {
       alert("Perfil actualizado correctamente");
       console.log("Datos actualizados:", data);
 
-    } catch (err) {
+    } catch(err){
       console.error("Error al actualizar perfil:", err);
       setError("Error al actualizar perfil. Intentelo de nuevo.");
 
@@ -86,7 +86,7 @@ const EditarPerfil = () => {
 
   return (
 
-    //Vista del componente
+  //Vista del componente
 
     <>
       <section>
@@ -153,7 +153,7 @@ const EditarPerfil = () => {
             name="foto"
             value={editData.foto}
             onChange={handleChange}
-          //required
+            //required
           />
 
           <button type="submit">Guardar</button>
@@ -161,13 +161,13 @@ const EditarPerfil = () => {
 
 
         {perfilActualizado && (
-          <div id="message-sent" style={{ color: 'green', marginTop: '10px' }}>
+          <div id="message-sent" style={{color: 'green', marginTop: '10px' }}>
             <h3>Perfil actualizado con exito!</h3>
           </div>
         )}
 
         {error && (
-          <div id="message-sent" style={{ color: 'red', marginTop: '10px' }}>
+          <div id="message-sent" style={{color: 'red', marginTop: '10px' }}>
             <h3>{error}</h3>
           </div>
         )}

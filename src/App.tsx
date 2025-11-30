@@ -17,6 +17,7 @@ import PagosMP from './components/pages/MetodoDePago/pagosMP';
 import PagoExitoso from './components/pages/MetodoDePago/PagoExitoso';
 import PagoFallido from './components/pages/MetodoDePago/PagoFallido';
 import PagoPendiente from './components/pages/MetodoDePago/PagoPendiente';
+import EditarPerfil from './components/pages/editarPerfil/EditarPerfil';
 
 
 function App ()  {
@@ -40,6 +41,7 @@ function App ()  {
             <Route path="/confirmarCompra" element={<FormularioCompra />} />
             <Route path="/historialCompras" element={<HistorialCompras />} />
             <Route path="/perfilUsuario" element={<PerfilUsuario />} />
+            <Route path="/editar-perfil" element={<EditarPerfil />} />
             <Route path="/metodoDePago" element={<PagosMP />} />
             <Route path="/success" element={<PagoExitoso />} />
             <Route path="/failure" element={<PagoFallido />} />
