@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./footer.css"
 
 const Footer = () => {
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="email-subscribe">
         <p>Dejanos tu mail para recibir novedades</p>
         <div className="subscribe-form">
-          <input type="email" placeholder="Tu email" />
+          <input type="email" placeholder="Tu email" className="input-footer"/>
           <button>Registrate</button>
         </div>
       </div>
@@ -70,9 +71,12 @@ const Footer = () => {
         {/* Contact Section */}
         <div className="contact-info">
           <h4 className="footer-title">Contacto</h4>
-          <p className="contact-p">tnmontegrande@ayurdevas.com</p>
+          <p className="contact-p">TiendaWisteria666@gmail.com</p>
           <p className="contact-p">Rojas 86, Monte Grande</p>
-          <a className="contact-p" href="#">Botón de arrepentimiento</a>
+          <Link to="/contacto">
+              <button className="footer-button" >Botón de arrepentimiento</button>
+          </Link>
+
         </div>
       </div>
     </footer>
