@@ -1,3 +1,4 @@
+import VolverAtras from "../../layout/VolverAtras";
 import "./EditarPerfil.css";
 import { useState } from "react";
 
@@ -84,12 +85,12 @@ const EditarPerfil = () => {
 
 
   return (
-
-    //Vista del componente
-
     <>
-      <section>
-        <h2>Editar Perfil</h2>
+      <div className="main-container">
+
+        <VolverAtras hasNavbar={true} />
+
+        <h2 id="editar-titulo">Editar Perfil</h2>
 
         <form className="formulario-editar-perfil" onSubmit={handleSubmit}>
 
@@ -171,7 +172,7 @@ const EditarPerfil = () => {
           </div>
         )}
 
-      </section>
+      </div>
     </>
   );
 };

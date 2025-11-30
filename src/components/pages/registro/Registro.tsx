@@ -3,6 +3,7 @@ import "./StylesRegistro.css";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import type { CredentialResponse } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import BackButton from '../../layout/VolverAtras';
 
 
 const Registro = () => {
@@ -132,11 +133,13 @@ const Registro = () => {
   };
 
   return (
+    <div className="main-container-registro">
     <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
       <section className="registro-page">
         <div className="registro-box">
+          <BackButton />
           <div className="registro-header">
-            <img src="./public/img/logo.png" alt="logo" className="logo" />
+            <img src="img/logo.png" alt="logo" className="logo" />
             <h1 className="title">WISTERIA</h1>
             <h2 className="subTitle">Registrate</h2>
           </div>
@@ -186,7 +189,7 @@ const Registro = () => {
               />
             </div>
 
-            <button type="submit" className="btn">Registrarse</button>
+            <button type="submit" className="btn-registro">Registrarse</button>
           </form>
           {error && <p className="error">{error}</p>}
 
@@ -200,6 +203,7 @@ const Registro = () => {
         </div>
       </section>
     </GoogleOAuthProvider>
+    </div>
   );
 };
 

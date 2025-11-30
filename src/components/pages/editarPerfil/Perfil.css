@@ -10,33 +10,19 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Fondo animado */
-.perfil-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, #8b4fa6, transparent 60%),
-              radial-gradient(circle at 80% 80%, #522d6d, transparent 60%),
-              linear-gradient(135deg, #1c0f29, #12091a);
-  z-index: -1;
-  animation: backgroundFloat 20s ease-in-out infinite alternate;
-}
 
-@keyframes backgroundFloat {
-  0% { filter: blur(0); transform: scale(1); }
-  100% { filter: blur(2px); transform: scale(1.05); }
-}
 
 /* Tarjeta general */
 
 .perfil-card {
   max-width: 620px;
   margin: auto;
-  background: #ffffff;           /* TARJETA BLANCA */
+  background: #ffffff;           
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
   animation: fadeIn 1s ease;
-  color: #3a2d4f;                /* Texto gris-violeta elegante */
+  color: #3a2d4f;                
 }
 
 
@@ -68,12 +54,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@keyframes floatAvatar {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
 }
 
 .perfil-nombre {
@@ -123,20 +103,22 @@
 }
 
 .perfil-btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background: #9f57c1;
+   background-color: rgb(117, 97, 157);
   color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
-  box-shadow: 0 0 10px rgba(159,87,193,0.6);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .perfil-btn:hover {
-  background: #b368da;
-  box-shadow: 0 0 20px rgba(179,104,218,0.8);
+  background: #3f2a52;
   transform: scale(1.05);
 }
 
