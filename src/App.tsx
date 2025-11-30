@@ -10,6 +10,7 @@ import EditarPerfil from './components/pages/editarPerfil/EditarPerfil';
 import FuncionalidadCarrito from './components/pages/funcionalidadCarrito/FuncionalidadCarrito';
 import PerfilUsuario from './components/pages/editarPerfil/Perfil';
 import ProductDetail from './components/pages/detallesProductos/ProductDetail';
+import VerDatosDeContacto from './components/pages/verDatosDeContacto/VerDatosDeContacto';
 //import HistorialCompras from './components/pages/verHistorial/HistorialCompras'
 //import Footer from "./components/layaut/footer";
 
@@ -31,7 +32,7 @@ function App ()  {
             <Route path="/verProductos" element={<VerProductos/>} />
             <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
             <Route path='/producto/:id' element={<ProductDetail/>} />
-
+            <Route path="/contacto" element={<VerDatosDeContacto />} />
           </Route>
 
           {/* ======================================= */}
@@ -41,29 +42,10 @@ function App ()  {
           <Route path="/registro" element={<Registro />} />
 
 
-          {/* <Route path="*" element={<h1>404 - Página no encontrada</h1>} /> */}
+          <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
 
         </Routes>
       </BrowserRouter>
-      {/*<Navbar/>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<VerProductos/>} />
-        <Route path='/producto/:id' element={<ProductDetail/>} />
-      </Routes>
-    </BrowserRouter>
-      <Footer></Footer>*/}
-
-
-      {/*<Navbar/>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<VerProductos/>} />
-        <Route path='/producto/:id' element={<ProductDetail/>} />
-      </Routes>
-    </BrowserRouter>
-      <Footer></Footer>*/}
-
 
     </>
   )
