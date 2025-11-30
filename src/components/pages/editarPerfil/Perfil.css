@@ -2,12 +2,9 @@
 .perfil-container {
   position: relative;
   min-height: 100vh;
-  width: 100%;
-  color: #fff;
   overflow: hidden;
   padding: 40px;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 
@@ -103,7 +100,7 @@
 }
 
 .perfil-btn {
-   background-color: rgb(117, 97, 157);
+  background-color: rgb(117, 97, 157);
   color: white;
   border: none;
   padding: 10px 20px;

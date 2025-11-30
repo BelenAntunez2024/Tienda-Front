@@ -64,8 +64,10 @@ export default function PerfilUsuario() {
   }
 
   return (
-  <main className="perfil-container">
+    <>
     <VolverAtras hasNavbar={true} />
+
+  <main className="perfil-container">
 
     <section className="perfil-card">
 
@@ -118,6 +120,7 @@ export default function PerfilUsuario() {
 
     </section>
   </main>
+  </>
 );
 }
 

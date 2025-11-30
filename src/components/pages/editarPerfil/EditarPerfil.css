@@ -6,6 +6,8 @@
   box-shadow: 0 0 15px #3a2d3431;
   width: 100%;
   max-width: 500px;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 #editar-titulo{
