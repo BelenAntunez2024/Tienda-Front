@@ -22,3 +22,7 @@
 .menu-open .boton-atras {
   display: none;
 }
+.with-navbar {
+  top: 120px; /* Baja el botón para que no quede bajo el navbar */
+  margin: 15px;
+}

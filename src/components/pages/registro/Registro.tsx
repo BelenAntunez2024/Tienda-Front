@@ -3,7 +3,7 @@ import "./StylesRegistro.css";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import type { CredentialResponse } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import BackButton from '../../layout/VolverAtras';
+import VolverAtras from "../../layout/VolverAtras";
 
 
 const Registro = () => {
@@ -137,7 +137,7 @@ const Registro = () => {
     <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
       <section className="registro-page">
         <div className="registro-box">
-          <BackButton />
+          <VolverAtras hasNavbar={true} />
           <div className="registro-header">
             <img src="img/logo.png" alt="logo" className="logo" />
             <h1 className="title">WISTERIA</h1>
