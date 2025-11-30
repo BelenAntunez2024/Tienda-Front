@@ -1,4 +1,4 @@
-.boton-atras {
+.boton-atras { 
     position: absolute;
     top: 10px;
     left: 10px;
@@ -17,4 +17,8 @@
 
 .boton-atras:hover {
     background: white;
+}
+
+.menu-open .boton-atras {
+  display: none;
 }
