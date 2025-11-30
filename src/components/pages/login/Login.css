@@ -1,5 +1,4 @@
-.main-container {
-  font-family: "Poppins", sans-serif;
+.main-container-login {
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
@@ -16,9 +15,7 @@
   box-shadow: 0 0 10px rgb(0, 0, 0.1);
 }
 
-
-h1 {
-  color: black;
+.login-titulo {
   text-align: center;
   font-size: 50px;
 }
@@ -26,25 +23,17 @@ h1 {
 .formContainer {
   width: 500px;
   margin: auto;
+  margin-bottom: 10px;
   padding: 20px;
-  background-color: rgb(255, 255, 255, 0.4);
+  background-color: white;
   border-radius: 12px;
 }
 
-.input_text {
-  font-size: 20px;
-  color: rgb(58, 45, 52);
+.formContainer label {
+  display: block;
+  margin: 5px;
+  font-weight: bold;
 }
-
-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 8px;
-}
-
 .iniciarSesion {
   background-color: rgb(117, 97, 157);
   color: white;
@@ -58,7 +47,11 @@ input {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
 
+.iniciarSesion:hover{
+  background: #3f2a52;
+  box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
 }
 
 .passwordOlvidada {

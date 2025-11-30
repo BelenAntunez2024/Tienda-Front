@@ -1,7 +1,6 @@
-import './Login.css';
+import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './login.css'
 import VolverAtras from '../../layout/VolverAtras';
 
 const Login = () => {
@@ -65,28 +64,28 @@ const Login = () => {
     };
 
     return (
-        <div className='main-container'>
+        <div className='main-container-login'>
             <VolverAtras />
             <div>
-                <img src="/public/logo.png" alt="logo" id="Logo" />
+                <img src="/img/logo.png" alt="logo" id="Logo" />
             </div>
-            <h1>Wisteria</h1>
+            <h1 className="login-titulo">Wisteria</h1>
 
             <form className="formContainer" onSubmit={handleSubmit}>
                 <div>
+                    <label htmlFor="email">Email</label>
                     <input
                         type="text"
                         placeholder="Ingresa tu email"
-                        className="input_text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
+                    <label htmlFor="password">Contraseña</label>
                     <input
                         type="password"
                         placeholder="Ingresa tu contraseña"
-                        className="input_text"
                         value={contraseña}
                         onChange={(e) => setContraseña(e.target.value)}
                     />
