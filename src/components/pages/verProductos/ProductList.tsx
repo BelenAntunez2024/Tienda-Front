@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './ProductList.css';
 import ProductCard from "./ProductCard";
 import type { Product } from "./interfaces/Product";
+import VolverAtras from "../../layout/VolverAtras";
 
 //React.FC indica que es un componente funcional de React
 const ProductList: React.FC = () => {
@@ -49,11 +50,15 @@ const ProductList: React.FC = () => {
 
   return (
     <>
-      <div className="div-product-list">
-        {/*mapeo de la array de productos y para cada producto se renderiza un ProductCard*/}
-        {products.map((product) => (
-          <ProductCard key={product.id_producto} product={product} />
-        ))}
+      <div className="main-container">
+        <VolverAtras hasNavbar={true} />
+
+        <div className="div-product-list">
+          {/*mapeo de la array de productos y para cada producto se renderiza un ProductCard*/}
+          {products.map((product) => (
+            <ProductCard key={product.id_producto} product={product} />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -1,95 +1,76 @@
-/*FONDO QUE CUBRE TODA LA PANTALLA*/
-html, body{
-  height: 100%;
-  margin: 0;
-
-}
-.registro-page{
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom right, #3f2a52, #75619d, #beaedb);
-    font-family: "Poppins", sans-serif;
-    
+.registro-page {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* CAJA CENTRAL*/
-.registro-box{
- background: white;
- width: 80%;
- max-width: 400px;
- padding: 2rem;
- border-radius: 16px;
- box-shadow: 0px 4px 20px rgba(0,0,0,0.25);
- text-align: center;   
+.registro-box {
+  background: white;
+  width: 80%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
 
 }
 
 
-.logo{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #6a4c93;
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #6a4c93;
 }
 
-.title{
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #3a2d34 ;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    margin-top: 0.5rem;
-}
-.subTitle{
-    color: #6a4c93 ;
-    margin-bottom: 1rem;
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3a2d34;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
 }
 
- /*Inputs*/
-.registro-form{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: left;
-    padding: 5px;
-    
+.subTitle {
+  color: #6a4c93;
+  margin-bottom: 1rem;
 }
 
-.registro-form label{
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #333;
+/*Inputs*/
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  padding: 5px;
+
 }
 
-
-.registro-form input{
- padding: 0.7rem;
- border: 1px solid #ccc;
- border-radius: 8px;
- transition: border 0.3s;
-}
 
 /*Boton*/
-.btn{
+.btn-registro {
   margin-top: 1rem;
+  width: 150px;
   padding: 0.7rem;
   background-color: #6a4c93;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s; 
-}
-.btn:hover{
- background:#56357e; 
+  transition: 0.3s;
 }
 
- /*ERROR*/
- .error{
-    color: red;
-    margin-top: 1rem;
-    font-size: 0.9rem;
+.btn-registro:hover {
+  background: #56357e;
+}
+
+/*ERROR*/
+.error {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
 /* BOTON Google*/
