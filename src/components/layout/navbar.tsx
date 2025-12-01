@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="nav-left">
           <HamburgerMenu />
         </div>
-        
+
         {/* Logo en el centro */}
         <div className="nav-center">
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -32,13 +32,16 @@ const Navbar = () => {
         </div>
       </nav>
 
+
+
+
       {/* BARRA DE BUSQUEDA */}
-      <div className="search-bar">
-        <input type="text" placeholder="Buscar..." />
-        <button>
-          <i className="fas fa-search"></i>
-        </button>
-      </div>
+        <div className="search-bar">
+          <input type="text" placeholder="Buscar..." />
+          <button>
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
     </>
   );
 };

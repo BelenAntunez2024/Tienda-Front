@@ -219,27 +219,31 @@ const ProductDetail: React.FC = () => {
 
           {/* Columna derecha */}
           <div className="product-info">
-            <h2>{product.nombre}</h2>
+            <h2 className="product-name">{product.nombre}</h2>
             <h3 className="product-price">${product.precio}</h3>
             <p className="discount">
               ${(product.precio * 0.8).toFixed(2)} con 20% OFF transferencia
             </p>
 
             {/*Metodos de pago*/}
-            <div className="pagos">
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"
-                alt="Visa" />
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png"
-                alt="Mastercard" />
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
-                alt="transferencia" />
+            <div className="pago-promo-container">
+              <div className="metodo-pago">
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"
+                  alt="Visa" />
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png"
+                  alt="Mastercard" />
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
+                  alt="transferencia" />
+              </div>
+
+              <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
             </div>
 
-            <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
             {/*Cantidades*/}
             <div className="cantidad-section">
               <label>Cantidad:</label>
               <input
+                className="input-cantidad"
                 type="number"
                 min="1"
                 max="10"
@@ -249,8 +253,9 @@ const ProductDetail: React.FC = () => {
                 }
               />
             </div>
+
             {/* Botones */}
-            <div className="buttons">
+            <div className="buttons-container">
               <button
                 className="btn-add"
                 onClick={() => agregarAlCarrito(product)}
@@ -260,7 +265,9 @@ const ProductDetail: React.FC = () => {
               </button>
 
             </div>
-            <div className="MetodoEnvio">
+
+            {/*Metodos de envio*/}
+            <div className="metodoEnvio">
               <p><strong>Consulta tu envio por codigo postal: </strong></p>
               <button
                 className="btn-cp"
@@ -279,14 +286,17 @@ const ProductDetail: React.FC = () => {
 
         {/* Descripción */}
         <div className="product-description">
-          <h3>Descripción del producto</h3>
-          <p>{product.descripcion}</p>
+          <h3 className="description-tittle">Descripción del producto</h3>
+          <p className="p-description">{product.descripcion}</p>
         </div>
 
+        <hr className="divisor"></hr>
+
         {/* Opiniones */}
-        <div className="comentarios">
-          <h3>Dejanos tu opinión sobre el producto:</h3>
+        <div className="comments-container">
+          <h3 className="comments-tittle">Dejanos tu opinión sobre el producto:</h3>
           <textarea
+            className="comments-textarea"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Escribe tu comentario"
@@ -306,7 +316,9 @@ const ProductDetail: React.FC = () => {
             ))}
           </div>
 
-          <button onClick={handleAddComment}>Enviar comentario</button>
+          <button
+            className="comments-btn"
+            onClick={handleAddComment}>Enviar comentario</button>
 
           <ul>
             {comments.map((c) => (
@@ -340,16 +352,41 @@ const ProductDetail: React.FC = () => {
 
         {/* Productos sugeridos */}
         <div className="related-products">
-          <h3>Podés comprar también:</h3>
+          <h3 className="related-tittle">Podés comprar también</h3>
           <div className="related-grid">
             {suggestedProducts.map((p) => (
-              <div key={p.id_producto} className="related-item">
-                <Link to={`/producto/${p.id_producto}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <img src={p.imagen} alt={p.nombre} />
-                  <p>{p.nombre}</p>
-                  <span>${p.precio}</span>
+              <div
+                key={p.id_producto}
+                className="related-item"
+              >
+
+                <Link
+                  to={`/producto/${p.id_producto}`}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit'
+                  }}
+                >
+
+                  <img
+                    src={p.imagen}
+                    alt={p.nombre}
+                  />
+
+                  <p
+                    className="name-related">
+                    {p.nombre}
+                  </p>
+
+                  <p
+                    className="price-related">
+                    <span>${p.precio}</span>
+                  </p>
+
                   <div className="rediProduct">
-                    <button className="btn-vermas">Ver mas</button>
+                    <button className="btn-vermas">
+                      Ver mas
+                    </button>
                   </div>
                 </Link>
               </div>

@@ -135,7 +135,7 @@ const FuncionalidadCarrito = () => {
 
 
     return (
-        <main>
+        <>
             <VolverAtras hasNavbar={true} />
             <h1 className="carrito-titulo"> Carrito </h1>
 
@@ -146,26 +146,50 @@ const FuncionalidadCarrito = () => {
                         <p className='carrito-vacio'>Carrito vacío</p>
                     ) : (
                         carrito.map((producto) => (
-                            <div key={producto.id_item_orden} className="card-carrito">
-                                <h2 className="nombre-producto">{producto.nombre}</h2>
-                                <img src={producto.imagen} alt={producto.nombre} width={200} />
+                            <div
+                                key={producto.id_item_orden}
+                                className="card-carrito"
+                            >
+
+                                <h2
+                                    className="nombre-producto">{producto.nombre}
+                                </h2>
+
+                                <img
+                                    src={producto.imagen}
+                                    alt={producto.nombre}
+                                    width={200}
+                                />
+
                                 <div className="product-text-info">
                                     <p className="p-precio">
                                         Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
                                     </p>
-                                    <p>Cantidad: {producto.cantidad}</p>
+
+                                    <p>
+                                        Cantidad: {producto.cantidad}
+                                    </p>
                                 </div>
+
                                 <div className="btn-container">
-                                    <button className="btn-sumar"
-                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
+                                    <button
+                                        className="btn-sumar"
+                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}
+                                    >
                                         +
                                     </button>
-                                    <button className="btn-restar"
-                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
+
+                                    <button
+                                        className="btn-restar"
+                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}
+                                    >
                                         -
                                     </button>
-                                    <button className="btn-eliminar"
-                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
+
+                                    <button
+                                        className="btn-eliminar"
+                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}
+                                    >
                                         Eliminar
                                     </button>
                                 </div>
@@ -173,13 +197,13 @@ const FuncionalidadCarrito = () => {
                         )))}
                 </div>
             </div>
-            
+
             <Link to={`/confirmarCompra`} className="link-no-decoration">
                 <button className="btn-confirmar-compra">
                     Confirmar compra
                 </button>
             </Link>
-        </main>
+        </>
     )
 }
 export default FuncionalidadCarrito

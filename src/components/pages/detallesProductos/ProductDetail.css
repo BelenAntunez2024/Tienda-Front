@@ -1,6 +1,12 @@
 .product-detail {
   margin: 50px auto;
+  margin-left: 2.8rem;
+  margin-right: 2.8rem;
   padding: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.13);
 }
 
 .product-container {
@@ -9,13 +15,18 @@
   justify-content: center;
   gap: 60px;
   align-items: flex-start;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
+
 /* === Imagen === */
 .product-image img {
   width: 400px;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+
 /* === Info === */
 .product-info {
   flex: 1;
@@ -27,97 +38,172 @@
   font-size: 2rem;
 }
 
+.product-name {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .product-price {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .discount {
   color: #388e3c;
   font-weight: bold;
   margin: 8px 0;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.pagos img {
+.pago-promo-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.metodo-pago {
+  background: linear-gradient(180deg, #f8f5ff 0%, #ece3ff 100%);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1.3rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(90, 60, 130, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.metodo-pago img {
   width: 45px;
-  margin-right: 8px;
+  margin-right:1rem;
+  border-radius: 0.2rem;
+  border: solid 0.1rem transparent;
+  border-color: #b3b1b10e;
 }
 
 .promo {
   font-size: 0.9rem;
   color: #555;
-  background-color: #f3e5f5;
+  background-color: #f3e5f594;
   padding: 8px;
-  border-radius: 8px;
-  margin: 10px 0;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.cantidad-section{
-  margin-top: 10px;
+
+.cantidad-section {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.cantidad-section input {
-  width: 50px;
+.input-cantidad {
+  width: 3.5rem;
   padding: 5px;
   margin: 5px;
+  margin-left: 0.5rem;
   border-radius: 6px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
+.buttons-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
 
+.metodoEnvio {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
 
-.btn-add, .btn-buy , .btn-cp{
+.btn-add,
+.btn-buy,
+.btn-cp {
   background: #75619d;
   color: white;
   border: none;
   padding: 12px 20px;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin: 3px;
 }
 
-.btn-add:hover , .btn-buy:hover , .btn-cp:hover , .btn-vermas:hover{
-    background: #3f2a52;
-    box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
+.btn-cp {
+  margin-right: 1rem;
+}
+.btn-add:hover,
+.btn-buy:hover,
+.btn-cp:hover,
+.btn-vermas:hover {
+  background: #3f2a52;
+  box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
 }
 
-.btn-add:hover , .btn-buy:hover{
-    transform: scale(1.07);
-
+.btn-add:hover,
+.btn-buy:hover {
+  transform: scale(1.02);
 }
 
-.metodoEnvio {
-  margin-top: 15px;
-}
+
 
 /* === Descripción === */
 .product-description {
-    margin-top: 60px;
-    color: #3f2a52;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: justify;
+  line-height: 1.5;
+  color: #3f2a52;
 }
-.product-description p{
-    font-size: large;
+.description-tittle {
+  margin-bottom: 1rem;
 }
+.p-description {
+  font-size: large;
+}
+
+.divisor {
+  border: none;
+  border-top: 0.5px solid #3f2a5218;
+  width: 93%; /* más corta */
+  margin: 2rem auto;
+  
+}
+
 
 
 
 /* === Opiniones === */
-.comentarios {
-  margin-top: 60px;
+.comments-container {
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2.5rem;
   background: white;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
 
-.comentarios h3 {
+.comments-tittle {
   font-size: 1.3rem;
   color: #3f2a52;
+  margin-top: 0.6rem;
   margin-bottom: 1rem;
 }
 
-.comentarios textarea {
+.comments-textarea {
   width: 96%;
   min-height: 80px;
   padding: 0.8rem;
@@ -129,26 +215,28 @@
   transition: border 0.3s;
 }
 
-.comentarios textarea:focus {
+.comments-textarea:focus {
   outline: none;
- border-color: #beaedb;
+  border-color: #beaedb;
   box-shadow: 0 0 8px rgba(190, 174, 219, 0.7);
 }
 
-.comentarios button {
-background-color: #75619d;
-color: white;
+
+.comments-btn {
+  background-color: #75619d;
+  color: white;
   font-size: 1rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 0.5rem;
   padding: 0.6rem 1.5rem;
   cursor: pointer;
   transition: 0.3s ease;
+  margin-bottom: 0rem;
 }
 
-.comentarios button:hover {
-    background-color: #3f2a52;
-    transform: scale(1.05);
+.comments-btn:hover {
+  background-color: #3f2a52;
+  transform: scale(1.02);
 }
 
 
@@ -166,6 +254,7 @@ color: white;
 .calificacion span:hover {
   transform: scale(1.2);
 }
+
 /* Comentarios listados */
 .comentarios ul {
   list-style: none;
@@ -178,7 +267,7 @@ color: white;
   padding: 0.8rem 1rem;
   border-radius: 8px;
   margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   font-size: 1.3rem;
 }
 
@@ -193,25 +282,30 @@ color: white;
   color: #555;
 }
 
+
+
 /* === Productos relacionados === */
-
-.btn-vermas{
-    background-color: #75619d;
+.btn-vermas {
+  background-color: #75619d;
 }
-
 
 .related-products {
-  margin-top: 60px;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-.related-products h3 {
-  margin-bottom: 20px;
+.related-tittle {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   color: #3f2a52;
+  text-align: center;
 }
 
 .related-grid {
   display: flex;
-  gap: 20px;
+  gap: 3rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -239,7 +333,14 @@ color: white;
   box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
 }
 
-.related-item span {
+.name-related {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #3f2a52;
+}
+
+.price-related span {
   color: #3f2a52;
   font-weight: bold;
 }
