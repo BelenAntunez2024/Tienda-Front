@@ -67,8 +67,8 @@
 .favoritos-grid {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  flex-wrap: nowrap;
+  gap: 20px;
   /* 👉 separa las cards entre sí */
   padding: 20px 0;
   /* espacio arriba y abajo */

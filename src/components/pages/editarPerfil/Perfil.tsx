@@ -65,62 +65,68 @@ export default function PerfilUsuario() {
 
   return (
     <>
-    <VolverAtras hasNavbar={true} />
+      <VolverAtras hasNavbar={true} />
 
-  <main className="perfil-container">
+      <main className="perfil-container">
 
-    <section className="perfil-card">
+        <section className="perfil-card">
 
-      {error && (
-        <div className="perfil-error">⚠ {error}</div>
-      )}
+          {error && (
+            <div className="perfil-error">⚠ {error}</div>
+          )}
 
-      {/* HEADER: Avatar + Nombre */}
-      <header className="perfil-header">
-        {usuario?.foto ? (
-          <img
-            src={usuario.foto}
-            alt="Foto de perfil"
-            className="perfil-avatar"
-          />
-        ) : (
-          <div className="perfil-avatar perfil-avatar-placeholder">
-            <User size={60} />
+          {/* HEADER: Avatar + Nombre */}
+          <header className="perfil-header">
+            {usuario?.foto ? (
+              <img
+                src={usuario.foto}
+                alt="Foto de perfil"
+                className="perfil-avatar"
+              />
+            ) : (
+              <div className="perfil-avatar perfil-avatar-placeholder">
+                <User size={60} />
+              </div>
+            )}
+
+            <div>
+              <h2 className="perfil-nombre">
+                {usuario?.nombreCompleto} <Wand2 size={20} />
+              </h2>
+              <p className="perfil-email"><Mail size={18} /> {usuario?.email}</p>
+            </div>
+          </header>
+
+          {/* INFORMACIÓN */}
+          <div className="perfil-info">
+            <h2>Información del Usuario</h2>
+
+            <div className="perfil-info-item">
+              <span className="label">Fecha de Nacimiento</span>
+              <span>{usuario?.fechaNacimiento}</span>
+            </div>
+
           </div>
-        )}
 
-        <div>
-          <h2 className="perfil-nombre">
-            {usuario?.nombreCompleto} <Wand2 size={20} />
-          </h2>
-          <p className="perfil-email"><Mail size={18} /> {usuario?.email}</p>
-        </div>
-      </header>
+          {/* BOTÓN */}
+          <div className="perfil-actions">
+            <button
+              className="perfil-btn"
+              onClick={() => (window.location.href = "/editar-perfil")}
+            >
+              Editar Perfil
+            </button>
+            <button
+              className="historial-btn"
+              onClick={() => (window.location.href = "/historialCompras")}
+            >
+              Historial de Compras
+            </button>
+          </div>
 
-      {/* INFORMACIÓN */}
-      <div className="perfil-info">
-        <h2>Información del Usuario</h2>
-
-        <div className="perfil-info-item">
-          <span className="label">Fecha de Nacimiento</span>
-          <span>{usuario?.fechaNacimiento}</span>
-        </div>
-
-      </div>
-
-      {/* BOTÓN */}
-      <div className="perfil-actions">
-        <button
-          className="perfil-btn"
-          onClick={() => (window.location.href = "/editar-perfil")}
-        >
-          Editar Perfil
-        </button>
-      </div>
-
-    </section>
-  </main>
-  </>
-);
+        </section>
+      </main>
+    </>
+  );
 }
 

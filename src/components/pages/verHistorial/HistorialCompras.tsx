@@ -2,6 +2,7 @@ import "./HistorialCompras.css";
 import { useEffect, useState } from "react";
 import type { Compra } from "./interfaces/compra";
 import { jwtDecode } from "jwt-decode";
+import VolverAtras from "../../layout/VolverAtras";
 
 const HistorialCompras: React.FC = () => {
 
@@ -73,10 +74,12 @@ const HistorialCompras: React.FC = () => {
 
   return (
     <>
+      <VolverAtras hasNavbar={true} />
+
       <div className="container-historial">
         <h1>Historial de Compras</h1>
 
-        {compras.length === 0 && !loading &&(
+        {compras.length === 0 && !loading && (
           <p className="sin-compras">
             Todavía no realizaste una compra.
           </p>
@@ -103,9 +106,9 @@ const HistorialCompras: React.FC = () => {
             <h2>Detalles de la compra</h2>
             <ul>
               {compraSeleccionada.items.map((item) => (
-                <li 
-                key={item.id_producto} 
-                className="li-detalles"
+                <li
+                  key={item.id_producto}
+                  className="li-detalles"
                 >
                   {item.nombre} - {item.cantidad} por ${item.precioUnitario} <br />
                   {item.descripcion} <br />
@@ -118,7 +121,7 @@ const HistorialCompras: React.FC = () => {
               <strong>Metodo de pago:</strong> {compraSeleccionada.metodoPago} <br />
               <strong>Total:</strong> ${compraSeleccionada.total}
             </p>
-            
+
             <button
               className="btn-cerrar"
               onClick={() => setCompraSeleccionada(null)}>

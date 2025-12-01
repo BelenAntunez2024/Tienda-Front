@@ -118,11 +118,6 @@ const ProductDetail: React.FC = () => {
           cantidad_productos: cantidad,
           id_orden: null,
           Id_usuario: userId
-          /*id_producto: 14,
-          // cada clic agrega una unidad
-          cantidad_productos: 1,
-          id_orden: null,
-          Id_usuario: 1*/
         }),
       });
       if (!response.ok) {
@@ -264,10 +259,9 @@ const ProductDetail: React.FC = () => {
                 {isAdding ? 'Agregando...' : 'Agregar al carrito'}
               </button>
 
-              <button className="btn-buy">Comprar ahora</button>
             </div>
             <div className="MetodoEnvio">
-              <p>:camión: Consulta tu envio por codigo postal: <strong></strong></p>
+              <p><strong>Consulta tu envio por codigo postal: </strong></p>
               <button
                 className="btn-cp"
                 onClick={handleEnvioAndreani}>
@@ -286,7 +280,7 @@ const ProductDetail: React.FC = () => {
         {/* Descripción */}
         <div className="product-description">
           <h3>Descripción del producto</h3>
-          {/*<p>{product.descripcion}</p>*/}
+          <p>{product.descripcion}</p>
         </div>
 
         {/* Opiniones */}

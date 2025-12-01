@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import type { CarritoItem } from "./interfaces/CarritoItem";
-import '../verProductos/ProductCard.css';
 import VolverAtras from "../../layout/VolverAtras";
 import './FuncionalidadCarrito.css'
-import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const FuncionalidadCarrito = () => {
 
@@ -12,7 +11,7 @@ const FuncionalidadCarrito = () => {
     const token = localStorage.getItem('token') || '';
     const decoded: any = jwtDecode(token);
     const userId = decoded.id || decoded.Id_usuario || decoded.sub;
-    
+
     //carga los items del carrito desde el backend
     useEffect(() => {
         const fetchCarrito = async () => {
@@ -142,38 +141,44 @@ const FuncionalidadCarrito = () => {
 
             <div className='carrito-container'>
                 <h2 className="carrito-subtitulo">Productos elegidos</h2>
-                <div>
+                <div className="container-card">
                     {carrito.length === 0 ? (
                         <p className='carrito-vacio'>Carrito vacío</p>
                     ) : (
                         carrito.map((producto) => (
-                            <div key={producto.id_item_orden} className="div-product-card">
-                                <h2>{producto.nombre}</h2>
+                            <div key={producto.id_item_orden} className="card-carrito">
+                                <h2 className="nombre-producto">{producto.nombre}</h2>
                                 <img src={producto.imagen} alt={producto.nombre} width={200} />
-                                <p className="p-description">{producto.descripcion}</p>
-                                <p className="p-precio">
-                                    Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
-                                </p>
-                                <p>Cantidad: {producto.cantidad}</p>
-                                <button
-                                    onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                    +
-                                </button>
-
-                                <button
-                                    onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                    -
-                                </button>
-
-                                <button
-                                    onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
-                                    Eliminar
-                                </button>
+                                <div className="product-text-info">
+                                    <p className="p-precio">
+                                        Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
+                                    </p>
+                                    <p>Cantidad: {producto.cantidad}</p>
+                                </div>
+                                <div className="btn-container">
+                                    <button className="btn-sumar"
+                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
+                                        +
+                                    </button>
+                                    <button className="btn-restar"
+                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
+                                        -
+                                    </button>
+                                    <button className="btn-eliminar"
+                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
+                                        Eliminar
+                                    </button>
+                                </div>
                             </div>
                         )))}
-                    
                 </div>
             </div>
+            
+            <Link to={`/confirmarCompra`} className="link-no-decoration">
+                <button className="btn-confirmar-compra">
+                    Confirmar compra
+                </button>
+            </Link>
         </main>
     )
 }

@@ -42,8 +42,6 @@ function App ()  {
             <Route path="/funcionalidadCarrito" element={<FuncionalidadCarrito />} />
             <Route path="/confirmarCompra" element={<FormularioCompra />} />
             <Route path="/historialCompras" element={<HistorialCompras />} />
-            <Route path="/perfilUsuario" element={<PerfilUsuario />} />
-            <Route path="/editar-perfil" element={<EditarPerfil />} />
             <Route path="/metodoDePago" element={<PagosMP />} />
             <Route path="/success" element={<PagoExitoso />} />
             <Route path="/failure" element={<PagoFallido />} />

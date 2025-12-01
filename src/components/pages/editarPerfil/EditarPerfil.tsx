@@ -87,7 +87,7 @@ const EditarPerfil = () => {
 
   return (
     <>
-      <div className="main-container">
+      <div className="main-container-editar-perfil">
 
         <VolverAtras hasNavbar={true} />
 

@@ -14,12 +14,12 @@
 .perfil-card {
   max-width: 620px;
   margin: auto;
-  background: #ffffff;           
+  background: #ffffff;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
   animation: fadeIn 1s ease;
-  color: #3a2d4f;                
+  color: #3a2d4f;
 }
 
 
@@ -29,7 +29,7 @@
   align-items: center;
   gap: 25px;
   padding-bottom: 25px;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .perfil-avatar {
@@ -37,7 +37,8 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(140, 108, 180, 0.4); /* borde lavanda suave */
+  border: 3px solid rgba(140, 108, 180, 0.4);
+  /* borde lavanda suave */
   box-shadow: 0 0 15px rgba(165, 130, 210, 0.4);
   animation: floatAvatar 3s ease-in-out infinite;
 }
@@ -65,10 +66,11 @@
 /* INFORMACIÓN */
 .perfil-info {
   margin-top: 30px;
-  background: #f7f4fb;  /* lavanda super suave, casi blanco */
+  background: #f7f4fb;
+  /* lavanda super suave, casi blanco */
   padding: 25px;
   border-radius: 15px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .perfil-info h2 {
@@ -97,9 +99,14 @@
 .perfil-actions {
   margin-top: 35px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.perfil-btn {
+.perfil-btn,
+.historial-btn {
   background-color: rgb(117, 97, 157);
   color: white;
   border: none;
@@ -121,8 +128,15 @@
 
 /* Animaciones */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Cargando / Error */

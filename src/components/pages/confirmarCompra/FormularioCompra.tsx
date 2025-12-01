@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FormularioCompra.css"
 import type { FormData } from "./interface/formData";
+import VolverAtras from "../../layout/VolverAtras";
 
 function FormularioCompra() {
   const navigate = useNavigate();
@@ -11,10 +12,6 @@ function FormularioCompra() {
     email: "",
     direccion: "",
     metodoPago: "tarjeta",
-    // ❌ Ya no usamos datos de tarjeta
-    //numeroTarjeta: "",
-    //vencimientoTarjeta: "",
-    //cvvTarjeta: "",
   });
 
   const [error, setError] = useState("");
@@ -45,8 +42,6 @@ function FormularioCompra() {
       return;
     }
 
-    // ❌ Ya NO valido tarjeta porque Checkout Pro lo maneja afuera
-
     if (formData.metodoPago === "transferencia" && !formData.bancoCliente?.trim()) {
       setError("Complete el nombre del banco para la transferencia");
       setExito("");
@@ -65,6 +60,7 @@ function FormularioCompra() {
 
   return (
     <>
+      <VolverAtras hasNavbar={true} />
       <form
         className="formulario-compra"
         onSubmit={handleSubmit}
@@ -120,58 +116,6 @@ function FormularioCompra() {
             </p>
           </div>
         )}
-
-        {/* Transferencia 
-        {formData.metodoPago === "transferencia" && (
-          <>
-            <h4>Datos de la transferencia</h4>
-            <p>Realice la transferencia a la siguiente cuenta:</p>
-            <p><strong>Banco:</strong> Banco Ejemplo</p>
-            <p><strong>CBU:</strong> 123456789</p>
-            <p><strong>Alias:</strong> wisteria.aya</p>
-            <p><strong>Titular:</strong> Wisteria Tienda Esoterica</p>
-
-            <label htmlFor="bancoCliente">Banco desde el cual se realiza la transferencia:</label>
-            <input
-              type="text"
-              name="bancoCliente"
-              placeholder="Ej: Banco Nacional"
-              value={formData.bancoCliente || ""}
-              onChange={handleChange}
-              autoComplete="off"
-            />
-
-            <label htmlFor="aliasCliente">Alias:</label>
-            <input
-              type="text"
-              name="aliasCliente"
-              placeholder="Ej: wisteria.aya"
-              value={formData.aliasCliente || ""}
-              onChange={handleChange}
-              autoComplete="off"
-            />
-
-            <label htmlFor="titularCliente">Titular:</label>
-            <input
-              type="text"
-              name="titularCliente"
-              placeholder="Ej: Wisteria Tienda Esoterica"
-              value={formData.titularCliente || ""}
-              onChange={handleChange}
-              autoComplete="off"
-            />
-
-            <label htmlFor="numeroOperacion">Numero de operación:</label>
-            <input
-              type="text"
-              name="numeroOperacion"
-              placeholder="Ej: 123456789"
-              value={formData.numeroOperacion || ""}
-              onChange={handleChange}
-              autoComplete="off"
-            />
-          </>
-        )}*/}
 
         <button
           type="submit"

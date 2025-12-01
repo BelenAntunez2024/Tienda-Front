@@ -36,19 +36,13 @@ const HamburgerMenu: React.FC = () => {
 
       <ul className={`hamburger-menu ${isOpen ? "open" : ""}`}>
         <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/perfil">Perfil</Link></li>
         <li><Link to="/verProductos">Productos</Link></li>
         <li><Link to="/comoComprar">Como comprar</Link></li>
         <li><Link to="/contacto">Contacto</Link></li>
-        <li><Link to="/perfil">Perfil</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/registro">Registro</Link></li>
         <li><button onClick={logout} className="btn-cerrarSesion">Cerrar sesión</button></li>
-        <li><Link to="/perfilUsuario">Perfil Usuario</Link></li>
-        <li><Link to="/verProductos">Productos</Link></li>
-        <li><Link to="/contacto">Contacto</Link></li>
-        <li><Link to="/comoComprar">Como Comprar</Link></li>
-        <li><Link to="/historialCompras">Historial de Compras</Link></li>
-        <li><button onClick={logout} >Cerrar sesión</button></li>
       </ul>
     </nav>
   );
