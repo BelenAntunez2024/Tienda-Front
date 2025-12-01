@@ -17,13 +17,14 @@ const Login = () => {
             return;
         }
         console.log("Enviando datos de login:", { email, contraseña });
+        console.log("Enviando datos de login:", { email, contraseña });
         try {
             const response = await fetch("http://localhost:3000/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password: contraseña}),
+                body: JSON.stringify({ email, password: contraseña }),
             });
 
             if (!response.ok) {
@@ -45,7 +46,7 @@ const Login = () => {
     const handleForgotPassword = () => {
         const email = prompt("Ingresa tu email para recuperar la contraseña:");
         const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-        const usuario = usuarios.find((u:any) => u.email === email);
+        const usuario = usuarios.find((u: any) => u.email === email);
 
         if (!usuario) {
             alert("No se encontró un usuario con ese email");
@@ -63,19 +64,11 @@ const Login = () => {
         alert("Contraseña actualizada exitosamente.");
     };
 
-<<<<<<< HEAD
-
-    return (
-        <main>
-            <div>
-                <img src="/public/logo.png" alt="logo" id="Logo" />
-=======
     return (
         <div className='main-container-login'>
             <VolverAtras />
             <div>
                 <img src="/img/logo.png" alt="logo" id="Logo" />
->>>>>>> ac4e47aa54f56f2f02f97322c69f683b199e0953
             </div>
             <h1 className="login-titulo">Wisteria</h1>
 
@@ -101,7 +94,7 @@ const Login = () => {
                 <button className='iniciarSesion' type="submit" >Iniciar sesión</button>
                 {error && <p className="error">{error}</p>}
 
-                 <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
+                <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
 
             </form>
 

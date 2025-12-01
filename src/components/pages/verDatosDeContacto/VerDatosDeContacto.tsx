@@ -16,8 +16,7 @@ const VerDatosDeContacto = () => {
     const [error, setError] = useState(''); //para mostrar errores de validacion
     const [mensajeEnviado, setMensajeEnviado] = useState(false);
 
-
-    const handleSubmit  = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!emailIngresado || !mensaje || !tipoConsulta) {

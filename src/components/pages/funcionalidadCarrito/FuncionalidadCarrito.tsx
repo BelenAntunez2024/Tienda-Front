@@ -134,7 +134,6 @@ const FuncionalidadCarrito = () => {
         }
     }
 
-    const navigate = useNavigate();
 
     return (
         <main>
