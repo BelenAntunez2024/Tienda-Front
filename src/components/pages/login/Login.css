@@ -35,33 +35,30 @@
   font-weight: bold;
 }
 .iniciarSesion {
-  background-color: rgb(117, 97, 157);
-  color: white;
-  border: none;
   padding: 10px 20px;
   font-size: 16px;
   margin: 4px 2px;
   width: 150px;
-  cursor: pointer;
   border-radius: 12px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.iniciarSesion:hover{
-  background: #3f2a52;
-  box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
-}
 
 .passwordOlvidada {
   background: none;
   border: none;
-  color: rgb(58, 45, 52);
+  color: #3F2A52;
   font-size: 16px;
   text-decoration: underline;
   cursor: pointer;
   margin-top: 15px;
   display: block;
   text-align: center;
+}
+.passwordOlvidada:hover{
+  background-color: white;
+  color: #3F2A52;
+  box-shadow: none;
 }
