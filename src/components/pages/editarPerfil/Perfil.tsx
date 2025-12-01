@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Wand2, Mail, User } from "lucide-react";
 import "./Perfil.css";
+import VolverAtras from "../../layout/VolverAtras";
 
 export default function PerfilUsuario() {
   const [usuario, setUsuario] = useState<any>(null);
@@ -63,10 +64,10 @@ export default function PerfilUsuario() {
   }
 
   return (
-  <main className="perfil-container">
+    <>
+    <VolverAtras hasNavbar={true} />
 
-    {/* Fondo animado */}
-    <div className="perfil-bg"></div>
+  <main className="perfil-container">
 
     <section className="perfil-card">
 
@@ -119,5 +120,7 @@ export default function PerfilUsuario() {
 
     </section>
   </main>
+  </>
 );
 }
+

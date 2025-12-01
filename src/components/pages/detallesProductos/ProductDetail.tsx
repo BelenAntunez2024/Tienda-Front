@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
-import type { Product } from "../verProductos/interfaces/Product";
-import { useState, useEffect } from "react";
-import type { Comment } from "./interfaces/comment";
-import "./ProductDetail.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import type { Comment } from "./interfaces/Comment";
 import type { CarritoItem } from "../funcionalidadCarrito/interfaces/CarritoItem";
+import type { Product } from "../verProductos/interfaces/Product";
+import './ProductDetail.css'
+import VolverAtras from "../../layout/VolverAtras";
 import { jwtDecode } from "jwt-decode";
 
 const ProductDetail: React.FC = () => {
@@ -19,6 +19,30 @@ const ProductDetail: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false); // Estado para el botón de agregar al carrito
   const [cantidad, setCantidad] = useState(1); //el 1 establece la cantidad inicial
 
+  // Obtener todos los productos (para productos sugeridos)
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        const token = localStorage.getItem('token') || '';
+        const response = await fetch('http://localhost:3000/producto', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        const data = await response.json();
+        setAllProducts(data);
+        console.log('Productos consultados:', data);
+      } catch (err) {
+        console.error('Error al consultar productos:', err);
+      }
+    };
+    fetchAllProducts();
+  }, []);
   // Obtener todos los productos (para productos sugeridos)
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -112,8 +136,8 @@ const ProductDetail: React.FC = () => {
           // Actualiza el carrito si el ítem ya existe
           return prevCarrito.map(item =>
             item.id_producto === producto.id_producto ? {
-                ...item, cantidad: item.cantidad + cantidad //1 
-              } : item
+              ...item, cantidad: item.cantidad + cantidad //1 
+            } : item
           );
         } else {
           // Añade el nuevo ítem si no existe
@@ -188,6 +212,8 @@ const ProductDetail: React.FC = () => {
 
   return (
     <>
+      <VolverAtras hasNavbar={true} />
+
       <div className="product-detail">
         <div className="product-container">
 
@@ -200,7 +226,7 @@ const ProductDetail: React.FC = () => {
           <div className="product-info">
             <h2>{product.nombre}</h2>
             <h3 className="product-price">${product.precio}</h3>
-            <p className="discount"> 
+            <p className="discount">
               ${(product.precio * 0.8).toFixed(2)} con 20% OFF transferencia
             </p>
 
@@ -213,7 +239,7 @@ const ProductDetail: React.FC = () => {
               <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
                 alt="transferencia" />
             </div>
-            
+
             <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
             {/*Cantidades*/}
             <div className="cantidad-section">
@@ -223,7 +249,7 @@ const ProductDetail: React.FC = () => {
                 min="1"
                 max="10"
                 value={cantidad}
-                onChange={(e) => 
+                onChange={(e) =>
                   setCantidad(Number(e.target.value))
                 }
               />
@@ -242,15 +268,15 @@ const ProductDetail: React.FC = () => {
             </div>
             <div className="MetodoEnvio">
               <p>:camión: Consulta tu envio por codigo postal: <strong></strong></p>
-              <button 
-              className="btn-cp" 
-              onClick={handleEnvioAndreani}>
+              <button
+                className="btn-cp"
+                onClick={handleEnvioAndreani}>
                 Consultar en Andreani
               </button>
-              
-              <button 
-              className="btn-cp" 
-              onClick={handleEnvioOCA}>
+
+              <button
+                className="btn-cp"
+                onClick={handleEnvioOCA}>
                 Consultar en OCA
               </button>
             </div>

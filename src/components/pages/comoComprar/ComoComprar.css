@@ -1,6 +1,5 @@
-
-.como-comprar{
-background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
+.como-comprar {
+  background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
   color: #3f2b6d;
   text-align: center;
   padding: 5rem 2rem;
@@ -72,7 +71,7 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
   height: 10px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 0 15px 5px rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
   opacity: 0;
   animation: brillo 2s infinite ease-in-out;
 }
@@ -100,13 +99,29 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
 
 /* Animaciones */
 @keyframes brillo {
-  0%, 100% { opacity: 0; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsivo */
@@ -166,7 +181,7 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
 
 .logos-pago img {
   height: 50px;
-  width: auto ;
+  width: auto;
   filter: grayscale(40%) brightness(1.1);
   opacity: 0.90;
   transition: all 0.3s ease;
@@ -183,28 +198,32 @@ background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
 .pagos {
   animation: fadeInUp 1s ease both;
 }
+
 /* SECCION DEVOLUCIONES */
-.devoluciones{
-    background: linear-gradient(180deg, #bfa8e0, #a98edf);
-    color: white;
-    padding: 3rem 2rem;
-    border-radius: 1.5rem;
+.devoluciones {
+  background: linear-gradient(180deg, #bfa8e0, #a98edf);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
 }
-.devoluciones h2{
-    color: #fff;
+
+.devoluciones h2 {
+  color: #fff;
 }
-.btn-politica{
-    background: #fff;
-    color: #5a3e8b;
-    border: none;
-    border-radius: 2rem;
-    padding: 0.8rem 1.8rem;
-    margin-top: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
+
+.btn-politica {
+  background: #fff;
+  color: #5a3e8b;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 1.8rem;
+  margin-top: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-.btn-politica:hover{
-    background: #f2f0fa;
-    transform: scale(1.05);
+
+.btn-politica:hover {
+  background: #f2f0fa;
+  transform: scale(1.05);
 }

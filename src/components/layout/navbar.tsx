@@ -13,11 +13,13 @@ const Navbar = () => {
         <div className="nav-left">
           <HamburgerMenu />
         </div>
-
+        
         {/* Logo en el centro */}
         <div className="nav-center">
-          <h1 className="titulo">WISTERIA</h1>
-          <img src="./img/logo.png" alt="logo" className="logo-img" />
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h1 className="titulo">WISTERIA</h1>
+          </Link>
+          <img src="/img/logo.png" alt="logo" className="logo-img" />
         </div>
 
         {/* Carrito a la derecha */}

@@ -1,0 +1,45 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+    background-color: #beaedb;
+    box-sizing: border-box;
+
+}
+
+h1, h2, h3, h4{
+    font-family: 'Poppins', sans-serif;
+}
+
+p, strong{
+    font-family: 'Roboto', sans-serif;
+}
+
+label{
+  font-weight: bold;
+  color: #3a2d34;
+  margin-left: 0.2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #75619d;
+  border-radius: 8px;
+  outline: none; 
+
+}
+
+input:focus{
+  border-color: #beaedb;/*cambia el color al hacer clic*/
+  box-shadow: 0 0 8px rgba(190, 174, 219, 0.7);
+}
+
+::placeholder {
+  font-size: 15px;
+  color: rgb(58, 45, 52);
+}

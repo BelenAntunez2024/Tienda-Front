@@ -2,8 +2,6 @@ footer {
   background-color: #e6eff7;
   color: #3a2d34;
   padding: 10px 5px;
-  width: 100%;
-  font-family: Arial, sans-serif;
 }
 
 .email-subscribe {
@@ -27,19 +25,20 @@ footer {
 
 .subscribe-form input {
   padding: 10px;
-  border-radius: 5px;
-  border: none;
   width: 250px;
-  margin-right: 10px;
 }
 
-.subscribe-form button {
+.subscribe-form button, .footer-button {
   background-color: #75619d;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.subscribe-form button:hover, .footer-button:hover {
+  background-color: #56357e;
 }
 
 hr {

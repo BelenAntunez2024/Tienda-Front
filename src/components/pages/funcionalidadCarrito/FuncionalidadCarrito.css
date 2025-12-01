@@ -1,26 +1,21 @@
-/*body{
-    margin: 0%;
-    padding: 0%;
-    font-family: poppins, sans-serif;
-    background-color: rgb(190, 174, 219);
-    color: white;
-    text-shadow: 3px 3px 5px black;
-}*/
-
-h1 {
+.carrito-titulo{
     text-align: center;
-    color: white;
-    text-shadow: 3px 3px 5px black;
     font-size: 40px;
     margin-top: 20px;
 }
 
-.tituloCarrito {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    gap: 10px;
-    margin-left: 25px;
+.carrito-container{
+    min-height: 60vh
+}
+
+.carrito-vacio{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 60px;
+}
+
+.carrito-subtitulo{
+    margin-left: 100px;
 }
 
 .cart {

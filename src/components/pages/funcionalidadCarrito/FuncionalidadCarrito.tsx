@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import type { CarritoItem } from "./interfaces/CarritoItem";
 import '../verProductos/ProductCard.css';
+import VolverAtras from "../../layout/VolverAtras";
+import './FuncionalidadCarrito.css'
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
@@ -135,47 +137,45 @@ const FuncionalidadCarrito = () => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <h1> Carrito </h1>
+        <main>
+            <VolverAtras hasNavbar={true} />
+            <h1 className="carrito-titulo"> Carrito </h1>
 
-            <div>
-                <h2>Productos elegidos</h2>
+            <div className='carrito-container'>
+                <h2 className="carrito-subtitulo">Productos elegidos</h2>
                 <div>
-                    {carrito.map((producto) => (
-                        <div key={producto.id_item_orden} className="div-product-card">
-                            <h2>{producto.nombre}</h2>
-                            <img src={producto.imagen} alt={producto.nombre} width={200} />
-                            {/*<p className="p-description">{producto.descripcion}</p>*/}
-                            <p className="p-precio">
-                                Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
-                            </p>
-                            <p>Cantidad: {producto.cantidad}</p>
+                    {carrito.length === 0 ? (
+                        <p className='carrito-vacio'>Carrito vacío</p>
+                    ) : (
+                        carrito.map((producto) => (
+                            <div key={producto.id_item_orden} className="div-product-card">
+                                <h2>{producto.nombre}</h2>
+                                <img src={producto.imagen} alt={producto.nombre} width={200} />
+                                <p className="p-description">{producto.descripcion}</p>
+                                <p className="p-precio">
+                                    Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
+                                </p>
+                                <p>Cantidad: {producto.cantidad}</p>
+                                <button
+                                    onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
+                                    +
+                                </button>
 
-                            <button
-                                onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                +
-                            </button>
+                                <button
+                                    onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
+                                    -
+                                </button>
 
-                            <button
-                                onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                -
-                            </button>
-
-                            <button
-                                onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
-                                Eliminar
-                            </button>
-                        </div>
-                    ))}
+                                <button
+                                    onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
+                                    Eliminar
+                                </button>
+                            </div>
+                        )))}
+                    
                 </div>
-
-                {/* AGREGADO: boton para ir a confirmar compra - lleva al formulario */}
-                <button onClick={() => navigate('/confirmarCompra')}>
-                    Confirmar compra
-                </button>
-
             </div>
-        </>
+        </main>
     )
 }
 export default FuncionalidadCarrito

@@ -1,7 +1,7 @@
-import './Login.css';
+import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './login.css'
+import VolverAtras from '../../layout/VolverAtras';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -63,39 +63,49 @@ const Login = () => {
         alert("Contraseña actualizada exitosamente.");
     };
 
+<<<<<<< HEAD
 
     return (
         <main>
             <div>
                 <img src="/public/logo.png" alt="logo" id="Logo" />
+=======
+    return (
+        <div className='main-container-login'>
+            <VolverAtras />
+            <div>
+                <img src="/img/logo.png" alt="logo" id="Logo" />
+>>>>>>> ac4e47aa54f56f2f02f97322c69f683b199e0953
             </div>
-            <h1>Wisteria</h1>
+            <h1 className="login-titulo">Wisteria</h1>
 
             <form className="formContainer" onSubmit={handleSubmit}>
                 <div>
+                    <label htmlFor="email">Email</label>
                     <input
                         type="text"
                         placeholder="Ingresa tu email"
-                        className="input_text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
+                    <label htmlFor="password">Contraseña</label>
                     <input
                         type="password"
                         placeholder="Ingresa tu contraseña"
-                        className="input_text"
                         value={contraseña}
                         onChange={(e) => setContraseña(e.target.value)}
                     />
                 </div>
-                <button type="submit">Iniciar sesión</button>
+                <button className='iniciarSesion' type="submit" >Iniciar sesión</button>
                 {error && <p className="error">{error}</p>}
+
+                 <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
+
             </form>
 
-            <button onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
-        </main>
+        </div>
     );
 };
 

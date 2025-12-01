@@ -32,6 +32,8 @@ function App ()  {
           {/* ======================================= */}
           <Route element={<MainLayout />}>
             {/* Todas estas rutas se inyectarán en el <Outlet> del MainLayout */}
+            <Route path="/perfil" element={<PerfilUsuario />} />
+            <Route path="/editar-perfil" element={<EditarPerfil />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/verProductos" element={<VerProductos />} />
             <Route path='/producto/:id' element={<ProductDetail />} />

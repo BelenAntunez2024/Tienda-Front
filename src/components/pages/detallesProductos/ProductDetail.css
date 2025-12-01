@@ -1,9 +1,6 @@
 .product-detail {
-  font-family: "Poppins", sans-serif;
-  max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
-  color: #2b2b2b;
 }
 
 .product-container {
@@ -23,15 +20,14 @@
 .product-info {
   flex: 1;
   min-width: 300px;
+  color: #3f2a52;
 }
 
 .product-info h2 {
   font-size: 2rem;
-  color: #4a0072;
 }
 
 .product-price {
-  color: #8e24aa;
   font-size: 1.8rem;
   font-weight: 600;
   margin-top: 10px;
@@ -62,46 +58,35 @@
 }
 
 .cantidad-section input {
-  width: 60px;
+  width: 50px;
   padding: 5px;
+  margin: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
-.buttons {
-  margin-top: 15px;
-  display: flex;
-  gap: 15px;
-}
 
-.btn-add {
-  background: #c1dff9 ;
-  color: black;
-  border: 2px 2px rgba(0, 0, 0, 0.15);
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
 
-.btn-buy {
-  background: #7b1fa2;
+.btn-add, .btn-buy , .btn-cp{
+  background: #75619d;
   color: white;
-  border: 2px 2px rgba(0, 0, 0, 0.15);
+  border: none;
   padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
+  margin: 3px;
 }
 
-.btn-cp {
-  background: #eee;
-  border: 1px solid #999;
-  padding: 5px 10px;
-  border-radius: 6px;
-  margin-left: 10px;
-  cursor: pointer;
+.btn-add:hover , .btn-buy:hover , .btn-cp:hover , .btn-vermas:hover{
+    background: #3f2a52;
+    box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
 }
 
+.btn-add:hover , .btn-buy:hover{
+    transform: scale(1.07);
+
+}
 
 .metodoEnvio {
   margin-top: 15px;
@@ -109,24 +94,26 @@
 
 /* === Descripción === */
 .product-description {
-  margin-top: 60px;
+    margin-top: 60px;
+    color: #3f2a52;
+}
+.product-description p{
+    font-size: large;
 }
 
-.product-description h3 {
-  color: #4a0072;
-}
+
 
 /* === Opiniones === */
 .comentarios {
   margin-top: 60px;
-  background: #f3e5f5;
+  background: white;
   padding: 25px;
   border-radius: 12px;
 }
 
 .comentarios h3 {
   font-size: 1.3rem;
-  color: #4a148c;
+  color: #3f2a52;
   margin-bottom: 1rem;
 }
 
@@ -135,7 +122,7 @@
   min-height: 80px;
   padding: 0.8rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #beaedb;
   font-size: 1rem;
   margin-bottom: 1rem;
   resize: none;
@@ -144,13 +131,13 @@
 
 .comentarios textarea:focus {
   outline: none;
-  border: 1px solid #9c27b0;
-  box-shadow: 0 0 6px rgba(156, 39, 176, 0.4);
+ border-color: #beaedb;
+  box-shadow: 0 0 8px rgba(190, 174, 219, 0.7);
 }
 
 .comentarios button {
-  background: linear-gradient(135deg, #8e24aa, #ab47bc);
-  color: white;
+background-color: #75619d;
+color: white;
   font-size: 1rem;
   border: none;
   border-radius: 25px;
@@ -160,8 +147,8 @@
 }
 
 .comentarios button:hover {
-  background: linear-gradient(135deg, #7b1fa2, #9c27b0);
-  transform: scale(1.05);
+    background-color: #3f2a52;
+    transform: scale(1.05);
 }
 
 
@@ -207,13 +194,19 @@
 }
 
 /* === Productos relacionados === */
+
+.btn-vermas{
+    background-color: #75619d;
+}
+
+
 .related-products {
   margin-top: 60px;
 }
 
 .related-products h3 {
   margin-bottom: 20px;
-  color: #4a0072;
+  color: #3f2a52;
 }
 
 .related-grid {
@@ -247,6 +240,6 @@
 }
 
 .related-item span {
-  color: #8e24aa;
+  color: #3f2a52;
   font-weight: bold;
 }
