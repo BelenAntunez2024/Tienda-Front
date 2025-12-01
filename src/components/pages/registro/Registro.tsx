@@ -3,7 +3,7 @@ import "./StylesRegistro.css";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import type { CredentialResponse } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-
+import VolverAtras from "../../layout/VolverAtras";
 
 const Registro = () => {
   const [formData, setFormData] = useState({
@@ -61,9 +61,6 @@ const Registro = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-      //const data = await response.json();
-      //localStorage.setItem("token", data.token);
-
       alert("Registro exitoso");
       navigate("/login");
 
@@ -71,27 +68,9 @@ const Registro = () => {
       console.error("Error al registrar:", err);
       setError("Error al registrar. Verificá tus credenciales.");
     }
-
-    
-
-    // Simulación JSON con LocalStorage
-    /*const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-    const usuarioExistente = usuarios.find((u: any) => u.email === formData.email);
-
-    if (usuarioExistente) {
-      setError("Ya existe un usuario con este email");
-      return;
-    }
-
-    usuarios.push(formData);
-    localStorage.setItem("Usuarios", JSON.stringify(usuarios));*/
-
-    //alert("Registro Exitoso");
-    //window.location.href = "/login";
   };
+
   // Manejar login con Google
-
-
   useEffect(() => {
     /* @ts-ignore */
     if (window.google && btnRef.current) {
@@ -106,9 +85,6 @@ const Registro = () => {
         theme: "outline",
         size: "large",
       });
-
-      // (opcional) One Tap
-      // google.accounts.id.prompt();
     }
   }, []);
 
@@ -132,11 +108,13 @@ const Registro = () => {
   };
 
   return (
+    <div className="main-container-registro">
     <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
       <section className="registro-page">
         <div className="registro-box">
+          <VolverAtras hasNavbar={true} />
           <div className="registro-header">
-            <img src="./public/img/logo.png" alt="logo" className="logo" />
+            <img src="img/logo.png" alt="logo" className="logo" />
             <h1 className="title">WISTERIA</h1>
             <h2 className="subTitle">Registrate</h2>
           </div>
@@ -186,7 +164,7 @@ const Registro = () => {
               />
             </div>
 
-            <button type="submit" className="btn">Registrarse</button>
+            <button type="submit" className="btn-registro">Registrarse</button>
           </form>
           {error && <p className="error">{error}</p>}
 
@@ -200,8 +178,8 @@ const Registro = () => {
         </div>
       </section>
     </GoogleOAuthProvider>
+    </div>
   );
 };
-
 
 export default Registro;

@@ -1,7 +1,7 @@
-import './Login.css';
+import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './login.css'
+import VolverAtras from '../../layout/VolverAtras';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -16,7 +16,8 @@ const Login = () => {
             setError("Todos los campos son obligatorios");
             return;
         }
-
+        console.log("Enviando datos de login:", { email, contraseña });
+        console.log("Enviando datos de login:", { email, contraseña });
         try {
             const response = await fetch("http://localhost:3000/auth/login", {
                 method: "POST",
@@ -45,7 +46,7 @@ const Login = () => {
     const handleForgotPassword = () => {
         const email = prompt("Ingresa tu email para recuperar la contraseña:");
         const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-        const usuario = usuarios.find((u:any) => u.email === email);
+        const usuario = usuarios.find((u: any) => u.email === email);
 
         if (!usuario) {
             alert("No se encontró un usuario con ese email");
@@ -64,38 +65,40 @@ const Login = () => {
     };
 
     return (
-        <main>
+        <div className='main-container-login'>
+            <VolverAtras />
             <div>
-                <img src="/public/logo.png" alt="logo" id="Logo" />
-                <img src="/public/logo.png" alt="logo" id="Logo" />
+                <img src="/img/logo.png" alt="logo" id="Logo" />
             </div>
-            <h1>Wisteria</h1>
+            <h1 className="login-titulo">Wisteria</h1>
 
             <form className="formContainer" onSubmit={handleSubmit}>
                 <div>
+                    <label htmlFor="email">Email</label>
                     <input
                         type="text"
                         placeholder="Ingresa tu email"
-                        className="input_text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
+                    <label htmlFor="password">Contraseña</label>
                     <input
                         type="password"
                         placeholder="Ingresa tu contraseña"
-                        className="input_text"
                         value={contraseña}
                         onChange={(e) => setContraseña(e.target.value)}
                     />
                 </div>
-                <button type="submit">Iniciar sesión</button>
+                <button className='iniciarSesion' type="submit" >Iniciar sesión</button>
                 {error && <p className="error">{error}</p>}
+
+                <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
+
             </form>
 
-            <button onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
-        </main>
+        </div>
     );
 };
 

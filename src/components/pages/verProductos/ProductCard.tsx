@@ -16,18 +16,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/*product. muestra la información del producto que solicito*/}
         <h2>{product.nombre}</h2>
         <img src={product.imagen} alt={product.nombre} width={200} />
-        {/*<p className="p-description">{product.descripcion}</p>*/}
         <p className="p-precio">Precio: ${product.precio}</p>
-
-        <h2>{product.nombre}</h2>
-        <img src={product.imagen} alt={product.nombre} width={200} />
-        <p className="p-description">{product.descripcion}</p>
-        <p className="p-precio">Precio: ${product.precio}</p>
-
         <div className="rediProduct">
+
           <Link to={`/producto/${product.id_producto}`}>
           <button className="btn-vermas">Ver más</button>
           </Link>
+          
         </div>
       </div>
     </>

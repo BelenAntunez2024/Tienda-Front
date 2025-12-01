@@ -1,78 +1,58 @@
-body{
-    color: #3a2d34;
-    font-family: poppins;
-    display: flex;
-    background: linear-gradient(145deg, #75619d,  #beaedb);
-  background-size: 400% 400%; /* hace que el gradiente sea más grande para animarlo */
-
-  animation: gradientAnimation 10s ease infinite; /* nombre, duración, easing, repetición */
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
-h1{
-    margin-left: 60px;
-    padding: 8px;
+.contacto-titulo {
+    margin-top: 50px;
+    margin-left: 7.7rem;
 }
 
 .contactContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 0 10%;
-  text-align: justify;
-  padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 10%;
+    text-align: justify;
+    padding: 5px;
 }
 
-.seccion1 {
-  flex: 1;
+.seccion1-contacto {
+    flex: 1;
+    margin-top: 4px;
 }
-.info{
+
+.info-contacto {
     width: 400px;
+    font-size: large;
 }
 
-.mapContainer{
-    margin-bottom: 40px;
+.mapContainer {
     width: 250px;
-    height: 200px;
+    height: 160px;
 }
 
-
-.icons{
+.icons-contacto {
+    margin-top: 5px;
+    padding: 5px;
     margin-left: 35px;
     text-decoration: none;
     color: #3a2d34;
 }
 
-.seccion2 {
-  flex: 2;
-  align-items: right;
-  justify-content: right;
-  margin-left: 275px;
+.seccion2-contacto {
+    flex: 2;
+    align-items: right;
+    justify-content: right;
+    margin-left: 13rem;
 }
 
-.formContainer{
+.formContainer-contacto {
     width: 420px;
-    height: 340px;
-    background: transparent;
-    border: 2px solid #3a2d34;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgb( 0, 0, 0.1);
+    height: auto;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-.form-group{
+.form-group-contacto {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -80,70 +60,81 @@ h1{
     padding: 10px;
 }
 
-.form-group input {
-    padding-right: 40px; /* espacio para el icono a la derecha */
-    width: 350px;
-    height: 30px;
-    background: transparent;
-    border: 2px solid #e6eff7;
-    border-radius: 20px;
-}
-
-.form-group input::placeholder {
-    padding-left: 10px;
-    color: #3a2d34;
-}
-
-.input-icon {
-    position: absolute;
-    right: 18px;
-    top: 55%;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-}
 .btnContainer {
     display: flex;
     justify-content: center;
-    gap: 12px; 
+    gap: 12px;
     margin-top: 20px;
 }
-label {
-    text-decoration: underline;
-    font-weight: bold;
+
+.label-contacto {
+    display: block;
     margin: 5px;
+    font-weight: bold;
 }
 
-.tipoConsulta{
+.tipoConsulta {
     text-decoration: underline;
     font-weight: bold;
     margin-left: 15px;
 }
-.consultaTipo-btn{
-    gap: 5px;
-    background-color: transparent;
-    border: 1px solid #3a2d34;
-    box-shadow: 0 0 4px rgb( 0, 0, 0.1);
 
-}
-.consultaTipo-btn:hover{
-    background-color: #3a2d34;
+.formBtn,
+.consultaTipo-btn {
+    background-color: #75619d;
+    color: white;
     border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#formBtn{
+.consultaTipo-btn {
+    width: 130px;
+    height: 30px;
+    gap: 5px;
+    margin: 5px;
+    box-shadow: 0 0 4px rgb(0, 0, 0.1);
+}
+
+.formBtn {
     display: block;
     margin: 20px auto 0 auto;
-    background-color: #3a2d34;
-    border: none;
-    box-shadow: 0 0 6px rgb( 0, 0, 0.1);
+    width: 150px;
+    padding: 0.7rem;
 }
 
-#mensaje-enviado{
+.consultaTipo-btn:hover,
+.formBtn:hover {
+    background: #56357e;
+}
+
+
+.input-wrapper-contacto {
+    position: relative;
+    /* Para posicionar el ícono absolutamente dentro */
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-contacto {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Centra verticalmente */
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    /* Evita que interfiera con clics */
+}
+
+
+#mensaje-enviado {
     text-align: center;
     font-size: 18px;
     font-weight: bolder;
-    text-decoration:underline;
+    text-decoration: underline;
     color: #3f2a52;
 }

@@ -1,11 +1,11 @@
-body,
-html {
+.main-container-homepage {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
   min-height: 100%;
   background-color: #beaedb;
+  box-sizing: border-box;
 }
 
 .hero {
@@ -24,7 +24,6 @@ html {
   object-fit: cover;
   /* se adapta sin deformarse */
   object-position: top;
-  /* podés probar: center, top, bottom */
   padding: 15px;
 }
 
@@ -40,7 +39,6 @@ html {
   margin-bottom: 3rem;
   color: white;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
-  font-family: Papyrus, fantasy;
 }
 
 .hero__content p {
@@ -69,8 +67,8 @@ html {
 .favoritos-grid {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  flex-wrap: nowrap;
+  gap: 20px;
   /* 👉 separa las cards entre sí */
   padding: 20px 0;
   /* espacio arriba y abajo */
@@ -194,6 +192,7 @@ html {
   font-size: 1.9rem;
   margin-bottom: 15px;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.9);
+  color: #e6eff7;
 }
 
 .about-wisteria p {
