@@ -75,6 +75,7 @@ const FuncionalidadCarrito = () => {
             throw new Error(`Error ${response.status}: No se pudo eliminar el producto.`);
         }
     };
+    
     //llama al DELETE y elimina el producto del estado del carrito
     const eliminarDelCarrito = async (idItemOrden: number, productoId: number) => {
         try {

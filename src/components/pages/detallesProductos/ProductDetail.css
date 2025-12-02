@@ -129,29 +129,34 @@
 }
 
 .btn-add,
-.btn-buy,
-.btn-cp {
-  background: #75619d;
+.btn-cp,
+.comments-btn {
+  background-color: #75619d;
   color: white;
+    font-size: 1rem;
   border: none;
-  padding: 12px 20px;
-  border-radius: 0.5rem;
+  padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
   cursor: pointer;
+    transition: 0.3s ease;
+  margin-bottom: 0rem;
 }
 
 .btn-cp {
   margin-right: 1rem;
 }
+
 .btn-add:hover,
-.btn-buy:hover,
 .btn-cp:hover,
-.btn-vermas:hover {
+.btn-vermas:hover,
+.comments-btn:hover {
   background: #3f2a52;
   box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
 }
 
-.btn-add:hover,
-.btn-buy:hover {
+.btn-add:hover ,
+.comments-btn:hover,
+.btn-vermas:hover {
   transform: scale(1.02);
 }
 
@@ -167,9 +172,12 @@
   line-height: 1.5;
   color: #3f2a52;
 }
-.description-tittle {
+.description-tittle,
+.comments-tittle {
   margin-bottom: 1rem;
 }
+
+
 .p-description {
   font-size: large;
 }
@@ -196,11 +204,11 @@
   border-radius: 1rem;
 }
 
+
 .comments-tittle {
   font-size: 1.3rem;
   color: #3f2a52;
   margin-top: 0.6rem;
-  margin-bottom: 1rem;
 }
 
 .comments-textarea {
@@ -222,22 +230,7 @@
 }
 
 
-.comments-btn {
-  background-color: #75619d;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-  margin-bottom: 0rem;
-}
 
-.comments-btn:hover {
-  background-color: #3f2a52;
-  transform: scale(1.02);
-}
 
 
 /*CLASIFICACION*/

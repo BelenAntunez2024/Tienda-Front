@@ -318,14 +318,22 @@ const ProductDetail: React.FC = () => {
 
           <button
             className="comments-btn"
-            onClick={handleAddComment}>Enviar comentario</button>
+            onClick={handleAddComment}>Enviar comentario
+          </button>
+
 
           <ul>
             {comments.map((c) => (
-              <li key={c.id}>
-                <p>
+              <li
+              key={c.id}
+              className="clasification-li"
+              >
+
+                <p
+                className="clasification-p">
                   <strong>{c.user}</strong> ({c.rating}★): {c.text}
                 </p>
+
                 <div>
                   <input
                     type="text"
@@ -338,6 +346,7 @@ const ProductDetail: React.FC = () => {
                     }}
                   />
                 </div>
+
                 <ul>
                   {c.replies.map((r, idx) => (
                     <li key={idx} className="reply">
@@ -345,6 +354,7 @@ const ProductDetail: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+
               </li>
             ))}
           </ul>
