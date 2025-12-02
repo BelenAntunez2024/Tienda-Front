@@ -64,7 +64,7 @@ const FuncionalidadCarrito = () => {
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
 
-        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/eliminar-item/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar

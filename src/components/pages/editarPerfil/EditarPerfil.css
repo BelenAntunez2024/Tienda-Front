@@ -29,23 +29,10 @@
 .formulario-editar-perfil button{
   margin-top: 1rem;
   padding: 0.8rem;
-  background: #75619d;
-  color: #ffffff;
-  border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase; /*el texto queda en mayusculas*/
-  letter-spacing: 0.1rem;
-  box-shadow: 0 0 6px rgba(117, 97, 157, 0.6);
-}
-
-/*cambia de color cuando pasa el mouse*/
-.formulario-editar-perfil button:hover{
-  background: #3f2a52;
-  box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
 }
 
 /*Mensajes*/

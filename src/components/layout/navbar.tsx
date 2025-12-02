@@ -1,10 +1,27 @@
 import "./navbar.css";
-import HamburgerMenu from "./HamburgerMenu"; //importamos el menú
-import { Link } from "react-router-dom";
+import HamburgerMenu from "./HamburgerMenu"; 
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const Navbar = () => {
+  const [busqueda, setBusqueda] = useState("");
+  const navigate = useNavigate(); 
 
+  const handleSearch = () => {
+    if (busqueda.trim()) {
+      navigate(`/verProductos?search=${busqueda.trim()}`); 
+    } else {
+      navigate('/verProductos');
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+  
   return (
     <>
       {/* NAVBAR */}
@@ -33,15 +50,19 @@ const Navbar = () => {
       </nav>
 
 
-
-
-      {/* BARRA DE BUSQUEDA */}
-        <div className="search-bar">
-          <input type="text" placeholder="Buscar..." />
-          <button>
-            <i className="fas fa-search"></i>
-          </button>
-        </div>
+      {/* BARRA DE BUSQUEDA MODIFICADA */}
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleSearch}>
+          <i className="fas fa-search"></i>
+        </button>
+      </div>
     </>
   );
 };
