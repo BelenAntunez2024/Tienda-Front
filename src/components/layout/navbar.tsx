@@ -1,10 +1,26 @@
 import "./navbar.css";
-import HamburgerMenu from "./HamburgerMenu"; //importamos el menú
-import { Link } from "react-router-dom";
+import HamburgerMenu from "./HamburgerMenu"; 
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const Navbar = () => {
+  const [busqueda, setBusqueda] = useState("");
+  const navigate = useNavigate(); 
 
+  const handleSearch = () => {
+    if (busqueda.trim()) {
+      navigate(`/verProductos?search=${busqueda.trim()}`); 
+    } else {
+      navigate('/verProductos');
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
   return (
     <>
       {/* NAVBAR */}
@@ -13,7 +29,7 @@ const Navbar = () => {
         <div className="nav-left">
           <HamburgerMenu />
         </div>
-        
+
         {/* Logo en el centro */}
         <div className="nav-center">
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -32,10 +48,16 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* BARRA DE BUSQUEDA */}
+      {/* BARRA DE BUSQUEDA MODIFICADA */}
       <div className="search-bar">
-        <input type="text" placeholder="Buscar..." />
-        <button>
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleSearch}>
           <i className="fas fa-search"></i>
         </button>
       </div>
