@@ -30,6 +30,8 @@
   justify-content: center;
   position: relative;
   gap: 3rem;
+  width: 100%;
+  max-width: 1300px;
 }
 
 .paso {
@@ -151,7 +153,7 @@
   padding: 1.5rem 1rem;
   border-radius: 1.8rem;
   box-shadow: 0 4px 15px rgba(90, 60, 130, 0.1);
-  /*margin: 5rem auto;*/
+  margin: 5rem auto;
   text-align: center;
   max-width: 900px;
   border: 1px solid rgba(170, 140, 210, 0.3);
@@ -202,13 +204,13 @@
 /* SECCION DEVOLUCIONES */
 .devoluciones {
   background: linear-gradient(180deg, #bfa8e0, #a98edf);
-  color: white;
   padding: 3rem 2rem;
   border-radius: 1.5rem;
 }
 
-.devoluciones h2 {
-  color: #fff;
+.devolucion-titulo{
+  color: #3f2b6d;
+  text-align: center;
 }
 
 .btn-politica {

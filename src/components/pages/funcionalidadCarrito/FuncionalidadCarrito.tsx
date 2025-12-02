@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const FuncionalidadCarrito = () => {
 
+    const [cantidadActualizada, setCantidadActualizada] = useState(false);
     const [carrito, setCarrito] = useState<CarritoItem[]>([]);
     const token = localStorage.getItem('token') || '';
     const decoded: any = jwtDecode(token);
@@ -55,6 +56,15 @@ const FuncionalidadCarrito = () => {
                 cantidad_productos: nuevaCantidad,
             }),
         });
+        
+        /*const response = await fetch(`http://localhost:3000/item-ordenes/eliminar-item/${idItemOrden}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}` // Usamos el token para autenticar
+            }
+        }); */
+
+
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: No se pudo actualizar la cantidad.`);
@@ -64,7 +74,7 @@ const FuncionalidadCarrito = () => {
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
 
-        const response = await fetch(`http://localhost:3000/item-ordenes/eliminar-item/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar
@@ -75,7 +85,6 @@ const FuncionalidadCarrito = () => {
             throw new Error(`Error ${response.status}: No se pudo eliminar el producto.`);
         }
     };
-    
     //llama al DELETE y elimina el producto del estado del carrito
     const eliminarDelCarrito = async (idItemOrden: number, productoId: number) => {
         try {
@@ -104,7 +113,8 @@ const FuncionalidadCarrito = () => {
                         ? { ...item, cantidad: nuevaCantidad }
                         : item
                 ));
-                alert("Cantidad actualizada con éxito.");
+                setCantidadActualizada(true);
+                setTimeout(() => setCantidadActualizada(false), 3000);
             } else if (producto.cantidad === 1) {
                 // Si la cantidad es 1, llamamos a la función de eliminación (DELETE)
                 await eliminarDelCarrito(idItemOrden, productoId);
@@ -128,7 +138,8 @@ const FuncionalidadCarrito = () => {
                     ? { ...item, cantidad: nuevaCantidad } // Actualiza la cantidad
                     : item
             ));
-            alert("Cantidad actualizada con éxito.");
+            setCantidadActualizada(true);
+            setTimeout(() => setCantidadActualizada(false), 3000);
         } catch (error) {
             console.error("Error al sumar cantidad:", error);
         }
@@ -136,7 +147,7 @@ const FuncionalidadCarrito = () => {
 
 
     return (
-        <>
+        <main>
             <VolverAtras hasNavbar={true} />
             <h1 className="carrito-titulo"> Carrito </h1>
 
@@ -147,50 +158,26 @@ const FuncionalidadCarrito = () => {
                         <p className='carrito-vacio'>Carrito vacío</p>
                     ) : (
                         carrito.map((producto) => (
-                            <div
-                                key={producto.id_item_orden}
-                                className="card-carrito"
-                            >
-
-                                <h2
-                                    className="nombre-producto">{producto.nombre}
-                                </h2>
-
-                                <img
-                                    src={producto.imagen}
-                                    alt={producto.nombre}
-                                    width={200}
-                                />
-
+                            <div key={producto.id_item_orden} className="card-carrito">
+                                <h2 className="nombre-producto">{producto.nombre}</h2>
+                                <img src={producto.imagen} alt={producto.nombre} width={200} />
                                 <div className="product-text-info">
                                     <p className="p-precio">
                                         Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
                                     </p>
-
-                                    <p>
-                                        Cantidad: {producto.cantidad}
-                                    </p>
+                                    <p>Cantidad: {producto.cantidad}</p>
                                 </div>
-
                                 <div className="btn-container">
-                                    <button
-                                        className="btn-sumar"
-                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}
-                                    >
+                                    <button className="btn-sumar"
+                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
                                         +
                                     </button>
-
-                                    <button
-                                        className="btn-restar"
-                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}
-                                    >
+                                    <button className="btn-restar"
+                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
                                         -
                                     </button>
-
-                                    <button
-                                        className="btn-eliminar"
-                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}
-                                    >
+                                    <button className="btn-eliminar"
+                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
                                         Eliminar
                                     </button>
                                 </div>
@@ -198,13 +185,20 @@ const FuncionalidadCarrito = () => {
                         )))}
                 </div>
             </div>
+            {cantidadActualizada && (
+                <div className="alerta-exito">
+                    <p>¡Cantidad actualizada con éxito!</p>
+                </div>
+            )}
 
             <Link to={`/confirmarCompra`} className="link-no-decoration">
                 <button className="btn-confirmar-compra">
                     Confirmar compra
                 </button>
             </Link>
-        </>
+
+
+        </main>
     )
 }
 export default FuncionalidadCarrito

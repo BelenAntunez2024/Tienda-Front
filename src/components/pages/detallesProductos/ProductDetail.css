@@ -131,14 +131,10 @@
 .btn-add,
 .btn-cp,
 .comments-btn {
-  background-color: #75619d;
-  color: white;
-    font-size: 1rem;
-  border: none;
+  font-size: 1rem;
   padding: 0.6rem 1.5rem;
-    border-radius: 0.5rem;
-  cursor: pointer;
-    transition: 0.3s ease;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
   margin-bottom: 0rem;
 }
 
@@ -146,13 +142,6 @@
   margin-right: 1rem;
 }
 
-.btn-add:hover,
-.btn-cp:hover,
-.btn-vermas:hover,
-.comments-btn:hover {
-  background: #3f2a52;
-  box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
-}
 
 .btn-add:hover ,
 .comments-btn:hover,
