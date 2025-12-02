@@ -32,6 +32,7 @@ const Navbar = () => {
           <HamburgerMenu />
         </div>
 
+
         {/* Logo en el centro */}
         <div className="nav-center">
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>

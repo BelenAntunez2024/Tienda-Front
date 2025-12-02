@@ -5,6 +5,7 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import useCerrarSesion from "../hooks/CerrarSesion";
 
+
 const HamburgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useCerrarSesion(); 

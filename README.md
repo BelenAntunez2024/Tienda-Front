@@ -1,69 +1,128 @@
-# React + TypeScript + Vite
+# Wisteria E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tienda online de productos místicos desarrollada como proyecto final de Desarrollo Web Full Stack.
 
-Currently, two official plugins are available:
+## 📌 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Wisteria es una tienda online de productos místicos, donde los usuarios pueden registrarse, iniciar sesión, ver los productos disponibles, agregarlos al carrito y realizar compras. Los administradores pueden gestionar los productos, categorías y usuarios.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📌 Características
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Registro y login de usuarios.
+- Login con Google.
+- Gestión de perfil.
+- Catálogo de productos.
+- Carrito de compras.
+- Pagos con Mercado Pago.
+- Backend en NestJS con TypeORM
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📌 Tecnologías Utilizadas
+## 🛠️ Tecnologías
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Frontend
+- React
+- TypeScript
+- CSS
+
+### Backend
+- Node.js
+- NestJS
+- TypeORM
+- Supabase (postgre)
+
+### Integraciones
+- Mercado Pago
+- Google OAuth
+- Ngrok
+
+### Autenticacion
+- JWT
+- Bcrypt
+
+### Control de Versiones 
+- Git
+- GitHub
+
+## ⚙️ Instalación
+
+### Frontend
+
+```bash
+git clone https://github.com/BelenAntunez2024/Tienda-Front.git
+cd Tienda-Front
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/BelenAntunez2024/Tienda-Back.git
+cd Tienda-Back
+npm install
+npm run start:dev
 ```
+## 📂 Estructura
+
+### Frontend
+
+```bash
+src/
+├── assets/
+├── components/
+│   ├── pages/
+│   │   ├── homepage/
+│   │   ├── login/
+│   │   ├── registro/
+│   │   ├── verProductos/
+│   │   ├── verHistorial/
+│   │   ├── MetodoDePago/
+│   │   ├── verDatosDeContacto/
+│   │   ├── editarPerfil/
+│   │   ├── detallesProductos/
+│   │   ├── funcionalidadCarrito/
+│   │   └── confirmarCompra/
+│   ├── layout/
+│   │   ├── footer/
+│   │   ├── navbar/
+│   │   └── hamburguesaMenu/
+│   ├── MainLoyout/
+│   └── icons/
+├── App.tsx
+└── main.tsx
+```
+
+### Backend
+
+```bash
+src/
+├── auth/
+├── cliente/
+├── common/
+├── correo/
+├── item-ordenes/
+├── metodoDePago/
+├── ordenes/
+├── producto/
+├── usuario/
+├── app.service.ts
+├── app.controller.ts
+├── app.module.ts
+└── main.ts
+
+## Diagrama de la base de datos
+![Inicio](screenshots/home.png)
+
+
+## 📌 Estado del proyecto
+
+VAYA SABER DIOS
+
+## 👩‍💻 Autor
+
+Maria Belén Antúnez 
+Morena Gutierrez
+Lucila Anchoverri
+
+Desarrollo Web Full Stack  
