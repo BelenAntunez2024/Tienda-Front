@@ -49,13 +49,8 @@
 .btn-vermas {
   margin-top: 1rem;
   padding: 0.5rem 1.2rem;
-  background: #75619d;
-  color: #fff;
-  border: none;
   border-radius: 20px;
   font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
   box-shadow: 0 3px 6px rgba(142, 36, 170, 0.3);
 }
 

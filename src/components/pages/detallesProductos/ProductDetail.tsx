@@ -18,6 +18,7 @@ const ProductDetail: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isAdding, setIsAdding] = useState(false); // Estado para el botón de agregar al carrito
   const [cantidad, setCantidad] = useState(1); //el 1 establece la cantidad inicial
+  const [productoAgregado, setProductoAgregado] = useState(false);
 
   // Obtener todos los productos (para productos sugeridos)
   useEffect(() => {
@@ -145,6 +146,8 @@ const ProductDetail: React.FC = () => {
           return [...prevCarrito, nuevoProducto];
         }
       });
+      setProductoAgregado(true);
+      setTimeout(() => setProductoAgregado(false), 3000);
       setError(null);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Error desconocido al agregar producto al carrito.";
@@ -219,27 +222,31 @@ const ProductDetail: React.FC = () => {
 
           {/* Columna derecha */}
           <div className="product-info">
-            <h2>{product.nombre}</h2>
+            <h2 className="product-name">{product.nombre}</h2>
             <h3 className="product-price">${product.precio}</h3>
             <p className="discount">
               ${(product.precio * 0.8).toFixed(2)} con 20% OFF transferencia
             </p>
 
             {/*Metodos de pago*/}
-            <div className="pagos">
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"
-                alt="Visa" />
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png"
-                alt="Mastercard" />
-              <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
-                alt="transferencia" />
+            <div className="pago-promo-container">
+              <div className="metodo-pago">
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"
+                  alt="Visa" />
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png"
+                  alt="Mastercard" />
+                <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
+                  alt="transferencia" />
+              </div>
+
+              <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
             </div>
 
-            <p className="promo">Hasta 3 cuotas sin interés con tarjeta de débito</p>
             {/*Cantidades*/}
             <div className="cantidad-section">
               <label>Cantidad:</label>
               <input
+                className="input-cantidad"
                 type="number"
                 min="1"
                 max="10"
@@ -249,8 +256,9 @@ const ProductDetail: React.FC = () => {
                 }
               />
             </div>
+
             {/* Botones */}
-            <div className="buttons">
+            <div className="buttons-container">
               <button
                 className="btn-add"
                 onClick={() => agregarAlCarrito(product)}
@@ -258,103 +266,149 @@ const ProductDetail: React.FC = () => {
               >
                 {isAdding ? 'Agregando...' : 'Agregar al carrito'}
               </button>
-
-            </div>
-            <div className="MetodoEnvio">
-              <p><strong>Consulta tu envio por codigo postal: </strong></p>
-              <button
-                className="btn-cp"
-                onClick={handleEnvioAndreani}>
-                Consultar en Andreani
-              </button>
-
-              <button
-                className="btn-cp"
-                onClick={handleEnvioOCA}>
-                Consultar en OCA
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Descripción */}
-        <div className="product-description">
-          <h3>Descripción del producto</h3>
-          <p>{product.descripcion}</p>
-        </div>
-
-        {/* Opiniones */}
-        <div className="comentarios">
-          <h3>Dejanos tu opinión sobre el producto:</h3>
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Escribe tu comentario"
-          />
-          <div className="calificacion">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                style={{
-                  cursor: "pointer",
-                  color: star <= rating ? "gold" : "gray",
-                }}
-                onClick={() => setRating(star)}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-
-          <button onClick={handleAddComment}>Enviar comentario</button>
-
-          <ul>
-            {comments.map((c) => (
-              <li key={c.id}>
-                <p>
-                  <strong>{c.user}</strong> ({c.rating}★): {c.text}
-                </p>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Responder"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && e.currentTarget.value.trim()) {
-                        handleReply(c.id, e.currentTarget.value);
-                        e.currentTarget.value = "";
-                      }
-                    }}
-                  />
+              {productoAgregado && (
+                <div className="alerta-exito">
+                  <p>¡Producto agregado al carrito!</p>
                 </div>
-                <ul>
-                  {c.replies.map((r, idx) => (
-                    <li key={idx} className="reply">
-                      ↳ {r}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+              )}
+            </div>
+          </div>
+
+          {/*Metodos de envio*/}
+          <div className="metodoEnvio">
+            <p><strong>Consulta tu envio por codigo postal: </strong></p>
+            <button
+              className="btn-cp"
+              onClick={handleEnvioAndreani}>
+              Consultar en Andreani
+            </button>
+
+            <button
+              className="btn-cp"
+              onClick={handleEnvioOCA}>
+              Consultar en OCA
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Descripción */}
+      <div className="product-description">
+        <h3 className="description-tittle">Descripción del producto</h3>
+        <p className="p-description">{product.descripcion}</p>
+      </div>
+
+      <hr className="divisor"></hr>
+
+      {/* Opiniones */}
+      <div className="comments-container">
+        <h3 className="comments-tittle">Dejanos tu opinión sobre el producto:</h3>
+        <textarea
+          className="comments-textarea"
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          placeholder="Escribe tu comentario"
+        />
+        <div className="calificacion">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span
+              key={star}
+              style={{
+                cursor: "pointer",
+                color: star <= rating ? "gold" : "gray",
+              }}
+              onClick={() => setRating(star)}
+            >
+              ★
+            </span>
+          ))}
         </div>
 
-        {/* Productos sugeridos */}
-        <div className="related-products">
-          <h3>Podés comprar también:</h3>
-          <div className="related-grid">
-            {suggestedProducts.map((p) => (
-              <div key={p.id_producto} className="related-item">
-                <Link to={`/producto/${p.id_producto}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <img src={p.imagen} alt={p.nombre} />
-                  <p>{p.nombre}</p>
-                  <span>${p.precio}</span>
-                  <div className="rediProduct">
-                    <button className="btn-vermas">Ver mas</button>
-                  </div>
-                </Link>
+        <button
+          className="comments-btn"
+          onClick={handleAddComment}>Enviar comentario
+        </button>
+
+
+        <ul>
+          {comments.map((c) => (
+            <li
+              key={c.id}
+              className="clasification-li"
+            >
+
+              <p
+                className="clasification-p">
+                <strong>{c.user}</strong> ({c.rating}★): {c.text}
+              </p>
+
+              <div>
+                <input
+                  type="text"
+                  placeholder="Responder"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && e.currentTarget.value.trim()) {
+                      handleReply(c.id, e.currentTarget.value);
+                      e.currentTarget.value = "";
+                    }
+                  }}
+                />
               </div>
-            ))}
-          </div>
+
+              <ul>
+                {c.replies.map((r, idx) => (
+                  <li key={idx} className="reply">
+                    ↳ {r}
+                  </li>
+                ))}
+              </ul>
+
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Productos sugeridos */}
+      <div className="related-products">
+        <h3 className="related-tittle">Podés comprar también</h3>
+        <div className="related-grid">
+          {suggestedProducts.map((p) => (
+            <div
+              key={p.id_producto}
+              className="related-item"
+            >
+
+              <Link
+                to={`/producto/${p.id_producto}`}
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit'
+                }}
+              >
+
+                <img
+                  src={p.imagen}
+                  alt={p.nombre}
+                />
+
+                <p
+                  className="name-related">
+                  {p.nombre}
+                </p>
+
+                <p
+                  className="price-related">
+                  <span>${p.precio}</span>
+                </p>
+
+                <div className="rediProduct">
+                  <button className="btn-vermas">
+                    Ver mas
+                  </button>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </>

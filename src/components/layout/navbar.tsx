@@ -14,6 +14,7 @@ const Navbar = () => {
     } else {
       navigate('/verProductos');
     }
+    setBusqueda("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

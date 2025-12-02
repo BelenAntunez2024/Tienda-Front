@@ -25,10 +25,6 @@ const Footer = () => {
             className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png" 
             className="footer__top__icon" alt="Medio Pago"></img>
-            <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/pagofacil.png" 
-            className="footer__top__icon" alt="Medio Pago"></img>
-            <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/rapipago.png" 
-            className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png" 
             className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/efectivo.png" 

@@ -1,22 +1,26 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    max-height: 100%;
-    background-color: #beaedb;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  background-color: #beaedb;
+  box-sizing: border-box;
 
 }
 
-h1, h2, h3, h4{
-    font-family: 'Poppins', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Poppins', sans-serif;
 }
 
-p, strong{
-    font-family: 'Roboto', sans-serif;
+p,
+strong {
+  font-family: 'Roboto', sans-serif;
 }
 
-label{
+label {
   font-weight: bold;
   color: #3a2d34;
   margin-left: 0.2rem;
@@ -30,12 +34,13 @@ input {
   box-sizing: border-box;
   border: 1px solid #75619d;
   border-radius: 8px;
-  outline: none; 
+  outline: none;
 
 }
 
-input:focus{
-  border-color: #beaedb;/*cambia el color al hacer clic*/
+input:focus {
+  border-color: #beaedb;
+  /*cambia el color al hacer clic*/
   box-shadow: 0 0 8px rgba(190, 174, 219, 0.7);
 }
 
@@ -44,7 +49,7 @@ input:focus{
   color: rgb(58, 45, 52);
 }
 
-button{
+button {
   background-color: #75619D;
   color: white;
   border: none;
@@ -56,4 +61,12 @@ button{
 button:hover {
   background-color: #3F2A52;
   box-shadow: 0 0 12px rgba(190, 174, 219, 0.9);
+}
+
+.alerta-exito {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
+  text-decoration: underline;
+  color: #3f2a52;
 }
