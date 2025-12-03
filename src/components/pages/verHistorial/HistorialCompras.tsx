@@ -85,11 +85,13 @@ const HistorialCompras: React.FC = () => {
           </p>
         )}
 
-        <ul>
+        
+        <ul className="ul-compras">
           {/*recorre y muestra en la lisa las compras */}
           {compras.map((compra) => (
-            <li key={compra.id_orden}>
+            <li key={compra.id_orden} className="li-compra">
               <strong>Compra #</strong>  {compra.fecha} - Total: ${compra.total}
+              
               <button
                 className="btn-historial-detalles"
                 onClick={() => setCompraSeleccionada(compra)}
