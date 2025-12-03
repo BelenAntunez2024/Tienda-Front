@@ -5,8 +5,11 @@
   padding: 20px;
   padding-left: 2rem;
   padding-right: 2rem;
+  color: #3f2a52;
+
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(135deg, #beaedb 0%, #d8c6f0 100%);
+  box-shadow: 0 4px 15px rgba(117, 97, 157, 0.3);
 }
 
 .product-container {
@@ -21,17 +24,33 @@
 }
 
 /* === Imagen === */
-.product-image img {
-  width: 400px;
+.product-image-detail {
+  width: 320px;
+  /*ancho fijo */
+  height: 445px;
+  /*alto fijo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /*evita que se sobresalga */
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.068);
+  background: linear-gradient(180deg, #f8f5ff 0%, #ece3ff 100%);
 }
+
+.product-image-detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+}
+
 
 /* === Info === */
 .product-info {
   flex: 1;
   min-width: 300px;
-  color: #3f2a52;
 }
 
 .product-info h2 {
@@ -39,23 +58,23 @@
 }
 
 .product-name {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .product-price {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 
 .discount {
   color: #388e3c;
   font-weight: bold;
   margin: 8px 0;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .pago-promo-container {
@@ -81,7 +100,7 @@
 
 .metodo-pago img {
   width: 45px;
-  margin-right:1rem;
+  margin-right: 1rem;
   border-radius: 0.2rem;
   border: solid 0.1rem transparent;
   border-color: #b3b1b10e;
@@ -94,14 +113,13 @@
   padding: 8px;
   border-radius: 0.5rem;
   margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   width: 100%;
   box-sizing: border-box;
 }
 
 
 .cantidad-section {
-  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -142,8 +160,7 @@
   margin-right: 1rem;
 }
 
-
-.btn-add:hover ,
+.btn-add:hover,
 .comments-btn:hover,
 .btn-vermas:hover {
   transform: scale(1.02);
@@ -153,14 +170,12 @@
 
 /* === Descripción === */
 .product-description {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   margin-left: 2rem;
-  margin-right: 2rem;
+  margin-right: 2.5rem;
   text-align: justify;
   line-height: 1.5;
-  color: #3f2a52;
 }
+
 .description-tittle,
 .comments-tittle {
   margin-bottom: 1rem;
@@ -169,14 +184,15 @@
 
 .p-description {
   font-size: large;
+  margin-bottom: 1rem;
 }
 
 .divisor {
   border: none;
   border-top: 0.5px solid #3f2a5218;
-  width: 93%; /* más corta */
+  width: 90%;
+  /* más corta */
   margin: 2rem auto;
-  
 }
 
 
@@ -184,9 +200,12 @@
 
 /* === Opiniones === */
 .comments-container {
+  color: #3f2a52;
+  box-shadow: 0 4px 15px rgba(117, 97, 157, 0.3);
+
   margin-top: 2.5rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   margin-bottom: 2.5rem;
   background: white;
   padding: 1.5rem;
@@ -196,7 +215,6 @@
 
 .comments-tittle {
   font-size: 1.3rem;
-  color: #3f2a52;
   margin-top: 0.6rem;
 }
 
@@ -238,32 +256,63 @@
 }
 
 /* Comentarios listados */
-.comentarios ul {
+.clasification-ul {
   list-style: none;
-  margin-top: 2rem;
   padding: 0;
+  margin: 0.5rem;
 }
 
-.comentarios li {
+.clasification-p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clasification-li {
   background: white;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem;
   border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.055);
   font-size: 1.3rem;
 }
 
-.comentarios li strong {
+.clasification-li strong {
   color: #4a148c;
-  font-size: 1.3rem;
+}
+
+.input-clasification {
+  margin-top: 0rem;
+}
+
+.respuestas-container {
+  list-style: none;
+  margin-left: 1.5rem;
+  padding-left: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .reply {
-  margin-left: 5rem;
+  margin: 0 1rem 0.5rem 1rem;
   font-size: 1rem;
   color: #555;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
+.reply::before {
+  content: "↳";
+  flex-shrink: 0;
+  margin-right: 6px;
+}
 
 
 /* === Productos relacionados === */

@@ -56,15 +56,6 @@ const FuncionalidadCarrito = () => {
                 cantidad_productos: nuevaCantidad,
             }),
         });
-        
-        /*const response = await fetch(`http://localhost:3000/item-ordenes/eliminar-item/${idItemOrden}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}` // Usamos el token para autenticar
-            }
-        }); */
-
-
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: No se pudo actualizar la cantidad.`);
@@ -74,7 +65,7 @@ const FuncionalidadCarrito = () => {
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
 
-        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/eliminar-item/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar
@@ -147,58 +138,73 @@ const FuncionalidadCarrito = () => {
 
 
     return (
-        <main>
+        <>
             <VolverAtras hasNavbar={true} />
-            <h1 className="carrito-titulo"> Carrito </h1>
+            <div className="carrito-container-general">
+                <h1 className="carrito-titulo"> Carrito </h1>
 
-            <div className='carrito-container'>
-                <h2 className="carrito-subtitulo">Productos elegidos</h2>
-                <div className="container-card">
-                    {carrito.length === 0 ? (
-                        <p className='carrito-vacio'>Carrito vacío</p>
-                    ) : (
-                        carrito.map((producto) => (
-                            <div key={producto.id_item_orden} className="card-carrito">
-                                <h2 className="nombre-producto">{producto.nombre}</h2>
-                                <img src={producto.imagen} alt={producto.nombre} width={200} />
-                                <div className="product-text-info">
-                                    <p className="p-precio">
-                                        Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
-                                    </p>
-                                    <p>Cantidad: {producto.cantidad}</p>
+                <div className='carrito-container'>
+                    <h2 className="carrito-subtitulo">Productos elegidos</h2>
+
+                    <div className="container-card">
+                        {carrito.length === 0 ? (
+                            <p className='p-carrito-vacio'>Carrito vacío, agrega algún producto.</p>
+                        ) : (
+                            carrito.map((producto) => (
+                                <div
+                                    key={producto.id_item_orden}
+                                    className="card-carrito"
+                                >
+                                    <h2 className="nombre-producto-carrito">{producto.nombre}</h2>
+
+                                    <img
+                                        src={producto.imagen}
+                                        alt={producto.nombre}
+                                        className="carrito-card-img"
+                                    />
+
+                                    <div className="product-carrito-info">
+                                        <p className="p-precio-carrito">
+                                            Precio: ${(producto.precio * producto.cantidad).toFixed(2)}
+                                        </p>
+                                        <p className="p-cantidad-carrito">Cantidad: {producto.cantidad}</p>
+                                    </div>
+
+                                    <div className="btn-carrito-container">
+                                        <button className="btn-sumar"
+                                            onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}
+                                        >
+                                            +
+                                        </button>
+                                        <button className="btn-restar"
+                                            onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}
+                                        >
+                                            -
+                                        </button>
+                                        <button className="btn-eliminar"
+                                            onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}
+                                        >
+                                            Eliminar
+                                        </button>
+                                    </div>
                                 </div>
-                                <div className="btn-container">
-                                    <button className="btn-sumar"
-                                        onClick={() => sumarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                        +
-                                    </button>
-                                    <button className="btn-restar"
-                                        onClick={() => restarCantidad(producto.id_producto, producto.id_item_orden)}>
-                                        -
-                                    </button>
-                                    <button className="btn-eliminar"
-                                        onClick={() => eliminarDelCarrito(producto.id_item_orden, producto.id_producto)}>
-                                        Eliminar
-                                    </button>
-                                </div>
-                            </div>
-                        )))}
+                            )))}
+                    </div>
                 </div>
+
+                {cantidadActualizada && (
+                    <div className="alerta-exito">
+                        <p>¡Cantidad actualizada con éxito!</p>
+                    </div>
+                )}
+
+                <Link to={`/confirmarCompra`} className="link-no-decoration">
+                    <button className="btn-confirmar-compra">
+                        Confirmar compra
+                    </button>
+                </Link>
             </div>
-            {cantidadActualizada && (
-                <div className="alerta-exito">
-                    <p>¡Cantidad actualizada con éxito!</p>
-                </div>
-            )}
-
-            <Link to={`/confirmarCompra`} className="link-no-decoration">
-                <button className="btn-confirmar-compra">
-                    Confirmar compra
-                </button>
-            </Link>
-
-
-        </main>
+        </>
     )
 }
 export default FuncionalidadCarrito

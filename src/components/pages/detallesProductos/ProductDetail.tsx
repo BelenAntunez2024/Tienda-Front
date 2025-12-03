@@ -216,7 +216,7 @@ const ProductDetail: React.FC = () => {
         <div className="product-container">
 
           {/* Columna izquierda-imagen */}
-          <div className="product-image">
+          <div className="product-image-detail">
             <img src={product.imagen} alt={product?.nombre} />
           </div>
 
@@ -272,32 +272,35 @@ const ProductDetail: React.FC = () => {
                 </div>
               )}
             </div>
-          </div>
 
-          {/*Metodos de envio*/}
-          <div className="metodoEnvio">
-            <p><strong>Consulta tu envio por codigo postal: </strong></p>
-            <button
-              className="btn-cp"
-              onClick={handleEnvioAndreani}>
-              Consultar en Andreani
-            </button>
 
-            <button
-              className="btn-cp"
-              onClick={handleEnvioOCA}>
-              Consultar en OCA
-            </button>
+            {/*Metodos de envio*/}
+            <div className="metodoEnvio">
+              <p><strong>Consulta tu envio por codigo postal: </strong></p>
+              <div className="buttons-container">
+                <button
+                  className="btn-cp"
+                  onClick={handleEnvioAndreani}>
+                  Consultar en Andreani
+                </button>
+
+                <button
+                  className="btn-cp"
+                  onClick={handleEnvioOCA}>
+                  Consultar en OCA
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      
 
       {/* Descripción */}
       <div className="product-description">
         <h3 className="description-tittle">Descripción del producto</h3>
         <p className="p-description">{product.descripcion}</p>
       </div>
-
+      </div>
       <hr className="divisor"></hr>
 
       {/* Opiniones */}
@@ -330,7 +333,7 @@ const ProductDetail: React.FC = () => {
         </button>
 
 
-        <ul>
+        <ul className="clasification-ul">
           {comments.map((c) => (
             <li
               key={c.id}
@@ -342,7 +345,7 @@ const ProductDetail: React.FC = () => {
                 <strong>{c.user}</strong> ({c.rating}★): {c.text}
               </p>
 
-              <div>
+              <div className="input-clasification">
                 <input
                   type="text"
                   placeholder="Responder"
@@ -355,10 +358,10 @@ const ProductDetail: React.FC = () => {
                 />
               </div>
 
-              <ul>
+              <ul className="respuestas-container">
                 {c.replies.map((r, idx) => (
                   <li key={idx} className="reply">
-                    ↳ {r}
+                    {r}
                   </li>
                 ))}
               </ul>
