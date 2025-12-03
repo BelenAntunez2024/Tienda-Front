@@ -49,8 +49,13 @@
 .passwordOlvidada {
   background: none;
   border: none;
-  color: rgb(58, 45, 52);
-
+  color: #3F2A52;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 15px;
+  display: block;
+  text-align: center;
 }
 .passwordOlvidada:hover{
   background-color: white;

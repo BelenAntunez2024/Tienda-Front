@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./FormularioCompra.css"
 import type { FormData } from "./interface/formData";
 import VolverAtras from "../../layout/VolverAtras";
+import {jwtDecode} from "jwt-decode";
 
 function FormularioCompra() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function FormularioCompra() {
   };
 
   //handler para enviar el formulario
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     //validaciones basicas
@@ -48,10 +49,80 @@ function FormularioCompra() {
       return;
     }
 
+
+    //ARMAR OBJETO DE COMPRA
+    const token = localStorage.getItem("token") || "";
+    const decoded: any = jwtDecode(token);
+    const userId = decoded.id || decoded.Id_usuario || decoded.sub;
+
+    //traer carrito del back
+    const carritoRes = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+
+    const carrito = await carritoRes.json();
+    console.log(carrito);
+    const items = carrito.map((item: any) => ({
+      id_producto: item.producto.id_producto,
+      cantidad_productos: item.cantidad_productos,
+      userId: decoded.id || decoded.Id_usuario || decoded.sub,
+    }));
+
+    const compra = {
+      items,
+      Id_usuario: userId,
+      //userId: decoded.id || decoded.Id_usuario || decoded.sub,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/ordenes/comprar", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(compra)
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al procesar la compra");
+      }
+
+      //simulacion de envio exitosa
+      setError("");
+      setExito("Compra realizada con exito!");
+
+      //vaciar carrito si la compra fue exitosa
+      if (response.ok) {
+        await fetch(`http://localhost:3000/item-ordenes/vaciar-carrito/${userId}`, {
+          method: "DELETE",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        localStorage.removeItem("carrito");
+      }
+
+    } catch (error) {
+      console.error(error);
+      setError("No se pudo realizar la compra. Intente nuevamente");
+    }
+
     //guardar el email para el pago
     localStorage.setItem("emailCompra", formData.email);
 
+      //limpiar el formulario
+    setFormData({
+      nombre: "",
+      email: "",
+      direccion: "",
+      metodoPago: "tarjeta",
+      numeroTarjeta: "",
+      vencimientoTarjeta: "",
+      cvvTarjeta: "",
+    });
+
     setError("");
+
+    setTimeout(() => setExito(""), 3000);
 
     //redirigir al componente PagosMP
     navigate("/metodoDePago");

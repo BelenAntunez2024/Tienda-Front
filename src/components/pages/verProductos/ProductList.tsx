@@ -18,12 +18,7 @@ const ProductList: React.FC = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('token') || ''; 
-
-        const searchTerm = searchParams.get('search') || ''; // Obtiene la búsqueda de la URL si no hay, usa cadena vacia.
-        //crea la url con el prod buscado. Si esta vacio devuelve todos
-        const url = `http://localhost:3000/producto/filtrar-por-nombre?nombre=${encodeURIComponent(searchTerm)}`;
-
-        const response = await fetch(url, {
+        const response = await fetch(`http://localhost:3000/producto`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

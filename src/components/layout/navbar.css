@@ -11,29 +11,35 @@
   z-index: 1000;
   box-sizing: border-box;
 }
+
 .nav-left,
 .nav-right {
   font-size: 25px;
   display: flex;
   align-items: center;
 }
+
 .nav-center {
   display: flex;
   align-items: center;
   gap: 20px;
 }
+
 .titulo {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 4px;
 }
+
 .logo-img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
-/* SEARCH BAR */
+
+
+/* BACK-SEARCH BAR*/
 .search-bar {
   display: flex;
   align-items: center;
@@ -44,6 +50,17 @@
   width: 80%;
   max-width: 400px;
 }
+
+.search-bar button:hover,
+.search-bar button:focus {
+  outline: none;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  color: inherit; /* mantiene el color */
+}
+
+
 .search-bar input {
   flex: 1;
   border: none;
@@ -52,10 +69,12 @@
   padding: 8px;
   font-size: 14px;
 }
-.search-bar input:focus{
+
+.search-bar input:focus {
   border: none;
   box-shadow: none;
 }
+
 .search-bar button {
   background: none;
   border: none;
@@ -63,11 +82,13 @@
   cursor: pointer;
   color: #333;
 }
+
 /* ========== HAMBURGER MENU ========== */
 .hamburger-container {
   display: flex;
   align-items: center;
 }
+
 /* Overlay */
 .overlay {
   position: fixed;
@@ -78,6 +99,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
+
 /* Botón */
 .cart-button {
   background: none;
@@ -88,6 +110,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .hamburger-button {
   background: none;
   border: none;
@@ -98,14 +121,17 @@
   justify-content: center;
   transition: transform 0.5s ease, filter 0.5s ease;
   z-index: 2000;
-  position: relative; /* ahora relativo dentro de la nav */
+  position: relative;
+  /* ahora relativo dentro de la nav */
 }
+
 /* :destellos: Activo */
 .hamburger-button.active {
   transform: rotate(360deg) scale(1.2);
   filter: drop-shadow(0 0 10px #FFD700);
   margin-top: 10px;
 }
+
 /* Menú lateral */
 .hamburger-menu {
   list-style: none;
@@ -123,25 +149,30 @@
   transform: translateX(-100%);
   display: none;
 }
+
 .hamburger-menu.open {
   transform: translateX(0);
   display: block;
 }
+
 .hamburger-menu li {
   margin-bottom: 15px;
 }
+
 .hamburger-menu a {
   text-decoration: none;
   color: #333;
   font-size: 1.2rem;
   font-weight: bold;
 }
+
 .btn-cerrarSesion {
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 1rem;
   transition: background 0.3s;
 }
+
 .btn-cerrarSesion:hover {
 background: linear-gradient(135deg, #7b1fa2, #9c27b0);
   transform: scale(1.05);
@@ -157,4 +188,3 @@ background: linear-gradient(135deg, #7b1fa2, #9c27b0);
   background: none;
   box-shadow: none;
 }
-

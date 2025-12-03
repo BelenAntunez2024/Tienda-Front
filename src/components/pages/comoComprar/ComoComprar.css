@@ -1,16 +1,13 @@
 .como-comprar {
-  background: linear-gradient(180deg, #ebe3ff 0%, #d8c6f0 100%);
-  color: #3f2b6d;
-  text-align: center;
-  padding: 5rem 2rem;
-  font-family: 'Cormorant Garamond', serif;
-  position: relative;
+  color: #3a2d34;
+
 }
 
 .titulo-wisteria {
   text-align: center;
+
+
   font-size: 2rem;
-  color: #5a3e8b;
   margin-bottom: 3rem;
   text-shadow: 0 10px 20px rgba(186, 149, 255, 0.4);
 }
@@ -20,7 +17,6 @@
   font-size: 1.3rem;
   max-width: 700px;
   margin: 0 auto 4rem auto;
-  color: black;
 }
 
 /* Timeline encantado */
@@ -90,13 +86,11 @@
 
 .paso h3 {
   font-size: 1rem;
-  color: #5a3e8b;
   margin: 0.5rem 0;
 }
 
 .paso p {
   font-size: 0.9rem;
-  color: #4b3b6b;
 }
 
 /* Animaciones */
@@ -161,14 +155,12 @@
 
 .pagos h2 {
   font-size: 2rem;
-  color: #5a3e8b;
   margin-bottom: 1rem;
   text-shadow: 0 0 8px rgba(186, 149, 255, 0.4);
 }
 
 .pagos p {
   font-size: 1.3rem;
-  color: #4b3b6b;
   margin-bottom: 2rem;
 }
 
@@ -203,23 +195,31 @@
 
 /* SECCION DEVOLUCIONES */
 .devoluciones {
-  background: linear-gradient(180deg, #bfa8e0, #a98edf);
   padding: 3rem 2rem;
+  padding-top: 0;
   border-radius: 1.5rem;
 }
 
 .devolucion-titulo{
-  color: #3f2b6d;
+
   text-align: center;
 }
 
+.p-como-comprar {
+
+text-align: center  ;
+  font-size: 1.2rem;
+  margin: 1rem 4rem 2rem 4rem;
+}
+
 .btn-politica {
+    display: block;
+  margin: 1.5rem auto;
   background: #fff;
   color: #5a3e8b;
   border: none;
   border-radius: 2rem;
   padding: 0.8rem 1.8rem;
-  margin-top: 1.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;

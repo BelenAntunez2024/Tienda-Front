@@ -22,6 +22,7 @@ const Navbar = () => {
       handleSearch();
     }
   };
+  
   return (
     <>
       {/* NAVBAR */}
@@ -30,6 +31,7 @@ const Navbar = () => {
         <div className="nav-left">
           <HamburgerMenu />
         </div>
+
 
         {/* Logo en el centro */}
         <div className="nav-center">
@@ -48,6 +50,7 @@ const Navbar = () => {
           </Link>
         </div>
       </nav>
+
 
       {/* BARRA DE BUSQUEDA MODIFICADA */}
       <div className="search-bar">
