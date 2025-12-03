@@ -88,30 +88,36 @@ const Registro = () => {
     }
   }, []);
 
-  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
-    console.log("Google login exitoso:", credentialResponse);
+  const handleGoogleSuccess = async (credentialResponse: CredentialResponse) => {
+    try {
+        const response = await fetch("http://localhost:3000/auth/google-login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ credential: credentialResponse.credential }),
+        });
 
-    // Ejemplo: guardar info del usuario en LocalStorage
-    const usuarioGoogle = {
-      nombreCompleto: credentialResponse?.credential ? "Usuario Google" : "",
-      email: "", // normalmente aquí se obtiene del token decode
-      fechaNacimiento: "",
-      contraseña: ""
-    };
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
 
-    const usuarios = JSON.parse(localStorage.getItem("Usuarios") || "[]");
-    usuarios.push(usuarioGoogle);
-    localStorage.setItem("Usuarios", JSON.stringify(usuarios));
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
 
-    alert("Registro con Google exitoso");
-    window.location.href = "/login";
-  };
+        alert("Registro/Login con Google exitoso");
+        navigate("/"); // O a donde redirigir después del login
+    } catch (err) {
+        console.error("Error al autenticar con Google:", err);
+        setError("Error al autenticar con Google. Inténtalo de nuevo.");
+    }
+};
 
   return (
     <>
       <VolverAtras/>
       <div className="main-container-registro">
-        <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
+        <GoogleOAuthProvider clientId="941726004735-osbd25rrsficjcj5gs9mtrk2f21u27n6.apps.googleusercontent.com">
           <section className="registro-page">
             <div className="registro-box">
               <div className="registro-header">
@@ -147,7 +153,7 @@ const Registro = () => {
                 <div className="registro-form">
                   <label htmlFor="contraseña">Contraseña</label>
                   <input
-                    type="contraseña"
+                    type="password"
                     name="contraseña"
                     placeholder="Contraseña"
                     value={formData.contraseña}

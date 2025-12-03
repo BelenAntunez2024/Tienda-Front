@@ -32,7 +32,7 @@ const EditarPerfil = () => {
     e.preventDefault();
 
     // Validaciones
-    if (!editData.nombreCompleto || !editData.email || !editData.password || !editData.fecha) {
+    /*if (!editData.nombreCompleto || !editData.email || !editData.password || !editData.fecha) {
       setError("Todos los campos son obligatorios");
       return;
     }
@@ -45,12 +45,12 @@ const EditarPerfil = () => {
     if (editData.password.length < 6) {
         setError("La contraseña debe tener al menos 6 caracteres");
         return;
-    }
+    }*/
 
     try{
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:3000/usuario/id`, {
+      const response = await fetch(`http://localhost:3000/usuario`, {
         method: 'PUT',
         headers: {
            "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const EditarPerfil = () => {
             placeholder="Ingresa tu nombre completo"
             value={editData.nombreCompleto}
             onChange={handleChange}
-            required
+
           />
 
 
@@ -117,7 +117,7 @@ const EditarPerfil = () => {
             placeholder="Ingresa tu correo electronico"
             value={editData.email}
             onChange={handleChange}
-            required
+
           />
 
 
@@ -130,7 +130,7 @@ const EditarPerfil = () => {
             placeholder="Ingresa tu contraseña"
             value={editData.password}
             onChange={handleChange}
-            required
+            
           />
 
 
@@ -142,7 +142,7 @@ const EditarPerfil = () => {
             name="fecha"
             value={editData.fecha}
             onChange={handleChange}
-            required
+            
           />
 
 
@@ -154,7 +154,7 @@ const EditarPerfil = () => {
             name="foto"
             value={editData.foto}
             onChange={handleChange}
-            //required
+            
           />
 
           <button type="submit">Guardar</button>
