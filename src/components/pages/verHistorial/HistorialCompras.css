@@ -91,20 +91,7 @@ margin: 0rem 1rem 1rem 1rem;
 
 .li-detalles .info-texto {
   flex: 1;
-}
 
-.li-detalles .info-imaen{
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.info-imagen img{
-  width: 80px;
-  height: 80px;
-  border-radius: 0.8rem;
-  object-fit: cover;
-  box-shadow: 0 0 6px rgba(117, 97, 157, 0.3);
 }
 
 .info-texto .item-info{

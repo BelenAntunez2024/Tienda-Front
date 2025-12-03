@@ -17,7 +17,7 @@ const ComoComprar: React.FC = () => {
     <>
       <VolverAtras hasNavbar={true} />
 
-      <section className="como-Comprar">
+      <section className="como-comprar">
         <h2 className="titulo-wisteria">✨ Cómo Comprar en Wisteria ✨</h2>
         <p className="intro">
           Queremos que tu experiencia de comprar sea magica, con confianza y sencilla.
@@ -52,11 +52,12 @@ const ComoComprar: React.FC = () => {
               className="footer__top__icon" alt="Medio Pago"></img>
           </div>
           <p className="detalle-pago">
-            Tambien podes pagar con transferencia bancaria. Nuestra plataforma esta protegida con cifrado seguro 🔒.</p>
+            Tambien podes pagar con transferencia bancaria. <br />
+            Nuestra plataforma esta protegida con cifrado seguro.</p>
         </section>
         <section className="devoluciones">
           <h2 className="devolucion-titulo"> Cambios y Devoluciones </h2>
-          <p className="p-como-comprar"> Tenes hasta 20 dias desde que recibis el producto para solicitar un cambio o devolucion.
+          <p className="p-como-comprar"> Tenes hasta 20 dias desde que recibis el producto para solicitar un cambio o devolucion. <br />
             El producto debe estar sin uso, con sus respectivas etiquetas y en su embalaje original.
           </p>
           <button className="btn-politica">Ver Politica Completa</button>
