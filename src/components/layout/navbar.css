@@ -137,17 +137,15 @@
   font-weight: bold;
 }
 .btn-cerrarSesion {
-  background: #75619D;
-  color: white;
-  border: none;
   padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 20px;
   font-size: 1rem;
   transition: background 0.3s;
 }
 .btn-cerrarSesion:hover {
-  background: #3F2A52;
+background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(142, 36, 170, 0.4);
 }
 
 /* Quita el fondo azul en hover/focus para los botones */

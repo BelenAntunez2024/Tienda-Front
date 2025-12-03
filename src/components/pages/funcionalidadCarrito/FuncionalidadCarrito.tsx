@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const FuncionalidadCarrito = () => {
 
+    const [cantidadActualizada, setCantidadActualizada] = useState(false);
     const [carrito, setCarrito] = useState<CarritoItem[]>([]);
     const token = localStorage.getItem('token') || '';
     const decoded: any = jwtDecode(token);
@@ -103,7 +104,8 @@ const FuncionalidadCarrito = () => {
                         ? { ...item, cantidad: nuevaCantidad }
                         : item
                 ));
-                alert("Cantidad actualizada con éxito.");
+                setCantidadActualizada(true);
+                setTimeout(() => setCantidadActualizada(false), 3000);
             } else if (producto.cantidad === 1) {
                 // Si la cantidad es 1, llamamos a la función de eliminación (DELETE)
                 await eliminarDelCarrito(idItemOrden, productoId);
@@ -127,7 +129,8 @@ const FuncionalidadCarrito = () => {
                     ? { ...item, cantidad: nuevaCantidad } // Actualiza la cantidad
                     : item
             ));
-            alert("Cantidad actualizada con éxito.");
+            setCantidadActualizada(true);
+            setTimeout(() => setCantidadActualizada(false), 3000);
         } catch (error) {
             console.error("Error al sumar cantidad:", error);
         }
@@ -173,12 +176,19 @@ const FuncionalidadCarrito = () => {
                         )))}
                 </div>
             </div>
-            
+            {cantidadActualizada && (
+                <div className="alerta-exito">
+                    <p>¡Cantidad actualizada con éxito!</p>
+                </div>
+            )}
+
             <Link to={`/confirmarCompra`} className="link-no-decoration">
                 <button className="btn-confirmar-compra">
                     Confirmar compra
                 </button>
             </Link>
+
+
         </main>
     )
 }

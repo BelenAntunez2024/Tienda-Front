@@ -113,12 +113,8 @@
 .btn-sumar, .btn-restar, .btn-eliminar, .btn-confirmar-compra {
     height: 30px;
     width: auto;
-    background-color: #75619d;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    color: white;
-    cursor: pointer;
     border-radius: 8px;
-    border: none;
     font-weight: bold;
     text-align: center;
 }
@@ -128,12 +124,6 @@
     margin: 20px auto;
     text-decoration: none;
     text-align: center;
-}
-
-.btn-sumar:hover, .btn-restar:hover, .btn-eliminar:hover, .btn-confirmar-compra:hover {
-    background-color: #3f2a52;
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.7);
-    transition: all 0.3s ease;
 }
 
 .link-no-decoration{

@@ -3,6 +3,7 @@ import './ProductList.css';
 import ProductCard from "./ProductCard";
 import type { Product } from "./interfaces/Product";
 import VolverAtras from "../../layout/VolverAtras";
+import { useSearchParams } from "react-router-dom";
 
 //React.FC indica que es un componente funcional de React
 const ProductList: React.FC = () => {
@@ -10,26 +11,30 @@ const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        // Obtén el token desde donde lo tengas guardado
-        const token = localStorage.getItem('token') || ''; // o desde context, state, etc.
-        
-        const response = await fetch('http://localhost:3000/producto', {
+        const token = localStorage.getItem('token') || ''; 
+
+        const searchTerm = searchParams.get('search') || ''; // Obtiene la búsqueda de la URL si no hay, usa cadena vacia.
+        //crea la url con el prod buscado. Si esta vacio devuelve todos
+        const url = `http://localhost:3000/producto/filtrar-por-nombre?nombre=${encodeURIComponent(searchTerm)}`;
+
+        const response = await fetch(url, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Incluye el token en el encabezado Authorization
+            'Authorization': `Bearer ${token}` 
           }
         });
-        
+
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
-        
+
         const data = await response.json();
         setProducts(data);
         console.log('Productos consultados:', data);
@@ -43,10 +48,27 @@ const ProductList: React.FC = () => {
     };
 
     fetchProducts();
-  }, []); // Array vacío = se ejecuta solo al montar el componente
+  }, [searchParams]); // Array vacío = se ejecuta solo al montar el componente
 
   if (loading) return <div>Cargando...</div>; //agregar estilos
   if (error) return <div>Error: {error} </div>;
+
+  
+  if (products.length === 0) {
+    const searchTerm = searchParams.get('search');
+    return (
+      <div className="main-container">
+        <VolverAtras hasNavbar={true} />
+        <div className="div-product-list">
+          <p>
+            {searchTerm
+              ? `No se encontraron resultados para "${searchTerm}".`
+              : "No hay productos disponibles para mostrar."}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

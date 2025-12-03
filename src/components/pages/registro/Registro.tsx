@@ -108,77 +108,79 @@ const Registro = () => {
   };
 
   return (
-    <div className="main-container-registro">
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
-      <section className="registro-page">
-        <div className="registro-box">
-          <VolverAtras hasNavbar={true} />
-          <div className="registro-header">
-            <img src="img/logo.png" alt="logo" className="logo" />
-            <h1 className="title">WISTERIA</h1>
-            <h2 className="subTitle">Registrate</h2>
-          </div>
+    <>
+      <VolverAtras/>
+      <div className="main-container-registro">
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID as string}>
+          <section className="registro-page">
+            <div className="registro-box">
+              <div className="registro-header">
+                <img src="img/logo.png" alt="logo" className="logo" />
+                <h1 className="title">WISTERIA</h1>
+                <h2 className="subTitle">Registrate</h2>
+              </div>
 
-          {/* FORMULARIO ORDENADO */}
-          <form onSubmit={handleSubmit}>
-            <div className="registro-form">
-              <label htmlFor="nombreCompleto">Nombre Completo</label>
-              <input
-                type="text"
-                name="nombreCompleto"
-                placeholder="Nombre Completo"
-                value={formData.nombreCompleto}
-                onChange={handleChange}
-                required
-              />
+              {/* FORMULARIO ORDENADO */}
+              <form onSubmit={handleSubmit}>
+                <div className="registro-form">
+                  <label htmlFor="nombreCompleto">Nombre Completo</label>
+                  <input
+                    type="text"
+                    name="nombreCompleto"
+                    placeholder="Nombre Completo"
+                    value={formData.nombreCompleto}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="registro-form">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="registro-form">
+                  <label htmlFor="contraseña">Contraseña</label>
+                  <input
+                    type="contraseña"
+                    name="contraseña"
+                    placeholder="Contraseña"
+                    value={formData.contraseña}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="registro-form">
+                  <label htmlFor="fechaNacimiento">Fecha de nacimiento</label>
+                  <input
+                    type="date"
+                    name="fechaNacimiento"
+                    value={formData.fechaNacimiento}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <button type="submit" className="btn-registro">Registrarse</button>
+              </form>
+              {error && <p className="error">{error}</p>}
+
+              {/* BOTÓN DE GOOGLE */}
+              <div className="google-login">
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={() => console.log("Login con Google falló")}
+                />
+              </div>
             </div>
-            <div className="registro-form">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="registro-form">
-              <label htmlFor="contraseña">Contraseña</label>
-              <input
-                type="contraseña"
-                name="contraseña"
-                placeholder="Contraseña"
-                value={formData.contraseña}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="registro-form">
-              <label htmlFor="fechaNacimiento">Fecha de nacimiento</label>
-              <input
-                type="date"
-                name="fechaNacimiento"
-                value={formData.fechaNacimiento}
-                onChange={handleChange}
-              />
-            </div>
-
-            <button type="submit" className="btn-registro">Registrarse</button>
-          </form>
-          {error && <p className="error">{error}</p>}
-
-          {/* BOTÓN DE GOOGLE */}
-          <div className="google-login">
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={() => console.log("Login con Google falló")}
-            />
-          </div>
-        </div>
-      </section>
-    </GoogleOAuthProvider>
-    </div>
+          </section>
+        </GoogleOAuthProvider>
+      </div>
+    </>
   );
 };
 

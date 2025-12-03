@@ -46,10 +46,6 @@ const ComoComprar: React.FC = () => {
               className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png"
               className="footer__top__icon" alt="Medio Pago"></img>
-            <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/pagofacil.png"
-              className="footer__top__icon" alt="Medio Pago"></img>
-            <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/rapipago.png"
-              className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png"
               className="footer__top__icon" alt="Medio Pago"></img>
             <img src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/efectivo.png"
@@ -59,8 +55,8 @@ const ComoComprar: React.FC = () => {
             Tambien podes pagar con transferencia bancaria. Nuestra plataforma esta protegida con cifrado seguro 🔒.</p>
         </section>
         <section className="devoluciones">
-          <h2> Cambios y Devoluciones </h2>
-          <p> Tenes hasta 20 dias desde que recibis el producto para solicitar un cambio o devolucion.
+          <h2 className="devolucion-titulo"> Cambios y Devoluciones </h2>
+          <p className="p-como-comprar"> Tenes hasta 20 dias desde que recibis el producto para solicitar un cambio o devolucion.
             El producto debe estar sin uso, con sus respectivas etiquetas y en su embalaje original.
           </p>
           <button className="btn-politica">Ver Politica Completa</button>

@@ -8,6 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [contraseña, setContraseña] = useState("");
     const [error, setError] = useState("");
+    const [loginExitoso, setLoginExitoso] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,8 +35,11 @@ const Login = () => {
             const data = await response.json();
             localStorage.setItem("token", data.token);
 
-            alert("Login exitoso");
-            navigate("/");
+            setLoginExitoso(true);
+            setTimeout(() => {
+                setLoginExitoso(false);
+                navigate("/");
+            }, 3000);
 
         } catch (err) {
             console.error("Error al iniciar sesión:", err);
@@ -96,6 +100,13 @@ const Login = () => {
 
                 <button onClick={handleForgotPassword} className='passwordOlvidada'>¿Olvidaste tu contraseña?</button>
 
+                <div>
+                    {loginExitoso && (
+                        <div className="alerta-exito">
+                            <p>¡Inicio de sesión exitoso! Redirigiendo...</p>
+                        </div>
+                    )}
+                </div>
             </form>
 
         </div>

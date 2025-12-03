@@ -163,7 +163,7 @@ const VerDatosDeContacto = () => {
                             )}
 
                             <button type="submit" className="formBtn">Enviar</button>
-                            <div id="mensaje-enviado" style={{ display: mensajeEnviado ? "block" : "none" }}>
+                            <div className="alerta-exito" style={{ display: mensajeEnviado ? "block" : "none" }}>
                                 <p>Se envio correctamente! En breve nos comunicaremos contigo.</p>
 
                             </div>

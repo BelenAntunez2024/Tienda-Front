@@ -111,13 +111,7 @@ src/
 ├── app.module.ts
 └── main.ts
 
-## Diagrama de la base de datos
-![Inicio](screenshots/home.png)
 
-
-## 📌 Estado del proyecto
-
-VAYA SABER DIOS
 
 ## 👩‍💻 Autor
 
