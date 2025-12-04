@@ -25,7 +25,7 @@ const ProductDetail: React.FC = () => {
     const fetchAllProducts = async () => {
       try {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch('http://localhost:3000/producto', {
+        const response = await fetch('https://wisteriaback.onrender.com/producto', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const ProductDetail: React.FC = () => {
     const fetchAllProducts = async () => {
       try {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch('http://localhost:3000/producto', {
+        const response = await fetch('https://wisteriaback.onrender.com/producto', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const ProductDetail: React.FC = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('token') || '';
-        const response = await fetch(`http://localhost:3000/producto/${id_producto}`, {
+        const response = await fetch(`https://wisteriaback.onrender.com/producto/${id_producto}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -102,13 +102,18 @@ const ProductDetail: React.FC = () => {
   }, [id_producto]);
   //funcion para agregar productos al carrito
   const agregarAlCarrito = async (producto: Product) => {
+     const yaEnCarrito = carrito.some(item => item.id_producto === producto.id_producto);
+  if (yaEnCarrito) {
+    alert("Este producto ya está en el carrito.");
+    return;
+  }
     setIsAdding(true); // Inicia la carga del botón para agregar al carrito
     try {
       const token = localStorage.getItem('token') || '';
       const decoded: any = jwtDecode(token);
       const userId = decoded.id || decoded.Id_usuario || decoded.sub;
       console.log(producto.id_producto);
-      const response = await fetch("http://localhost:3000/item-ordenes", {
+      const response = await fetch("https://wisteriaback.onrender.com/item-ordenes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const FuncionalidadCarrito = () => {
         const fetchCarrito = async () => {
             try {
 
-                const response = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
+                const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/carrito/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const FuncionalidadCarrito = () => {
 
     const actualizarCantidad = async (idItemOrden: number, nuevaCantidad: number) => {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch(`http://localhost:3000/item-ordenes/${idItemOrden}`, {
+        const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/${idItemOrden}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const FuncionalidadCarrito = () => {
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
 
-        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
+        const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/orden/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar

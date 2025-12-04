@@ -35,7 +35,7 @@ const VerDatosDeContacto = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:3000/correo", {
+            const response = await fetch("https://wisteriaback.onrender.com/correo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(datos)

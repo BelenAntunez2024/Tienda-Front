@@ -20,7 +20,7 @@ const HistorialCompras: React.FC = () => {
         const decoded: any = jwtDecode(token);
         const userId = decoded.id || decoded.Id_usuario || decoded.sub;
 
-        const response = await fetch(`http://localhost:3000/ordenes/historial/${userId}`, {
+        const response = await fetch(`https://wisteriaback.onrender.com/ordenes/historial/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
