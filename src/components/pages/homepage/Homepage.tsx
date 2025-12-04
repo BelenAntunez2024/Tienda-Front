@@ -97,7 +97,7 @@ const HomePage = () => {
         <section className="about-wisteria">
           <h2>✨ Wisteria: Magia Real, Ahora También Online ✨</h2>
 
-          <p>Somos Belén, Lucila y Morena, y hace tiempo dimos vida a <strong>Wisteria</strong>,
+          <p>Somos Belén, Lucila y Bauti, y hace tiempo dimos vida a <strong>Wisteria</strong>,
             nuestro lugar físico donde la magia se respira en cada rincón. Entre estantes repletos
             de objetos únicos y un salón escondido donde creamos pociones y mezclas irrepetibles,
             hemos construido un espacio diferente: <strong>auténtico, místico y lleno de energía</strong>.</p>
