@@ -25,7 +25,7 @@ const ProductDetail: React.FC = () => {
     const fetchAllProducts = async () => {
       try {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch('https://wisteriaback.onrender.com/producto', {
+        const response = await fetch('http://localhost:3000/producto', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const ProductDetail: React.FC = () => {
     const fetchAllProducts = async () => {
       try {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch('https://wisteriaback.onrender.com/producto', {
+        const response = await fetch('http://localhost:3000/producto', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const ProductDetail: React.FC = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('token') || '';
-        const response = await fetch(`https://wisteriaback.onrender.com/producto/${id_producto}`, {
+        const response = await fetch(`http://localhost:3000/producto/${id_producto}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const ProductDetail: React.FC = () => {
       const decoded: any = jwtDecode(token);
       const userId = decoded.id || decoded.Id_usuario || decoded.sub;
       console.log(producto.id_producto);
-      const response = await fetch("https://wisteriaback.onrender.com/item-ordenes", {
+      const response = await fetch("http://localhost:3000/item-ordenes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

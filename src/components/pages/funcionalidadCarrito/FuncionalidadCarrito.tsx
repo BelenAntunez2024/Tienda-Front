@@ -18,7 +18,7 @@ const FuncionalidadCarrito = () => {
         const fetchCarrito = async () => {
             try {
 
-                const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/carrito/${userId}`, {
+                const response = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -44,16 +44,17 @@ const FuncionalidadCarrito = () => {
         fetchCarrito();
     }, []);
 
-    const actualizarCantidad = async (idItemOrden: number, nuevaCantidad: number) => {
+    const actualizarCantidad = async (idItemOrden: number, nuevaCantidad: number,idProducto: number) => {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/${idItemOrden}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                cantidad_productos: nuevaCantidad,
+             id_producto: idProducto,
+             cantidad_productos: nuevaCantidad,
             }),
         });
 
@@ -65,7 +66,7 @@ const FuncionalidadCarrito = () => {
     const eliminar = async (idItemOrden: number) => {
         const token = localStorage.getItem('token') || '';
 
-        const response = await fetch(`https://wisteriaback.onrender.com/item-ordenes/orden/${idItemOrden}`, {
+        const response = await fetch(`http://localhost:3000/item-ordenes/orden/${idItemOrden}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}` // Usamos el token para autenticar
@@ -97,7 +98,7 @@ const FuncionalidadCarrito = () => {
         try {
             if (producto.cantidad > 1) {
                 const nuevaCantidad = producto.cantidad - 1;
-                await actualizarCantidad(idItemOrden, nuevaCantidad);
+                await actualizarCantidad(idItemOrden, nuevaCantidad,producto.id_producto);
 
                 setCarrito(prevCarrito => prevCarrito.map(item =>
                     item.id_producto === productoId
@@ -122,7 +123,7 @@ const FuncionalidadCarrito = () => {
         }
         try {
             const nuevaCantidad = producto.cantidad + 1;
-            await actualizarCantidad(idItemOrden, nuevaCantidad);
+            await actualizarCantidad(idItemOrden, nuevaCantidad,producto.id_producto);
 
             setCarrito(prevCarrito => prevCarrito.map(item =>
                 item.id_producto === productoId

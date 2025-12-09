@@ -24,7 +24,7 @@ const EditarPerfil = () => {
   const cargarDatosUsuario = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://wisteriaback.onrender.com/auth/perfil`, {
+      const response = await fetch(`http://localhost:3000/auth/perfil`, {
         method: 'GET',
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -82,7 +82,7 @@ const EditarPerfil = () => {
     if (editData.fechaNacimiento) body.fechaNacimiento = editData.fechaNacimiento;
     if (editData.foto) body.foto = editData.foto;
 
-    const response = await fetch(`https://wisteriaback.onrender.com/usuario/${userId}`, {
+    const response = await fetch(`http://localhost:3000/usuario/${userId}`, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json",
