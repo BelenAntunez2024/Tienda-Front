@@ -49,7 +49,7 @@ const Registro = () => {
       const { nombreCompleto, email, contraseña, fechaNacimiento } = formData;
       console.log('Datos de registro:', formData);
 
-      const response = await fetch("http://localhost:3000/auth/registro", {
+      const response = await fetch("https://wisteria-2cn8.onrender.com/auth/registro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Registro = () => {
 
   const handleGoogleSuccess = async (credentialResponse: CredentialResponse) => {
     try {
-        const response = await fetch("http://localhost:3000/auth/google-login", {
+        const response = await fetch("https://wisteria-2cn8.onrender.com/auth/google-login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

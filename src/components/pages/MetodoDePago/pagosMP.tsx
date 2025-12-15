@@ -23,7 +23,7 @@ const PagosMP = () => {
         const userId = decoded.id || decoded.Id_usuario || decoded.sub;
 
         // Obtener carrito desde el backend
-        const responseCarrito = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
+        const responseCarrito = await fetch(`https://wisteria-2cn8.onrender.com/item-ordenes/carrito/${userId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const PagosMP = () => {
         }
 
         const response = await fetch(
-          "http://localhost:3000/mercado-pago/crear-preferencia",
+          "https://wisteria-2cn8.onrender.com/mercado-pago/crear-preferencia",
           {
             method: "POST",
             headers: {

@@ -20,7 +20,7 @@ export default function PerfilUsuario() {
           throw new Error("No hay token en localStorage");
         }
 
-        const resp = await fetch(`http://localhost:3000/auth/perfil`, {
+        const resp = await fetch(`https://wisteria-2cn8.onrender.com/auth/perfil`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

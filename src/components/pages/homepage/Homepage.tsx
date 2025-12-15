@@ -16,7 +16,7 @@ const HomePage = () => {
     const fetchAllProducts = async () => {
       try {
         const token = localStorage.getItem('token') || '';
-        const response = await fetch('http://localhost:3000/producto', {
+        const response = await fetch('https://wisteria-2cn8.onrender.com/producto', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

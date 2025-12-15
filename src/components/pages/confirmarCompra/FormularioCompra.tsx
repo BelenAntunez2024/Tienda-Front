@@ -56,7 +56,7 @@ function FormularioCompra() {
     const userId = decoded.id || decoded.Id_usuario || decoded.sub;
 
     //traer carrito del back
-    const carritoRes = await fetch(`http://localhost:3000/item-ordenes/carrito/${userId}`, {
+    const carritoRes = await fetch(`https://wisteria-2cn8.onrender.com/item-ordenes/carrito/${userId}`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
 
@@ -75,7 +75,7 @@ function FormularioCompra() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/ordenes/comprar", {
+      const response = await fetch("https://wisteria-2cn8.onrender.com/ordenes/comprar", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -94,7 +94,7 @@ function FormularioCompra() {
 
       //vaciar carrito si la compra fue exitosa
       if (response.ok) {
-        await fetch(`http://localhost:3000/item-ordenes/vaciar-carrito/${userId}`, {
+        await fetch(`https://wisteria-2cn8.onrender.com/item-ordenes/vaciar-carrito/${userId}`, {
           method: "DELETE",
           headers: { "Authorization": `Bearer ${token}` }
         });
